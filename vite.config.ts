@@ -92,16 +92,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
-          preview: resolve(__dirname, 'preview/index.html'),
+          main: resolve(__dirname, 'index.html')
+          // preview: resolve(__dirname, 'preview/index.html'),
         },
         output: {
           manualChunks: {
-            jsonWorker: [`${prefix}/language/json/json.worker`],
-            cssWorker: [`${prefix}/language/css/css.worker`],
-            htmlWorker: [`${prefix}/language/html/html.worker`],
-            tsWorker: [`${prefix}/language/typescript/ts.worker`],
-            editorWorker: [`${prefix}/editor/editor.worker`],
+            // jsonWorker: [`${prefix}/language/json/json.worker`],
+            // cssWorker: [`${prefix}/language/css/css.worker`],
+            // htmlWorker: [`${prefix}/language/html/html.worker`],
+            // tsWorker: [`${prefix}/language/typescript/ts.worker`],
+            // editorWorker: [`${prefix}/editor/editor.worker`],
           },
         },
       },
@@ -118,7 +118,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       // 设置代理，根据项目实际情况配置
       proxy: {
         '/api': {
-          target: 'https://nest-api.buqiyuan.site/api/admin/',
+          target: 'https://xx/api/admin/',
           changeOrigin: true,
           secure: false,
           rewrite: (path) => path.replace('/api/', '/'),
