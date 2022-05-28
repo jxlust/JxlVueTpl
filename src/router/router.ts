@@ -6,21 +6,21 @@
  * @Description: 路由表
  * @FilePath: \router.ts
  */
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 // import type { VisualEditorModelValue } from '@/visual-editor/visual-editor.utils'
 // import { CacheEnum } from '@/enums'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
-    component: () => import('../preview/views/preview.vue')
-  }
-]
+    component: () => import('../preview/views/preview.vue'),
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
 // 获取本地缓存的页面数据
 // const jsonData: VisualEditorModelValue = JSON.parse(
@@ -31,4 +31,4 @@ const router = createRouter({
 //   return true
 // })
 
-export default router
+export default router;

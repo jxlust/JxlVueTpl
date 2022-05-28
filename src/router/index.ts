@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     meta: {
       title: 'my home',
-      keepAlive: true
+      keepAlive: true,
     },
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => HelloWorld,
       },
     ],
-  }
+  },
 ];
 
 const router = createRouter({
@@ -25,8 +25,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  document.title = (to?.meta?.title as string) ?? document.title
-  return true
-})
+  document.title = (to?.meta?.title as string) ?? document.title;
+  return true;
+});
 
 export default router;
