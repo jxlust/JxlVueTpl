@@ -26,6 +26,7 @@ pnpm-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+.eslintcache
 
 # IDE - VSCode
 # .vscode/*
