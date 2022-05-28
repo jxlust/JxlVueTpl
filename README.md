@@ -17,4 +17,14 @@
 + 单元测试：vue-test-utils + jest + vue-jest + ts-jest
 + 自动部署：GitHub Actions
 
+## git husky 设置
+1. 安装脚步
+```shell
+npm install prepare
+```
+2. 配置
+```shell
+git config core.hooksPath .husky
+chmod 700 .husky/
+```
 
