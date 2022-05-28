@@ -17,9 +17,9 @@
 - 单元测试：vue-test-utils + jest + vue-jest + ts-jest
 - 自动部署：GitHub Actions
 
-## git husky 设置
+## git husky 配置
 
-1. 安装脚步
+1. 安装脚本 husky.sh
 
 ```shell
 npm install prepare
