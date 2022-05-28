@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+const HelloWorld = () => import('@/components/HelloWorld.vue');
 
-const HelloWorld = () => import(/* webpackChunkName: "mdshow" */ '@/components/HelloWorld.vue');
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -9,13 +9,22 @@ const routes: Array<RouteRecordRaw> = [
       title: 'my home',
       keepAlive: true,
     },
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-    children: [
-      {
-        path: 'abs',
-        component: () => HelloWorld,
-      },
-    ],
+    component: HelloWorld,
+    // children: [
+    //   {
+    //     path: 'abs',
+    //     component: () => HelloWorld,
+    //   },
+    // ],
+  },
+  {
+    path: '/about',
+    name: 'about',
+    meta: {
+      title: 'my about',
+      keepAlive: true,
+    },
+    component: HelloWorld,
   },
 ];
 

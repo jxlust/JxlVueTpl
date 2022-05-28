@@ -1,12 +1,19 @@
-<script setup lang="ts">
-  // This starter template is using Vue 3 <script setup> SFCs
-  // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-  import HelloWorld from './components/HelloWorld.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div id="app">
+    <h1>Hello App!</h1>
+    <!-- <router-view v-slot="{ Component }">
+      <transition name="van-fade">
+        <component :is="Component" />
+      </transition>
+    </router-view> -->
+    <p>
+      <router-link to="/">Go to Home</router-link>
+      <router-link to="/about">Go to About</router-link>
+    </p>
+    <router-view />
+  </div>
 </template>
 
 <style>

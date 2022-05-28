@@ -1,13 +1,15 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-
+  import { useRoute } from 'vue-router';
+  const route = useRoute();
+  console.log(route);
   defineProps<{ msg: string }>();
 
   const count = ref(0);
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>{{ msg }} --- {{ route.path }}</h1>
 
   <p>
     Recommended IDE setup:
