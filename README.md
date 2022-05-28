@@ -29,7 +29,7 @@ npm install prepare
 
 ```shell
 git config core.hooksPath .husky
-chmod 700 .husky/pre-commit
+chmod 700 .husky/*
 # chmod +x .husky/pre-commit
 
 ```
