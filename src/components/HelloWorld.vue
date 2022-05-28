@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
+
   const route = useRoute();
   console.log(route);
   defineProps<{ msg: string }>();
@@ -10,7 +11,6 @@
 
 <template>
   <h1>{{ msg }} --- {{ route.path }}</h1>
-
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
