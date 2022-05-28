@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const HelloWorld = () => import('@/components/HelloWorld.vue');
+const TestVue = () => import('@/views/TsxVue/index');
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,13 +19,13 @@ const routes: Array<RouteRecordRaw> = [
     // ],
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/test',
+    name: 'test',
     meta: {
-      title: 'my about',
+      title: 'my test',
       keepAlive: true,
     },
-    component: HelloWorld,
+    component: TestVue,
   },
 ];
 

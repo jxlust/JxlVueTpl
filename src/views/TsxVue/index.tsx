@@ -10,6 +10,7 @@ interface MyMsg {
   id: number;
 }
 import TextOver from '@/components/text/TextOver.vue';
+import './index.scss';
 export default defineComponent({
   name: 'CompRender',
   props: {
@@ -21,22 +22,40 @@ export default defineComponent({
   setup(props) {
     console.log('props:', props);
     const msgList = reactive<Array<MyMsg>>([]);
+    const contentText = ref(
+      '其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。例如安卓、ios、Java 等等。只是本文选择了前端项目作为示例。',
+    );
+    const loadData = () => {
+      msgList.push(
+        {
+          text: 'test1',
+          id: 1,
+        },
+        {
+          text: 'test2',
+          id: 2,
+        },
+      );
+    };
     onMounted(() => {});
     onUnmounted(() => {});
     const messageDom = () => {
+      loadData();
       if (msgList.length > 0) {
         return (
-          <div class="message-block">
+          <ul class="message-block">
             {msgList.map((item: MyMsg) => (
               <li>{item.text}</li>
             ))}
-          </div>
+          </ul>
         );
+      } else {
+        return '无数据';
       }
     };
     return () => (
-      <div class="pd-nav">
-        <TextOver text="我是hello HelloWorld"></TextOver>
+      <div class="tsx-block">
+        <TextOver text={contentText.value}></TextOver>
         {messageDom()}
       </div>
     );
