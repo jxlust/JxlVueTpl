@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { ArrowDownBold, ArrowUpBold } from '@element-plus/icons-vue';
+  import './index.scss';
   interface MyProps {
     text?: string;
     msg?: string | number | boolean;
@@ -57,52 +58,3 @@
   <div class="margin"></div>
   <el-button type="primary">Primary</el-button>
 </template>
-
-<style lang="scss">
-  .j-textwrapper {
-    // width: 200px;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    .j-textwrapper__text {
-      text-align: left;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      line-height: 22px;
-      font-size: 14px;
-      &.more {
-        display: inline-block;
-        text-overflow: initial;
-      }
-    }
-    .operate-fixed {
-      position: absolute;
-      width: 47px;
-      padding: 0 5px 0 10px;
-      right: 0;
-      bottom: 0;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%);
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .text-ellipsis {
-      display: inline-block;
-    }
-    .operate-line {
-      display: inline-block;
-      // height: 22px;
-      // line-height: 22px;
-      position: relative;
-      top: 3px;
-    }
-  }
-  .margin {
-    margin: 20px;
-  }
-</style>

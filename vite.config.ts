@@ -10,8 +10,6 @@ import WindiCSS from 'vite-plugin-windicss';
 
 const CWD = process.cwd();
 
-const prefix = `monaco-editor/esm/vs`;
-
 // https://cn.vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
   // 环境变量
@@ -92,7 +90,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html')
+          main: resolve(__dirname, 'index.html'),
           // preview: resolve(__dirname, 'preview/index.html'),
         },
         output: {
