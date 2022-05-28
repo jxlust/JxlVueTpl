@@ -31,5 +31,12 @@ npm install prepare
 git config core.hooksPath .husky
 chmod 700 .husky/*
 # chmod +x .husky/pre-commit
+```
 
+3. 提交例子：
+
+```shell
+git commit -m "chore: updated md.json"
+git commit -m  "fix(server): send xxxx"
+git commit -m "feat(blog): add comment section"
 ```
