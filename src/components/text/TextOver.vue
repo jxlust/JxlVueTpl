@@ -41,17 +41,17 @@
 
 <template>
   <div class="j-textwrapper">
-    <div :class="['j-textwrapper__text', { more: isMore }]" ref="textItemRef" @click="moreSwitchClick">
+    <div :class="['j-textwrapper__text', { more: isMore }]" ref="textItemRef">
       {{ text }}
-      <div class="operate-line" v-if="isMore">
+      <div class="operate-line" v-if="isOver && isMore" @click="moreSwitchClick">
         <el-icon>
           <ArrowUpBold color="red" />
         </el-icon>
       </div>
     </div>
-    <div class="operate-fixed" v-if="isOver && !isMore">
+    <div class="operate-fixed" v-if="isOver && !isMore" @click="moreSwitchClick">
       <span class="text-ellipsis">...</span>
-      <el-icon @click="moreSwitchClick"><ArrowDownBold color="red" /> </el-icon>
+      <el-icon><ArrowDownBold color="red" /> </el-icon>
     </div>
   </div>
   <div class="margin"></div>
