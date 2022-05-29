@@ -40,3 +40,9 @@ git commit -m "chore: updated md.json"
 git commit -m  "fix(server): send xxxx"
 git commit -m "feat(blog): add comment section"
 ```
+
+## CSS Module
+
+1. 需要 css-loader
+2. 文件命名 xxx.module.scss xxx.module.css
+3.

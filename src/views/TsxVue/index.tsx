@@ -2,6 +2,7 @@
  * tsx 组件 demo
  */
 import { defineComponent, PropType, reactive, onMounted, onUnmounted } from 'vue';
+// import logoImg from '@/assets/logo.png'
 interface VisualEditorBlockData {
   text?: string;
 }
@@ -53,10 +54,13 @@ export default defineComponent({
         return '无数据';
       }
     };
+    const logoImg = new URL('../../assets/logo.png', import.meta.url).href;
+
     return () => (
       <div class="tsx-block">
         <TextOver text={contentText.value}></TextOver>
         {messageDom()}
+        <img src={logoImg} />
       </div>
     );
   },
