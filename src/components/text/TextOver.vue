@@ -59,7 +59,7 @@
   <el-button type="primary">Primary</el-button>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .margin {
     color: red;
     position: relative;

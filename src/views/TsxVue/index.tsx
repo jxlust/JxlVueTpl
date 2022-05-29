@@ -2,7 +2,7 @@
  * tsx 组件 demo
  */
 import { defineComponent, PropType, reactive, onMounted, onUnmounted } from 'vue';
-// import logoImg from '@/assets/logo.png'
+import logoImg from '@/assets/logo.png';
 interface VisualEditorBlockData {
   text?: string;
 }
@@ -22,6 +22,7 @@ export default defineComponent({
   },
   setup(props) {
     console.log('props:', props);
+    // const logoImg = new URL('../../assets/logo.png', import.meta.url).href;
     const msgList = reactive<Array<MyMsg>>([]);
     const contentText = ref(
       '其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。例如安卓、ios、Java 等等。只是本文选择了前端项目作为示例。',
@@ -54,7 +55,6 @@ export default defineComponent({
         return '无数据';
       }
     };
-    const logoImg = new URL('../../assets/logo.png', import.meta.url).href;
 
     return () => (
       <div class="tsx-block">
