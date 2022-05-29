@@ -45,14 +45,19 @@
     <div :class="['j-textwrapper__text', { more: isMore }]" ref="textItemRef">
       {{ text }}
       <div class="operate-line" v-if="isOver && isMore" @click="moreSwitchClick">
-        <el-icon>
-          <ArrowUpBold color="red" />
-        </el-icon>
+        <slot name="up">
+          <el-icon>
+            <ArrowUpBold color="red" />
+          </el-icon>
+        </slot>
       </div>
     </div>
+
     <div class="operate-fixed" v-if="isOver && !isMore" @click="moreSwitchClick">
-      <span class="text-ellipsis">...</span>
-      <el-icon><ArrowDownBold color="red" /> </el-icon>
+      <slot name="down">
+        <span class="text-ellipsis">...</span>
+        <el-icon><ArrowDownBold color="red" /> </el-icon>
+      </slot>
     </div>
   </div>
   <div class="margin"></div>

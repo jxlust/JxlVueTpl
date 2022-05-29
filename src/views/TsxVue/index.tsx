@@ -20,10 +20,14 @@ export default defineComponent({
       default: () => ({}),
     },
   },
-  setup(props) {
+  setup(props, { emit, slots }) {
     console.log('props:', props);
+    console.log('emit:', emit);
+    console.log('slots:', slots);
     // const logoImg = new URL('../../assets/logo.png', import.meta.url).href;
     const msgList = reactive<Array<MyMsg>>([]);
+    const textList = reactive<Array<MyMsg>>([]);
+
     const contentText = ref(
       '其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。其实本文适用的范围不仅仅局限于前端，而是适用于所有使用了 git 作为版本控制的项目。例如安卓、ios、Java 等等。只是本文选择了前端项目作为示例。',
     );
@@ -38,11 +42,25 @@ export default defineComponent({
           id: 2,
         },
       );
+      for (let i = 0; i < 10; i++) {
+        textList.push({
+          id: i + 100,
+          text: `${contentText.value}i-----${i}`,
+        });
+      }
+    };
+    const DefaultRender = () => {
+      return 'default';
+    };
+    const upRender = () => {
+      return 'up';
+    };
+    const downRender = () => {
+      return 'down';
     };
     onMounted(() => {});
     onUnmounted(() => {});
     const messageDom = () => {
-      loadData();
       if (msgList.length > 0) {
         return (
           <ul class="message-block">
@@ -55,10 +73,31 @@ export default defineComponent({
         return '无数据';
       }
     };
+    const textListDom = () => {
+      if (textList.length) {
+        return textList.map((item) =>
+          item.id === 102 ? (
+            <TextOver
+              text={item.text}
+              v-slots={{
+                default: DefaultRender,
+                up: upRender,
+                down: downRender,
+              }}
+            />
+          ) : (
+            <TextOver text={item.text} />
+          ),
+        );
+      } else {
+        return 'none';
+      }
+    };
 
+    loadData();
     return () => (
       <div class="tsx-block">
-        <TextOver text={contentText.value}></TextOver>
+        {textListDom()}
         {messageDom()}
         <img src={logoImg} />
       </div>
