@@ -58,3 +58,10 @@
   <div class="margin"></div>
   <el-button type="primary">Primary</el-button>
 </template>
+
+<style lang="scss">
+  .margin {
+    color: red;
+    position: relative;
+  }
+</style>

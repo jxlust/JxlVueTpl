@@ -25,6 +25,8 @@
     "serve": "npm run dev",
     "dev": "cross-env --max_old_space_size=4096 vite",
     "build": "cross-env vite build",
+    "build:dev": "cross-env vite build --mode development",
+    "sit": "cross-env vite build --mode sit",
     "build:no-cache": "pnpm clean:cache && npm run build",
     "build-tsc": "vue-tsc --noEmit && vite build",
     "preview": "npm run build && vite preview",
