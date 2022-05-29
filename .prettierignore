@@ -5,5 +5,5 @@
 
 **/*.svg
 **/*.sh
-
+/www/*
 /public/*

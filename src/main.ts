@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import './plugins/element-plus';
+import { setupElementPlus } from './plugins/element-plus';
 // import store from './store'
 import './assets/css/base.css';
 // import './assets/css/main.styl';
@@ -9,6 +9,7 @@ import './assets/css/base.css';
 // import BaseDirective from './directive'
 const app = createApp(App);
 
+setupElementPlus(app);
 // app.use(BaseComponens)
 // app.use(BaseDirective)
 
