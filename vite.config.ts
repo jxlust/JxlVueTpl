@@ -7,7 +7,7 @@ import { ElementPlusResolver, VantResolver } from 'unplugin-vue-components/resol
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import WindiCSS from 'vite-plugin-windicss';
-
+import compressPlugin from 'vite-plugin-compression';
 const CWD = process.cwd();
 
 // https://cn.vitejs.dev/config/
@@ -54,6 +54,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       Components({
         dts: true,
         resolvers: [ElementPlusResolver(), VantResolver()],
+      }),
+      compressPlugin({
+        ext: '.gz',
+        deleteOriginFile: false, // 是否删除原始文件
       }),
     ],
     resolve: {
