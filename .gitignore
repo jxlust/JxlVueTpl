@@ -5,7 +5,9 @@
 /dist-tpl
 /dist-ssr
 /tmp
+/wwww
 /out-tsc
+*.zip
 
 # dependencies
 /node_modules
