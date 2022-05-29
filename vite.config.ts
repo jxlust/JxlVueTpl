@@ -80,9 +80,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         //     },
         //   },
         // },
+        //https://rollupjs.org/guide/en/#output-generation-hooks
         customHooks: [
           {
-            hookName: 'generateBundle', //generateBundle
+            hookName: 'closeBundle', //generateBundle
             commands: {
               move: {
                 items: [{ source: './www', destination: './dist/' }],
@@ -91,7 +92,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
               },
               del: {
-                items: ['./dist', './www'],
+                items: ['./dist'],
               },
             },
           },
