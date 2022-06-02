@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const HelloWorld = () => import('@/components/HelloWorld.vue');
 const TestVue = () => import('@/views/TsxVue/index');
-
+const Test = () => import('@/views/Test/index.vue');
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -19,13 +19,22 @@ const routes: Array<RouteRecordRaw> = [
     // ],
   },
   {
+    path: '/textover',
+    name: 'textover',
+    meta: {
+      title: 'my textover',
+      keepAlive: true,
+    },
+    component: TestVue,
+  },
+  {
     path: '/test',
     name: 'test',
     meta: {
       title: 'my test',
       keepAlive: true,
     },
-    component: TestVue,
+    component: Test,
   },
 ];
 

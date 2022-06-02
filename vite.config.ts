@@ -45,12 +45,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }),
       //模块自动导入配置auto-imports.d.t
       AutoImport({
-        include: [
-          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-          /\.vue$/,
-          /\.vue\?vue/, // .vue
-          /\.md$/, // .md
-        ],
+        include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: true,
         imports: ['vue', 'vue-router'],
       }),
