@@ -43,6 +43,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),
+      //模块自动导入配置auto-imports.d.t
       AutoImport({
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -53,6 +54,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         dts: true,
         imports: ['vue', 'vue-router'],
       }),
+      //组件按需引入插件
       Components({
         dts: true,
         resolvers: [ElementPlusResolver(), VantResolver()],
