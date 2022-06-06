@@ -3,12 +3,7 @@
     <header class="slot-header">
       <slot name="header"></slot>
     </header>
-    <section class="slot-content">
-      <div class="item" v-for="l in lists" :key="l">
-        默认中间内容:
-        <slot :data="l"></slot>
-      </div>
-    </section>
+    <section class="slot-content"> 默认中间内容: </section>
     <footer class="slot-footer">
       <div class="slot-footer__item" v-for="l in lists" :key="l">
         <slot name="footer" :data="l"></slot>
@@ -44,6 +39,7 @@
       height: 30px;
       background-color: #999;
       color: #fff;
+
       &__item {
         display: inline;
         margin: 0 10px;

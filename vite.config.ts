@@ -89,7 +89,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
               },
               del: {
-                items: ['./dist'],
+                // items: ['./dist'],
               },
             },
           },

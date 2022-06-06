@@ -20,6 +20,17 @@
       <template #[slotKey]> 我是动态插入内容 </template>
     </SlotTest>
   </div>
+
+  <div class="test-content">
+    <Suspense>
+      <template #default>
+        <asyncComp />
+      </template>
+      <template #fallback>
+        <div class="loading">加载中...</div>
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -27,7 +38,7 @@
   import Register from './Register.vue';
   import ShowText from './ShowText.vue';
   import SlotTest from './SlotTest.vue';
-
+  // import { defineAsyncComponent } from 'vue'
   interface MyComponent {
     name: string;
     comp: any;
@@ -68,6 +79,9 @@
     console.log(index);
     slotKey.value = keyLists[index];
   };
+
+  //异步组件
+  const asyncComp = defineAsyncComponent(() => import('@/package/MyTest/AsyncComponent.vue'));
 </script>
 
 <style lang="scss">
