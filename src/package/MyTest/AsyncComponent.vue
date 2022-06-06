@@ -20,14 +20,12 @@
   setTimeout(() => {
     list.push(9999);
   }, 1000);
-
   // const list:number[] = reactive([]);
   // const setLists = () => {
   //   setTimeout(() => {
   //     list.push(...[1,2,3,4,5])
   //   }, 3000);
   // }
-
   // setLists();
 </script>
 
