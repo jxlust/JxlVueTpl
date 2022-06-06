@@ -24,7 +24,7 @@
   <div class="test-content">
     <Suspense>
       <template #default>
-        <asyncComp />
+        <AsyncComp />
       </template>
       <template #fallback>
         <div class="loading">加载中...</div>
@@ -81,7 +81,7 @@
   };
 
   //异步组件
-  const asyncComp = defineAsyncComponent(() => import('@/package/MyTest/AsyncComponent.vue'));
+  const AsyncComp = defineAsyncComponent(() => import('@/package/MyTest/AsyncComponent.vue'));
 </script>
 
 <style lang="scss">
