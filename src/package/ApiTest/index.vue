@@ -20,6 +20,7 @@
   import { Ref } from 'vue';
 
   import WatchTest from './watch.vue';
+  import { MyRef } from './MyRef';
   interface UserInfo {
     name?: string;
     age?: number;
@@ -36,36 +37,7 @@
   };
 
   //custom ref use
-  function MyRef<T>(value: T): Ref {
-    return customRef((trank, trigger) => {
-      return {
-        get() {
-          trank();
-          return value;
-        },
-        set(newVal: T) {
-          console.log('set:');
-          value = newVal;
-          trigger();
-        },
-      };
-    });
-  }
-  // const MyRef2 = <T>(value: T):Ref => {
-  //   return customRef((trank, trigger) => {
-  //     return {
-  //       get() {
-  //         trank();
-  //         return value;
-  //       },
-  //       set(newVal: T) {
-  //         console.log('set:');
-  //         value = newVal;
-  //         trigger();
-  //       }
-  //     }
-  //   })
-  // }
+
   let myMessage = MyRef<string>('xiao zi');
   const changeMsg2 = () => {
     myMessage.value = 'zhang fei';
