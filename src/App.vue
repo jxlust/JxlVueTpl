@@ -9,6 +9,15 @@
       <component :is="Component" />
     </transition>
   </router-view>
+  <!-- <template>
+  <router-view v-slot="{ Component, route }">
+    <transition :name="route.meta?.transition || 'fade'">
+      <keep-alive :include="cachedViews" :max="10">
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
+</template> -->
 </template>
 
 <style>

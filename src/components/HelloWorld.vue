@@ -1,41 +1,68 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
   import { useRoute } from 'vue-router';
+  import { storeToRefs } from 'pinia';
+  import { useCounterStore } from '@/stores/counter';
 
   const route = useRoute();
   console.log(route);
-  defineProps<{ msg: string }>();
+  withDefaults(defineProps<{ msg?: string }>(), {
+    msg: 'default',
+  });
 
-  const count = ref(0);
+  const counterStore = useCounterStore();
+
+  const { count, doubleCount, testData } = storeToRefs(counterStore);
+  // const { count, doubleCount } = counterStore;
+  const { increment, getTestData } = counterStore;
+  // with autocompletion ✨
+  // counter.$patch({ count: counter.count + 1 });
+  // or using an action instead
+  setTimeout(() => {
+    getTestData().then((data) => {
+      console.log('data:', data);
+    });
+  }, 1000);
+
+  const unsubscribe = counterStore.$onAction(
+    ({
+      name, // name of the action
+      store, // store instance, same as `someStore`
+      args, // array of parameters passed to the action
+      after, // hook after the action returns or resolves
+      onError, // hook if the action throws or rejects
+    }) => {
+      // a shared variable for this specific action call
+      const startTime = Date.now();
+      // this will trigger before an action on `store` is executed
+      console.log(`Start "${name}" with params [${args.join(', ')}].store:${store}`);
+      // this will trigger if the action succeeds and after it has fully run.
+      // it waits for any returned promised
+      after((result) => {
+        console.log(`Finished "${name}" after ${Date.now() - startTime}ms.\nResult: ${result}.`);
+      });
+      // this will trigger if the action throws or returns a promise that rejects
+      onError((error) => {
+        console.warn(`Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`);
+      });
+    },
+  );
 </script>
 
 <template>
-  <h1>{{ msg }} --- {{ route.path }}</h1>
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
+  <div>
+    <h1>{{ msg }} --- {{ route.path }}</h1>
+    <div class="test">
+      {{ count }} --- {{ doubleCount }}
+      <button @click="increment">increment</button>
+      <button @click="unsubscribe">unsubscribe</button>
+    </div>
+    <div class="test">{{ testData }}</div>
 
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank"> Vite Docs </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
-
-  <p>
-    <router-link to="/vueApi">Go to Home</router-link>
-    <router-link to="/test">Go to About</router-link>
-  </p>
+    <p>
+      <router-link to="/vueApi">Go to Home</router-link>
+      <router-link to="/test">Go to About</router-link>
+    </p>
+  </div>
 </template>
 
 <style scoped>
