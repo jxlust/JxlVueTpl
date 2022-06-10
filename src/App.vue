@@ -3,17 +3,12 @@
 <template>
   <header class="header">
     <h1>Hello App!</h1>
-    <!-- <router-view v-slot="{ Component }">
-      <transition name="van-fade">
-        <component :is="Component" />
-      </transition>
-    </router-view> -->
-    <p>
-      <router-link to="/">Go to Home</router-link>
-      <router-link to="/test">Go to About</router-link>
-    </p>
   </header>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="van-fade">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <style>

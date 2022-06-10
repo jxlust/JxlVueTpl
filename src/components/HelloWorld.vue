@@ -31,6 +31,11 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+
+  <p>
+    <router-link to="/vueApi">Go to Home</router-link>
+    <router-link to="/test">Go to About</router-link>
+  </p>
 </template>
 
 <style scoped>

@@ -11,6 +11,8 @@ const HelloWorld = () => import('@/components/HelloWorld.vue');
 const TestVue = () => import('@/views/TsxVue/index');
 const Test = () => import('@/views/Test/index.vue');
 const ApiTest = () => import('@/package/ApiTest/index.vue');
+const PagerOver = () => import('@/views/PagerOver/index.vue');
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -53,6 +55,15 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true,
     },
     component: ApiTest,
+  },
+  {
+    path: '/PagerOver',
+    name: 'PagerOver',
+    meta: {
+      title: 'PagerOver',
+      keepAlive: true,
+    },
+    component: PagerOver,
   },
 ];
 
