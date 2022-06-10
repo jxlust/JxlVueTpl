@@ -7,11 +7,12 @@
  * @LastEditTime: 2022-06-07 16:53:15
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-const HelloWorld = () => import('@/components/HelloWorld.vue');
+const HelloWorld = () => import('@/package/HelloWorld/index.vue');
 const TestVue = () => import('@/views/TsxVue/index');
 const Test = () => import('@/views/Test/index.vue');
 const ApiTest = () => import('@/package/ApiTest/index.vue');
 const PagerOver = () => import('@/views/PagerOver/index.vue');
+const VueUse = () => import('@/package/VueUse/index.vue');
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -64,6 +65,15 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true,
     },
     component: PagerOver,
+  },
+  {
+    path: '/VueUse',
+    name: 'VueUse',
+    meta: {
+      title: 'VueUse',
+      keepAlive: true,
+    },
+    component: VueUse,
   },
 ];
 
