@@ -1,4 +1,5 @@
 <template>
+  <div class="msg">{{ data }} ---- {{ rawData }}</div>
   <div class="content-wrapper">
     <div ref="htmlRef" :class="['content-html', { active: isExpand }]" v-html="htmlStr"></div>
     <iframe title="domChangeIframe" ref="myHackIframeRef" src="" frameborder="0"></iframe>
@@ -10,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+  // import { startObserverTarget,testValue } from './useMutation';
+  import { data, updateData, rawData } from '@/hooks/useTest2';
   const htmlStr = ref<string>('我的内容');
   const htmlRef = ref();
   const isOver = ref(false);
@@ -17,6 +20,7 @@
   const myHackIframeRef = ref();
 
   setTimeout(() => {
+    updateData('1000');
     const arr: string[] = [];
     // for (let i = 0; i < 10; i++) {
     //   arr.push(`<p>内容啊的理解是否就是理解${i}</p>`);
@@ -53,6 +57,7 @@
   onMounted(() => {
     // computerHeight();
     myHackIframeRef.value.contentWindow.onresize = iframeResizeChange;
+    // startObserverTarget(htmlRef.value)
   });
   watchEffect(
     () => {
