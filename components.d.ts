@@ -6,7 +6,6 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Dialog: typeof import('./src/components/dialog/index.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default'];
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TextOver: typeof import('./src/components/text/TextOver.vue')['default']

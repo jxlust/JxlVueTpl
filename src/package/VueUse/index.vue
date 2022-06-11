@@ -12,12 +12,19 @@
     <div class="storage-show" @click="setLocalClick">
       {{ store }}
     </div>
+
+    <div class="event-bus">
+      <Child1 />
+      <Child2 />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useNow, useDateFormat, useScroll, useMouse, usePreferredDark } from '@vueuse/core';
   import { useMyStorage } from './useMyStorage';
+  import Child1 from './Child1.vue';
+  import Child2 from './Child2.vue';
   // console.log(useNow())
   const formatTime = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
   console.log(`formatTime:`, formatTime);
