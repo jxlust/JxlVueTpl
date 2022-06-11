@@ -43,7 +43,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),
-      //模块自动导入配置auto-imports.d.t
+      //模块自动导入配置auto-imports.d.ts
       AutoImport({
         include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: true,
