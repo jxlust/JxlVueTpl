@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 // import store from '@/store'
 import { Toast } from 'vant';
-import router from '@/router/router';
+import router from '@/router/index';
 import { ContentTypeEnum } from './httpEnum';
 
 // create an axios instance

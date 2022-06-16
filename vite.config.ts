@@ -150,14 +150,14 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       cors: true, // 允许跨域
 
       // 设置代理，根据项目实际情况配置
-      proxy: {
-        '/api': {
-          target: 'https://xx/api/admin/',
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace('/api/', '/'),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://xx/api/admin/',
+      //     changeOrigin: true,
+      //     secure: false,
+      //     rewrite: (path) => path.replace('/api/', '/'),
+      //   },
+      // },
     },
   };
 };
