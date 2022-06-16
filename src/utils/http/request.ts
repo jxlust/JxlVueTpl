@@ -58,7 +58,7 @@ service.interceptors.response.use(
   (response) => {
     Toast.clear();
     const res = response.data;
-    if (res.code && res.code !== 0) {
+    if (res.code && res.code !== 200) {
       // 登录超时,重新登录
       if (res.code === 401) {
         // store.dispatch('FedLogOut').then(() => {

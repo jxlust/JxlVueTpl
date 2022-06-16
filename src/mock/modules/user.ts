@@ -23,7 +23,7 @@ type QuerType = {
   pageSize?: number;
 };
 const getUserList = {
-  url: '/user/getUserListxxxx',
+  url: '/user/getUserList',
   methods: 'get',
   template: (config) => {
     console.log('config getUserList:', config);
@@ -35,11 +35,16 @@ const getUserList = {
       console.log('urlQuery:', urlQuery);
       console.log('query:', query);
     }
-    const { userName, pageNum, pageSize } = query;
+    const { userName } = query;
+    let { pageNum = 0, pageSize = 0 } = query;
+    pageSize = parseInt(pageSize);
+    pageNum = parseInt(pageNum);
     let userList = [];
     let totalList = [];
     if (userName) {
       totalList = mockList.filter((item) => item.userName.toUpperCase().includes(userName.toUpperCase()));
+    } else {
+      totalList = mockList;
     }
     if (pageSize && pageNum) {
       userList = totalList.filter((item, index) => index < pageSize * pageNum && index >= pageSize * (pageNum - 1));

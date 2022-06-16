@@ -11,21 +11,33 @@
 <script setup lang="ts">
   import request from '@/utils/http/request';
 
-  const getTestData = async () => {
-    let ret = await request({
-      url: '/test/getData',
-      method: 'get',
-      data: 'test',
-    });
-    console.log('ret:', ret);
-  };
-
+  // interface StateInfo{
+  //   getTestList: any[]
+  // }
   const state = reactive({
     getTestList: [],
   });
   const { getTestList } = toRefs(state);
 
-  getTestData();
+  const getTestData = async () => {
+    try {
+      let ret = await request({
+        url: '/test/getData',
+        method: 'get',
+        params: {
+          userName: '',
+          pageNum: 1,
+          pageSize: 10,
+        },
+      });
+      const { data } = ret;
+      console.log('ret:', ret);
+      state.getTestList = data as any;
+    } catch (error) {}
+  };
+  onMounted(() => {
+    getTestData();
+  });
 </script>
 
 <style></style>

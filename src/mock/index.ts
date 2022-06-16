@@ -14,11 +14,14 @@ console.log('modules:', modules);
 console.log('modulesValues:', modulesValues);
 modulesValues.map((v) => {
   // 获取组件配置
-  console.log(v.default);
+  console.log('default m:', v.default);
   const arr = v.default;
   for (let i = 0; i < arr.length; i++) {
     const el = arr[i];
-    Mock.mock(el.path, el.methods, el.template);
+    console.log('el:', el);
+    // let reg = RegExp(`${import.meta.env.VITE_API_URL}${el.url}`)
+    // console.log(reg,11)
+    Mock.mock(RegExp(`${import.meta.env.VITE_API_URL}${el.url}.*`), el.methods, el.template);
   }
 });
 

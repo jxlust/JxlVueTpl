@@ -13,7 +13,7 @@ const getTest = {
   url: '/test/getData',
   methods: 'get',
   template: (config) => {
-    console.log('getdata:', config);
+    console.log('getData config:', config);
     return {
       code: 200,
       msg: 'success',
