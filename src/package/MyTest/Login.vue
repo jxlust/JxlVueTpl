@@ -12,10 +12,8 @@
   const userState = reactive<UserInfo>({
     account: '',
   });
-</script>
 
-<script lang="ts">
-  export default {
-    name: 'Login',
-  };
+  defineOptions({
+    name: 'MyLogin',
+  });
 </script>

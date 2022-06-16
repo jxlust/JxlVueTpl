@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite';
 import WindiCSS from 'vite-plugin-windicss';
 import compressPlugin from 'vite-plugin-compression';
 const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
+import DefineOptions from 'unplugin-vue-define-options/vite';
 
 const CWD = process.cwd();
 
@@ -39,6 +40,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     plugins: [
       vue(),
       vueJsx(),
+      DefineOptions(),
       WindiCSS(),
       legacy({
         targets: ['defaults', 'not IE 11'],

@@ -126,6 +126,12 @@ npm install filemanager-plugin --save-dev
 2. [config](https://www.npmjs.com/package/filemanager-plugin)
 3. [编译 hooks 监听](https://rollupjs.org/guide/en/#output-generation-hooks)
 
+## setup 语法糖组件 name 问题
+
+1. unplugin-vue-define-options
+2. vite.config.ts 配置插件即可
+3.
+
 ## 提交规范
 
 - `feat` 增加新功能
