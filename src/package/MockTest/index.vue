@@ -5,6 +5,9 @@
         {{ item }}
       </div>
     </div>
+    <div class="mock-btn">
+      <button @click="submit">提交</button>
+    </div>
   </div>
 </template>
 
@@ -35,9 +38,20 @@
       state.getTestList = data as any;
     } catch (error) {}
   };
-  onMounted(() => {
-    getTestData();
-  });
+  const submit = async () => {
+    try {
+      const ret = await request({
+        url: '/user/doSave',
+        method: 'post',
+        data: {
+          name: 'zz',
+        },
+      });
+      console.log('save:', ret);
+    } catch (error) {}
+  };
+  onMounted(() => {});
+  getTestData();
 </script>
 
 <style></style>
