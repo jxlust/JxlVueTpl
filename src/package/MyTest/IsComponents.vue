@@ -1,35 +1,37 @@
 <template>
-  <div class="tabs">
-    <div class="tab" v-for="tab in compLists" :key="tab.id" @click="tabClick(tab)">
-      {{ tab.name }}
+  <div>
+    <div class="tabs">
+      <div class="tab" v-for="tab in compLists" :key="tab.id" @click="tabClick(tab)">
+        {{ tab.name }}
+      </div>
     </div>
-  </div>
 
-  <div class="tab-content">
-    <keep-alive :include="['login']">
-      <component :is="currentComponent" />
-    </keep-alive>
-  </div>
+    <div class="tab-content">
+      <keep-alive :include="includeComp">
+        <component :is="currentComponent" />
+      </keep-alive>
+    </div>
 
-  <div class="test-content">
-    <button @click="changeSlot">动态插槽</button>
-    <SlotTest>
-      <template #footer="{ data }">
-        {{ data }}
-      </template>
-      <template #[slotKey]> 我是动态插入内容 </template>
-    </SlotTest>
-  </div>
+    <div class="test-content">
+      <button @click="changeSlot">动态插槽</button>
+      <SlotTest>
+        <template #footer="{ data }">
+          {{ data }}
+        </template>
+        <template #[slotKey]> 我是动态插入内容 </template>
+      </SlotTest>
+    </div>
 
-  <div class="test-content">
-    <Suspense>
-      <template #default>
-        <AsyncComp />
-      </template>
-      <template #fallback>
-        <div class="loading">加载中...</div>
-      </template>
-    </Suspense>
+    <div class="test-content">
+      <Suspense>
+        <template #default>
+          <AsyncComp />
+        </template>
+        <template #fallback>
+          <div class="loading">加载中...</div>
+        </template>
+      </Suspense>
+    </div>
   </div>
 </template>
 
@@ -45,7 +47,7 @@
     id: number;
   }
   type Comp = Pick<MyComponent, 'comp'>;
-
+  const includeComp = ['MyLogin', 'Register'];
   const lists: MyComponent[] = [
     {
       id: 1,
