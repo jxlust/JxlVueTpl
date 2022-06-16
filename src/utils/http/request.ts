@@ -1,11 +1,3 @@
-/*
- * @Author:
- * @Date:
- * @LastEditTime:
- * @LastEditors:
- * @Description: axios简单的封装
- * @FilePath: \vite-vue3-lowcode\src\utils\http\request.ts
- */
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 // import store from '@/store'
