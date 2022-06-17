@@ -40,7 +40,6 @@
   import Register from './Register.vue';
   import ShowText from './ShowText.vue';
   import SlotTest from './SlotTest.vue';
-  // import { defineAsyncComponent } from 'vue'
   interface MyComponent {
     name: string;
     comp: any;
