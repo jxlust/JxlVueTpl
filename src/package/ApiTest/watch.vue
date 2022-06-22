@@ -29,7 +29,7 @@
       console.log(newV, oldV);
     },
   );
-
+  // defineExpose()
   const message = ref('hhh');
   const message2 = ref('uuuu');
 

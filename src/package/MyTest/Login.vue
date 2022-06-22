@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { defineOptions } from 'vue';
   interface UserInfo {
     account?: string;
     pwd?: string;

@@ -16,11 +16,11 @@
 
   const listTest = await getTestData();
   const list = reactive(listTest as number[]);
+  // const list = reactive<number[]>([])
   console.log(list);
   setTimeout(() => {
     list.push(9999);
   }, 1000);
-  // const list:number[] = reactive([]);
   // const setLists = () => {
   //   setTimeout(() => {
   //     list.push(...[1,2,3,4,5])
