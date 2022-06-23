@@ -128,9 +128,11 @@ npm install filemanager-plugin --save-dev
 
 ## setup 语法糖组件 name 问题
 
+无意看到 element-plus 源码里面使用
+
 1. unplugin-vue-define-options
 2. vite.config.ts 配置插件即可
-3.
+3. defineOptions 使用;
 
 ## 提交规范
 
