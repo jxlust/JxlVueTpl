@@ -1,11 +1,12 @@
 <template>
   登陆 {{ msg }}
   <input v-model="userState.account" type="text" />
-  <div>pluginData:{{ pluginData }}</div>
+  <div @click="testClick">pluginData:{{ pluginData }}</div>
 </template>
 
 <script lang="ts" setup>
-  import { defineOptions } from 'vue';
+  const emit = defineEmits(['update']);
+
   interface UserInfo {
     account?: string;
     pwd?: string;
@@ -17,7 +18,9 @@
   const userState = reactive<UserInfo>({
     account: '',
   });
-
+  const testClick = () => {
+    emit('update', 123);
+  };
   defineOptions({
     name: 'MyLogin',
   });

@@ -24,6 +24,7 @@
 - 自动部署：[GitHub Actions](https://docs.github.com/cn/actions/learn-github-actions)
 - 打包工具：[rollupjs](https://rollupjs.org/guide/)
 - 打包工具：[esbuild](https://github.com/evanw/esbuild)
+- 包管理工具：[pnpm](https://pnpm.io/zh/) [基准测试](https://pnpm.io/zh/benchmarks)
 
 ## Vite 构建
 
@@ -59,13 +60,32 @@ chmod 700 .husky/*
 # chmod +x .husky/pre-commit
 ```
 
-3. 提交例子：
+3. 提交规范，提交例子：
+
+```
+[type](scope): [messages]
+```
 
 ```shell
 git commit -m "chore: updated md.json"
 git commit -m  "fix(server): send xxxx"
 git commit -m "feat(blog): add comment section"
 ```
+
+- `feat` 增加新功能
+- `fix` 修复问题/BUG
+- `style` 代码风格相关无影响运行结果的
+- `perf` 优化/性能提升
+- `refactor` 重构
+- `revert` 撤销修改
+- `test` 测试相关
+- `docs` 文档/注释
+- `build` 对构建系统或者外部依赖项进行了修改
+- `chore` 依赖更新/脚手架配置修改等
+- `workflow` 工作流改进
+- `ci` 持续集成
+- `types` 类型定义文件更改
+- `wip` 开发中
 
 ## gzip 压缩
 
@@ -133,20 +153,3 @@ npm install filemanager-plugin --save-dev
 1. unplugin-vue-define-options
 2. vite.config.ts 配置插件即可
 3. defineOptions 使用;
-
-## 提交规范
-
-- `feat` 增加新功能
-- `fix` 修复问题/BUG
-- `style` 代码风格相关无影响运行结果的
-- `perf` 优化/性能提升
-- `refactor` 重构
-- `revert` 撤销修改
-- `test` 测试相关
-- `docs` 文档/注释
-- `build` 对构建系统或者外部依赖项进行了修改
-- `chore` 依赖更新/脚手架配置修改等
-- `workflow` 工作流改进
-- `ci` 持续集成
-- `types` 类型定义文件更改
-- `wip` 开发中

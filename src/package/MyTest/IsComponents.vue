@@ -8,7 +8,7 @@
 
     <div class="tab-content">
       <keep-alive :include="includeComp">
-        <component :is="currentComponent" />
+        <component :is="currentComponent" @update="handleUpdate" />
       </keep-alive>
     </div>
 
@@ -118,6 +118,10 @@
       }
     },
   });
+
+  const handleUpdate = (test) => {
+    console.log('handleUpdate:', test);
+  };
 </script>
 
 <style lang="scss">

@@ -59,7 +59,8 @@
     "preview/**/*.tsx",
     "preview/**/*.vue",
     "components.d.ts",
-    "auto-imports.d.ts"
+    "auto-imports.d.ts",
+    "auto-plugin.d.ts",
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": [
