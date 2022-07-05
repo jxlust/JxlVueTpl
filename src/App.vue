@@ -1,6 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
+  <!-- <iframe src="http://localhost:3000/www/index.html" frameborder="0"></iframe> -->
   <header class="header">
     <h1>Hello App!</h1>
   </header>
