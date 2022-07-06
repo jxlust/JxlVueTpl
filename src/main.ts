@@ -4,11 +4,17 @@ import router from './router';
 import { setupElementPlus } from './plugins/elementPlus';
 import { setupMyPlugin } from './plugins/myPlugin';
 import { setupStore } from './stores';
+
+// import Vconsole from 'vconsole'
+
 // import store from './store'
 import './styles/css/base.css';
 // import './assets/css/main.styl';
 // import BaseComponents from './components/base'
 // import BaseDirective from './directive'
+
+// let vConsole = new Vconsole()
+
 const app = createApp(App);
 
 setupElementPlus(app);

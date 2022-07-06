@@ -59,6 +59,7 @@ specifiers:
   unplugin-vue-define-options: ^0.6.1
   uuid: ^8.3.2
   vant: ^3.4.9
+  vconsole: ^3.14.6
   vite: ^2.9.9
   vite-plugin-compression: ^0.5.1
   vite-plugin-windicss: ^1.8.4
@@ -133,6 +134,7 @@ devDependencies:
   unplugin-vue-components: 0.19.6_vite@2.9.12+vue@3.2.37
   unplugin-vue-define-options: 0.6.1_vite@2.9.12+vue@3.2.37
   uuid: 8.3.2
+  vconsole: 3.14.6
   vite: 2.9.12_sass@1.52.3
   vite-plugin-compression: 0.5.1_vite@2.9.12
   vite-plugin-windicss: 1.8.4_vite@2.9.12
@@ -402,6 +404,13 @@ packages:
       '@babel/plugin-syntax-typescript': 7.17.12_@babel+core@7.18.5
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@babel/runtime/7.18.6:
+    resolution: {integrity: sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
     dev: true
 
   /@babel/standalone/7.18.5:
@@ -1906,6 +1915,11 @@ packages:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
     dependencies:
       safe-buffer: 5.1.2
+    dev: true
+
+  /copy-text-to-clipboard/3.0.1:
+    resolution: {integrity: sha512-rvVsHrpFcL4F2P8ihsoLdFHmd404+CMg71S756oRSeQgqk51U3kicGdnvfkrxva0xXH92SjGS62B0XIJsbh+9Q==}
+    engines: {node: '>=12'}
     dev: true
 
   /core-js/3.23.0:
@@ -3820,6 +3834,10 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
+  /mutation-observer/1.0.3:
+    resolution: {integrity: sha512-M/O/4rF2h776hV7qGMZUH3utZLO/jK7p8rnNgGkjKUw8zCGjRQPxB8z6+5l8+VjRUQ3dNYu4vjqXYLr+U8ZVNA==}
+    dev: true
+
   /mute-stream/0.0.7:
     resolution: {integrity: sha512-r65nCZhrbXXb6dXOACihYApHw2Q6pV0M3V0PSxd74N0+D8nzAdEAITq2oAjA1jVnKI+tGvEBUpqiMh0+rW6zDQ==}
     dev: true
@@ -5555,6 +5573,15 @@ packages:
       '@vant/use': 1.4.1
       vue: 3.2.37
     dev: false
+
+  /vconsole/3.14.6:
+    resolution: {integrity: sha512-8Ffk2SfNe6EzKqZ0aNnNjpAVBVT7zgJo81lYEJdKySYLVYBeSawdSkWi9fSjDg3WsQhgS1vNPmRqJDTuwdVbnQ==}
+    dependencies:
+      '@babel/runtime': 7.18.6
+      copy-text-to-clipboard: 3.0.1
+      core-js: 3.23.0
+      mutation-observer: 1.0.3
+    dev: true
 
   /vite-plugin-compression/0.5.1_vite@2.9.12:
     resolution: {integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==}

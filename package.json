@@ -109,6 +109,7 @@
     "unplugin-vue-components": "^0.19.5",
     "unplugin-vue-define-options": "^0.6.1",
     "uuid": "^8.3.2",
+    "vconsole": "^3.14.6",
     "vite": "^2.9.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-windicss": "^1.8.4",

@@ -1,7 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  onMounted(() => {
+    // const testIframe: any = document.getElementById('testIframe');
+    // testIframe.load = () => {
+    //   console.log(99999999999999);
+    //   testIframe.contentWindow.postMessage(document.cookie, '*');
+    // }
+  });
+</script>
 
 <template>
-  <!-- <iframe src="http://localhost:3000/www/index.html" frameborder="0"></iframe> -->
+  <!-- <iframe src="http://192.168.1.101:3000/www/index.html" frameborder="0"></iframe> -->
+  <!-- <iframe
+    id="testIframe"
+    src=""
+    frameborder="0"
+  ></iframe> -->
   <header class="header">
     <h1>Hello App!</h1>
   </header>
@@ -22,6 +35,17 @@
 </template>
 
 <style>
+  #testIframe {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vh;
+  }
+
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
