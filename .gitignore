@@ -8,6 +8,7 @@
 /www
 /out-tsc
 *.zip
+static-test
 
 # dependencies
 /node_modules
