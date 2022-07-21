@@ -13,6 +13,7 @@ const Test = () => import('@/views/Test/index.vue');
 const ApiTest = () => import('@/package/ApiTest/index.vue');
 const PagerOver = () => import('@/views/PagerOver/index.vue');
 const VueUse = () => import('@/package/VueUse/index.vue');
+const MockTest = () => import('@/package/MockTest/index.vue');
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
     // children: [
     //   {
     //     path: 'abs',
-    //     component: () => HelloWorld,
+    //     component: () => xxxx,
     //   },
     // ],
   },
@@ -74,6 +75,15 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true,
     },
     component: VueUse,
+  },
+  {
+    path: '/MockTest',
+    name: 'MockTest',
+    meta: {
+      title: 'MockTest',
+      keepAlive: true,
+    },
+    component: MockTest,
   },
 ];
 

@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite';
 import WindiCSS from 'vite-plugin-windicss';
 import compressPlugin from 'vite-plugin-compression';
 const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
+import DefineOptions from 'unplugin-vue-define-options/vite';
 
 const CWD = process.cwd();
 
@@ -39,6 +40,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     plugins: [
       vue(),
       vueJsx(),
+      DefineOptions(),
       WindiCSS(),
       legacy({
         targets: ['defaults', 'not IE 11'],
@@ -58,48 +60,49 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         ext: '.gz',
         deleteOriginFile: false, // 是否删除原始文件
       }),
-      ViteFilemanager({
-        // events: {
-        //   start: {
-        //     del: {
-        //       items: ['./dist'],
-        //     },
-        //   },
-        //   end: {
-        //     move: {
-        //       items: [{ source: './www', destination: './dist' }],
-        //     },
-        //     zip: {
-        //       items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-        //     },
-        //     del: {
-        //       // items: ['./dist','./www'],
-        //     },
-        //   },
-        // },
-        //https://rollupjs.org/guide/en/#output-generation-hooks
-        customHooks: [
-          {
-            hookName: 'closeBundle', //generateBundle
-            commands: {
-              move: {
-                items: [{ source: './www', destination: './dist/' }],
-              },
-              zip: {
-                items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-              },
-              del: {
-                // items: ['./dist'],
+      mode !== 'development' &&
+        ViteFilemanager({
+          // events: {
+          //   start: {
+          //     del: {
+          //       items: ['./dist'],
+          //     },
+          //   },
+          //   end: {
+          //     move: {
+          //       items: [{ source: './www', destination: './dist' }],
+          //     },
+          //     zip: {
+          //       items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
+          //     },
+          //     del: {
+          //       // items: ['./dist','./www'],
+          //     },
+          //   },
+          // },
+          //https://rollupjs.org/guide/en/#output-generation-hooks
+          customHooks: [
+            {
+              hookName: 'closeBundle', //generateBundle
+              commands: {
+                move: {
+                  items: [{ source: './www', destination: './dist/' }],
+                },
+                zip: {
+                  items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
+                },
+                del: {
+                  // items: ['./dist'],
+                },
               },
             },
+          ],
+          options: {
+            // parallel: 3,
+            log: 'all',
+            cache: false,
           },
-        ],
-        options: {
-          // parallel: 3,
-          log: 'all',
-          cache: false,
-        },
-      }),
+        }),
     ],
     resolve: {
       alias: [
@@ -145,19 +148,19 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     server: {
       host: '0.0.0.0',
-      port: 8088, // 设置服务启动端口号
+      port: 8080, // 设置服务启动端口号
       open: false, // 设置服务启动时是否自动打开浏览器
       cors: true, // 允许跨域
 
       // 设置代理，根据项目实际情况配置
-      proxy: {
-        '/api': {
-          target: 'https://xx/api/admin/',
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace('/api/', '/'),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://xx/api/admin/',
+      //     changeOrigin: true,
+      //     secure: false,
+      //     rewrite: (path) => path.replace('/api/', '/'),
+      //   },
+      // },
     },
   };
 };

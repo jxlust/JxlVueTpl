@@ -1,8 +1,10 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router';
   import { storeToRefs } from 'pinia';
+  import { v4 as uuidv4 } from 'uuid';
   import { useCounterStore } from '@/stores/counter';
 
+  const uuid = uuidv4();
   const route = useRoute();
   console.log(route);
   withDefaults(defineProps<{ msg?: string }>(), {
@@ -58,6 +60,7 @@
     </div>
     <div class="test">{{ testData }}</div>
 
+    <div>uuid:{{ uuid }}</div>
     <p>
       <router-link to="/vueApi">Go to Home</router-link>
       <router-link to="/test">Go to About</router-link>

@@ -21,7 +21,7 @@ declare global {
   //   // Global vue app instance
   //   __APP__: App<Element>;
   // }
-
+  declare const defineOptions: any;
   // vue
   declare type PropType<T> = VuePropType<T>;
   declare type VueNode = VNodeChild | JSX.Element;
@@ -77,7 +77,5 @@ declare global {
 }
 
 declare module 'vue' {
-  export type JSXComponent<Props = any> =
-    | { new (): ComponentPublicInstance<Props> }
-    | FunctionalComponent<Props>;
+  export type JSXComponent<Props = any> = { new (): ComponentPublicInstance<Props> } | FunctionalComponent<Props>;
 }
