@@ -20,4 +20,4 @@ jobs:
       with:
         ACCESS_TOKEN: ${{ secrets.JXLUST_TOKEN }}
         BRANCH: master
-        FOLDER: build
+        FOLDER: dist/www
