@@ -8,6 +8,7 @@
 /www
 /out-tsc
 *.zip
+static-test
 
 # dependencies
 /node_modules
@@ -30,6 +31,8 @@ pnpm-debug.log*
 .settings/
 *.sublime-workspace
 .eslintcache
+auto-imports.d.ts
+components.d.ts
 
 # IDE - VSCode
 # .vscode/*
@@ -55,3 +58,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+

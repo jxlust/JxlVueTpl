@@ -1,16 +1,8 @@
-/*
- * @Author:
- * @Date:
- * @LastEditTime:
- * @LastEditors:
- * @Description: axios简单的封装
- * @FilePath: \vite-vue3-lowcode\src\utils\http\request.ts
- */
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 // import store from '@/store'
 import { Toast } from 'vant';
-import router from '@/router/router';
+import router from '@/router/index';
 import { ContentTypeEnum } from './httpEnum';
 
 // create an axios instance
@@ -66,7 +58,7 @@ service.interceptors.response.use(
   (response) => {
     Toast.clear();
     const res = response.data;
-    if (res.code && res.code !== 0) {
+    if (res.code && res.code !== 200) {
       // 登录超时,重新登录
       if (res.code === 401) {
         // store.dispatch('FedLogOut').then(() => {

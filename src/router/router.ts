@@ -11,10 +11,10 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 // import { CacheEnum } from '@/enums'
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/:pathMatch(.*)*',
-    component: () => import('../preview/views/preview.vue'),
-  },
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   component: () => import('@/views/preview.vue'),
+  // },
 ];
 
 const router = createRouter({

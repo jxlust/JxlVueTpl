@@ -18,12 +18,13 @@
 - CSS 预编译：[Stylus](https://stylus-lang.com/) / [Sass](https://sass.bootcss.com/documentation) / [Less](http://lesscss.cn/)
 - HTTP 工具：[Axios](https://axios-http.com/)
 - Git Hook 工具：[husky](https://typicode.github.io/husky/#/) + [lint-staged](https://github.com/okonet/lint-staged)
-- 代码规范：[EditorConfig](http://editorconfig.org) + [Prettier](https://prettier.io/) + [ESLint](https://eslint.org/) + [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#translation)
+- 代码规范：[EditorConfig](http://editorconfig.org) + [Prettier](https://prettier.io/) + [ESLint](https://eslint.org/) + [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#translation) + [stylelint](https://stylelint.io/)
 - 提交规范：[Commitizen](http://commitizen.github.io/cz-cli/) + [Commitlint](https://commitlint.js.org/#/)
 - 单元测试：[vue-test-utils](https://next.vue-test-utils.vuejs.org/) + [jest](https://jestjs.io/) + [vue-jest](https://github.com/vuejs/vue-jest) + [ts-jest](https://kulshekhar.github.io/ts-jest/)
 - 自动部署：[GitHub Actions](https://docs.github.com/cn/actions/learn-github-actions)
 - 打包工具：[rollupjs](https://rollupjs.org/guide/)
 - 打包工具：[esbuild](https://github.com/evanw/esbuild)
+- 包管理工具：[pnpm](https://pnpm.io/zh/) [基准测试](https://pnpm.io/zh/benchmarks)
 
 ## Vite 构建
 
@@ -59,13 +60,32 @@ chmod 700 .husky/*
 # chmod +x .husky/pre-commit
 ```
 
-3. 提交例子：
+3. 提交规范，提交例子：
+
+```
+[type](scope): [messages]
+```
 
 ```shell
 git commit -m "chore: updated md.json"
 git commit -m  "fix(server): send xxxx"
 git commit -m "feat(blog): add comment section"
 ```
+
+- `feat` 增加新功能
+- `fix` 修复问题/BUG
+- `style` 代码风格相关无影响运行结果的
+- `perf` 优化/性能提升
+- `refactor` 重构
+- `revert` 撤销修改
+- `test` 测试相关
+- `docs` 文档/注释
+- `build` 对构建系统或者外部依赖项进行了修改
+- `chore` 依赖更新/脚手架配置修改等
+- `workflow` 工作流改进
+- `ci` 持续集成
+- `types` 类型定义文件更改
+- `wip` 开发中
 
 ## gzip 压缩
 
@@ -126,19 +146,10 @@ npm install filemanager-plugin --save-dev
 2. [config](https://www.npmjs.com/package/filemanager-plugin)
 3. [编译 hooks 监听](https://rollupjs.org/guide/en/#output-generation-hooks)
 
-## 提交规范
+## setup 语法糖组件 name 问题
 
-- `feat` 增加新功能
-- `fix` 修复问题/BUG
-- `style` 代码风格相关无影响运行结果的
-- `perf` 优化/性能提升
-- `refactor` 重构
-- `revert` 撤销修改
-- `test` 测试相关
-- `docs` 文档/注释
-- `build` 对构建系统或者外部依赖项进行了修改
-- `chore` 依赖更新/脚手架配置修改等
-- `workflow` 工作流改进
-- `ci` 持续集成
-- `types` 类型定义文件更改
-- `wip` 开发中
+无意看到 element-plus 源码里面使用
+
+1. unplugin-vue-define-options
+2. vite.config.ts 配置插件即可
+3. defineOptions 使用;
