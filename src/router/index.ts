@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-06-07 16:53:15
  */
 // createWebHistory createWebHashHistory
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 const HelloWorld = () => import('@/package/HelloWorld/index.vue');
 const TestVue = () => import('@/views/TsxVue/index');
 const Test = () => import('@/views/Test/index.vue');
@@ -15,8 +15,10 @@ const ApiTest = () => import('@/package/ApiTest/index.vue');
 const PagerOver = () => import('@/views/PagerOver/index.vue');
 const VueUse = () => import('@/package/VueUse/index.vue');
 const MockTest = () => import('@/package/MockTest/index.vue');
+const NotFoundComponent = () => import('@/views/404/index.vue');
 
 const routes: Array<RouteRecordRaw> = [
+  { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
     path: '/',
     name: 'Home',
@@ -89,7 +91,8 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('/'),
+  // history: createWebHistory('/'),
+  history: createWebHashHistory(),
   routes,
 });
 

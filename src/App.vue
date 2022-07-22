@@ -6,6 +6,11 @@
   <header class="header">
     <h1>Hello App!</h1>
   </header>
+  <p>
+    <router-link to="/">Go to Home</router-link>
+    <router-link to="/vueApi">Go to vueApi</router-link>
+    <router-link to="/test">Go to test</router-link>
+  </p>
   <router-view v-slot="{ Component }">
     <transition name="van-fade">
       <component :is="Component" />
