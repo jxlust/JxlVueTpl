@@ -15,25 +15,20 @@ jobs:
         node-version: [12.x, 14.x, 16.x]
     
     steps:
-
       - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
-     - name: Setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
-
       - uses: actions/checkout@v3
-      
-    - name: Install and Build
+      - name: Install and Build
       run: |
         pnpm install
         pnpm build
-
-   - name: Deploy
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.JXLUST_TOKEN }} # 指定密钥
