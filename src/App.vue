@@ -1,20 +1,8 @@
 <script setup lang="ts">
-  onMounted(() => {
-    // const testIframe: any = document.getElementById('testIframe');
-    // testIframe.load = () => {
-    //   console.log(99999999999999);
-    //   testIframe.contentWindow.postMessage(document.cookie, '*');
-    // }
-  });
+  onMounted(() => {});
 </script>
 
 <template>
-  <!-- <iframe src="http://192.168.1.101:3000/www/index.html" frameborder="0"></iframe> -->
-  <!-- <iframe
-    id="testIframe"
-    src=""
-    frameborder="0"
-  ></iframe> -->
   <header class="header">
     <h1>Hello App!</h1>
   </header>
@@ -23,6 +11,7 @@
       <component :is="Component" />
     </transition>
   </router-view>
+
   <!-- <template>
   <router-view v-slot="{ Component, route }">
     <transition :name="route.meta?.transition || 'fade'">

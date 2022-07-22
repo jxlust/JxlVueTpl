@@ -108,4 +108,5 @@
       "vue",
       "react"
     ],
+    "liveServer.settings.port": 5501,
   }

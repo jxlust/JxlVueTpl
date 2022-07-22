@@ -6,6 +6,7 @@
  * @LastEditors: jxlust
  * @LastEditTime: 2022-06-07 16:53:15
  */
+// createWebHistory createWebHashHistory
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const HelloWorld = () => import('@/package/HelloWorld/index.vue');
 const TestVue = () => import('@/views/TsxVue/index');
@@ -88,7 +89,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/'),
   routes,
 });
 
