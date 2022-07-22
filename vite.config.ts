@@ -8,7 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import WindiCSS from 'vite-plugin-windicss';
 import compressPlugin from 'vite-plugin-compression';
-const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
+// const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
 import DefineOptions from 'unplugin-vue-define-options/vite';
 
 const CWD = process.cwd();
@@ -60,49 +60,49 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         ext: '.gz',
         deleteOriginFile: false, // 是否删除原始文件
       }),
-      mode !== 'development' &&
-        ViteFilemanager({
-          // events: {
-          //   start: {
-          //     del: {
-          //       items: ['./dist'],
-          //     },
-          //   },
-          //   end: {
-          //     move: {
-          //       items: [{ source: './www', destination: './dist' }],
-          //     },
-          //     zip: {
-          //       items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-          //     },
-          //     del: {
-          //       // items: ['./dist','./www'],
-          //     },
-          //   },
-          // },
-          //https://rollupjs.org/guide/en/#output-generation-hooks
-          customHooks: [
-            {
-              hookName: 'closeBundle', //generateBundle
-              commands: {
-                move: {
-                  items: [{ source: './www', destination: './dist/' }],
-                },
-                zip: {
-                  items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-                },
-                del: {
-                  // items: ['./dist'],
-                },
-              },
-            },
-          ],
-          options: {
-            // parallel: 3,
-            log: 'all',
-            cache: false,
-          },
-        }),
+      // mode !== 'development' &&
+      //   ViteFilemanager({
+      //     // events: {
+      //     //   start: {
+      //     //     del: {
+      //     //       items: ['./dist'],
+      //     //     },
+      //     //   },
+      //     //   end: {
+      //     //     move: {
+      //     //       items: [{ source: './www', destination: './dist' }],
+      //     //     },
+      //     //     zip: {
+      //     //       items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
+      //     //     },
+      //     //     del: {
+      //     //       // items: ['./dist','./www'],
+      //     //     },
+      //     //   },
+      //     // },
+      //     //https://rollupjs.org/guide/en/#output-generation-hooks
+      //     customHooks: [
+      //       {
+      //         hookName: 'closeBundle', //generateBundle
+      //         commands: {
+      //           move: {
+      //             items: [{ source: './www', destination: './dist/' }],
+      //           },
+      //           zip: {
+      //             items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
+      //           },
+      //           del: {
+      //             // items: ['./dist'],
+      //           },
+      //         },
+      //       },
+      //     ],
+      //     options: {
+      //       // parallel: 3,
+      //       log: 'all',
+      //       cache: false,
+      //     },
+      //   }),
     ],
     resolve: {
       alias: [

@@ -12,15 +12,15 @@
 #         with:
 #           # Full git history is needed to get a proper list of changed files within `super-linter`
 #           fetch-depth: 0
-#       - name: Setup Node.js v14.x
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: '14.x'
+      # - name: Setup Node.js v14.x
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '14.x'
 
-#       - name: Setup pnpm
-#         uses: pnpm/action-setup@v2
-#         with:
-#           version: latest
+      # - name: Setup pnpm
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: latest
 
 #       - name: Install
 #         run: pnpm install
