@@ -97,5 +97,5 @@ class MyDialog {
 // };
 
 // const MyDialog: DialogProp = _Dialog;
-window.MyDialog = MyDialog;
+(<any>window).MyDialog = MyDialog;
 export default MyDialog;
