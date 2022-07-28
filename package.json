@@ -43,7 +43,13 @@
     "test:gzip": "npx http-server dist --cors --gzip -c-1",
     "test:br": "npx http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.0-beta.0",
@@ -83,6 +89,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.9",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-define-config": "^1.4.1",
