@@ -153,3 +153,54 @@ npm install filemanager-plugin --save-dev
 1. unplugin-vue-define-options
 2. vite.config.ts 配置插件即可
 3. defineOptions 使用;
+
+## github workflow
+
+1. 新建.github 目录下创建 workflows 目录，新建一个 yml 文件，比如 build.yml
+2. 配置 yml,注意格式, 对于 workflow 事件流，在 GitHub action 查看
+3. 可以 GitHub 搜索一些 action 库
+4. 参考文档https://docs.github.com/cn/actions
+
+```shell
+name: Vue3 with Vite
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    #checkout拉取代吗
+    - uses: actions/checkout@v3
+    #node pnpm setup
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7.2.1
+    #执行npm命令
+    - name: Install and Build
+      run: |
+        pnpm install
+        pnpm build
+    #利用第三方库发布GitHub page
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.JXLUST_TOKEN }} # 指定密钥
+        BRANCH: page # 指定推送到的远程分支
+        FOLDER: www # 指定构建之后的产物要推送哪个目录的代码
+```
