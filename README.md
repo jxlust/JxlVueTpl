@@ -204,3 +204,5 @@ jobs:
         BRANCH: page # 指定推送到的远程分支
         FOLDER: www # 指定构建之后的产物要推送哪个目录的代码
 ```
+
+> 文章出自：jxlust https://github.com/jxlust/JxlVueTpl
