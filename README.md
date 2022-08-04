@@ -205,4 +205,6 @@ jobs:
         FOLDER: www # 指定构建之后的产物要推送哪个目录的代码
 ```
 
+> 提交出现错误的时候，文件被还原的问题，lint-staged 在后面添加 **--no-stash** 修复，issues: https://github.com/okonet/lint-staged/issues/795
+
 > 文章出自：jxlust https://github.com/jxlust/JxlVueTpl
