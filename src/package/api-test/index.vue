@@ -13,9 +13,17 @@
     {{ myObjOnly }}
   </div>
 
+  <p>watch test:</p>
   <WatchTest />
 
+  <p>model use: </p>
   <ModelUse />
+
+  <p>my tsx one: </p>
+  <MyTsxOne />
+
+  <p>my tsx two: </p>
+  <MyTsxTwo @mclick="handleMClick" title="my tsx two test" />
 </template>
 
 <script setup lang="ts">
@@ -23,7 +31,11 @@
 
   import WatchTest from './watch.vue';
   import ModelUse from './ModelUse.vue';
+  import MyTsxOne from '../tsx-test/TsxOne';
+  import MyTsxTwo from '../tsx-test/TsxTwo';
+
   import { MyRef } from './MyRef';
+
   interface UserInfo {
     name?: string;
     age?: number;
@@ -71,6 +83,10 @@
   let { foo, bar } = toRefs(refObj);
   console.log(foo, bar);
   //toRaw 转回普通对象
+
+  const handleMClick = (data) => {
+    console.log('handler m click:', data);
+  };
 </script>
 
 <style></style>
