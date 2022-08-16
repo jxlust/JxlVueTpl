@@ -6,6 +6,11 @@
 2. 代码质量
 3. 统一规范和风格
 
+## 命名规范
+
+- 文件夹功能用-风格，比如：cell-group
+- tsx 或者 组件文件名 大驼峰
+
 ## 技术栈
 
 - 编程语言：[TypeScript 4.x](https://www.typescriptlang.org/zh/) + [JavaScript](https://www.javascript.com/)

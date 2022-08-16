@@ -84,11 +84,11 @@
   };
 
   //异步组件
-  // const AsyncComp = defineAsyncComponent(() => import('@/package/MyTest/AsyncComponent.vue'));
+  // const AsyncComp = defineAsyncComponent(() => import('@/package/my-test/AsyncComponent.vue'));
   //异步组件高级用法
   const AsyncCompHigh = defineAsyncComponent({
     // 工厂函数
-    loader: () => import('@/package/MyTest/AsyncComponent.vue'),
+    loader: () => import('@/package/my-test/AsyncComponent.vue'),
     // 加载异步组件时要使用的组件
     loadingComponent: LoadingComponent,
     // 加载失败时要使用的组件
