@@ -14,12 +14,15 @@
   </div>
 
   <WatchTest />
+
+  <ModelUse />
 </template>
 
 <script setup lang="ts">
   import { Ref } from 'vue';
 
   import WatchTest from './watch.vue';
+  import ModelUse from './ModelUse.vue';
   import { MyRef } from './MyRef';
   interface UserInfo {
     name?: string;
