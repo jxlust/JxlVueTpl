@@ -16,6 +16,7 @@ const PagerOver = () => import('@/views/pager-over/index.vue');
 const VueUse = () => import('@/package/vue-use/index.vue');
 const MockTest = () => import('@/package/mock-test/index.vue');
 const NotFoundComponent = () => import('@/views/404/index.vue');
+const MyEditor = () => import('@/views/my-editor/index.vue');
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
@@ -87,6 +88,11 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true,
     },
     component: MockTest,
+  },
+  {
+    path: '/editor',
+    name: 'editor',
+    component: MyEditor,
   },
 ];
 
