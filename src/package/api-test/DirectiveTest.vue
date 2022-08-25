@@ -4,6 +4,11 @@
 
     <input type="text" v-model="color" />
     <TestComp v-color-two:myarg.mymdf="styleData2" />
+
+    <div class="box" v-move>
+      <div class="box-header"></div>
+      <div class="box-container"></div>
+    </div>
   </div>
 </template>
 
@@ -54,6 +59,46 @@
   const vColorTwo = (el: HTMLElement, dir: DirectiveBinding<StyleType>) => {
     el.style.background = dir.value.background;
   };
+  //move
+
+  const vMove = (el: HTMLElement) => {
+    let moveElemnt = el.firstElementChild as HTMLDivElement;
+    const handleMouseDown = (e: MouseEvent) => {
+      console.log(e, el.offsetLeft, el.offsetTop);
+      let diffX = e.clientX - el.offsetLeft;
+      let diffY = e.clientY - el.offsetTop;
+      const handleMouseMove = (movE: MouseEvent) => {
+        el.style.top = `${movE.clientY - diffY}px`;
+        el.style.left = `${movE.clientX - diffX}px`;
+        let cssText = `position: absolute;top:${movE.clientY - diffY}px;left:${movE.clientX - diffX}px;`;
+        el.style.cssText = cssText;
+      };
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        // moveElemnt.removeEventListener('mousedown',handleMouseDown)
+      });
+    };
+
+    moveElemnt.addEventListener('mousedown', handleMouseDown);
+  };
 </script>
 
-<style></style>
+<style lang="scss">
+  .box {
+    // position: absolute;
+    display: grid;
+    flex-flow: column nowrap;
+    width: 300px;
+    &-header {
+      cursor: move;
+      height: 30px;
+      width: 100%;
+      background-color: #333;
+    }
+    &-container {
+      height: 200px;
+      background-color: skyblue;
+    }
+  }
+</style>
