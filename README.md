@@ -19,6 +19,7 @@
 - 路由工具：[Vue Router 4.x](https://next.router.vuejs.org/zh/index.html)
 - 状态管理：[pinia 2.x](https://pinia.vuejs.org/)
 - PC 端 UI 框架：[Element Plus](https://element-plus.org/#/zh-CN)
+- PC 端 UI 库： [naiveui](https://www.naiveui.com/zh-CN/os-theme)
 - H5 端 UI 框架：[vant](https://vant-contrib.gitee.io/vant/v3/#/zh-CN/)
 - CSS 预编译：[Stylus](https://stylus-lang.com/) / [Sass](https://sass.bootcss.com/documentation) / [Less](http://lesscss.cn/)
 - HTTP 工具：[Axios](https://axios-http.com/)
