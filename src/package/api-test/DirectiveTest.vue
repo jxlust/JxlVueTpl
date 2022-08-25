@@ -1,6 +1,10 @@
 <template>
   <div>
-    <TestComp v-color:myarg.mymdf="styleData" />
+    <TestComp v-color:myarg.mymdf="styleData" a="123" b="456">
+      <template>
+        <div> 88888 </div>
+      </template>
+    </TestComp>
 
     <input type="text" v-model="color" />
     <TestComp v-color-two:myarg.mymdf="styleData2" />

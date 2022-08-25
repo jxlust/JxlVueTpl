@@ -16,7 +16,9 @@
       <button @click="changeSlot">动态插槽</button>
       <SlotTest>
         <template #footer="{ data }">
-          {{ data }}
+          <span>
+            {{ data }}
+          </span>
         </template>
         <template #[slotKey]> 我是动态插入内容 </template>
       </SlotTest>
