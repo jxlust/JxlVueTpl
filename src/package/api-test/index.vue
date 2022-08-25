@@ -24,6 +24,9 @@
 
   <p>my tsx two: </p>
   <MyTsxTwo @mclick="handleMClick" title="my tsx two test" />
+
+  <p>directive: </p>
+  <DirectiveTest />
 </template>
 
 <script setup lang="ts">
@@ -33,7 +36,7 @@
   import ModelUse from './ModelUse.vue';
   import MyTsxOne from '../tsx-test/TsxOne';
   import MyTsxTwo from '../tsx-test/TsxTwo';
-
+  import DirectiveTest from './DirectiveTest.vue';
   import { MyRef } from './MyRef';
 
   interface UserInfo {

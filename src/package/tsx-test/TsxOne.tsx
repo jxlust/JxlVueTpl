@@ -1,6 +1,6 @@
 // 参考vant源码
 // const [name, bem] = createNamespace('button');
-
+// tsx 的使用参考资料 http://events.jianshu.io/p/d89fb4755879
 /**
  * bem helper
  * b() // 'button'
