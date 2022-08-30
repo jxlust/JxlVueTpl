@@ -62,7 +62,7 @@ export default defineComponent({
       selectClass: 'highlight',
       containerClass: 'attextarea-container',
       itemClass: 'attextarea-menu__item',
-      fillAttr: defaultValue,
+      // fillAttr: 'value',
       requireLeadingSpace: false,
 
       values: [
@@ -107,7 +107,7 @@ export default defineComponent({
           ref={textareaRef}
           class={'attextarea'}
           onTribute-active-true={onTributeActiveTrue}
-          // v-html={defaultValue}
+          v-html={defaultValue}
         ></div>
       );
     };
