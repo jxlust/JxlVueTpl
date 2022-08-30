@@ -9,6 +9,10 @@
       @onCreated="handleCreated"
     />
   </div>
+
+  <div class="margin">
+    <AtTextarea text="sss" />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -18,6 +22,8 @@
   import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
   import { Boot } from '@wangeditor/editor';
   import { MySelectMenu } from './MySelect';
+
+  import AtTextarea from '@/components/at-textarea/AtTextarea';
 
   const selectMenuConf = {
     key: 'select-menu', // 定义 menu key ：要保证唯一、不重复（重要）
