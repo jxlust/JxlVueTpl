@@ -29,6 +29,7 @@ const atTextareaProps = extend(
   {},
   {
     text: String,
+    placeholder: String,
   },
 );
 
@@ -43,6 +44,7 @@ export default defineComponent({
 
   setup(props, { emit, slots }) {
     console.log('slots:', slots, emit);
+
     const textareaRef = ref();
     // const contentValue = ref('sdfa <span contenteditable="false">@Fluffy Croutons</span>&nbsp;safjla');
     const defaultValue = `sdfa <span contenteditable="false">@Fluffy Croutons</span>&nbsp;safjla`;
@@ -55,11 +57,14 @@ export default defineComponent({
     };
 
     const tribute = new Tribute({
-      trigger: '{{',
+      trigger: '@',
+      // menuContainer:
       selectClass: 'highlight',
       containerClass: 'attextarea-container',
       itemClass: 'attextarea-menu__item',
       fillAttr: defaultValue,
+      requireLeadingSpace: false,
+
       values: [
         { name: 'Howard Johnson', occupation: 'Panda Wrangler', age: 27 },
         { name: 'Fluffy Croutons', occupation: 'Crouton Fluffer', age: 32 },
@@ -94,8 +99,17 @@ export default defineComponent({
       }
     });
     return () => {
-      // const { text } = props;
-      return <div ref={textareaRef} class={'attextarea'} onTribute-active-true={onTributeActiveTrue}></div>;
+      const { placeholder } = props;
+      const showPlaceholder = placeholder || '输入内容@某人';
+      return (
+        <div
+          placeholder={showPlaceholder}
+          ref={textareaRef}
+          class={'attextarea'}
+          onTribute-active-true={onTributeActiveTrue}
+          // v-html={defaultValue}
+        ></div>
+      );
     };
   },
 });
