@@ -63,6 +63,7 @@ export default defineComponent({
       containerClass: 'attextarea-container',
       itemClass: 'attextarea-menu__item',
       // fillAttr: 'value',
+      // lookup: 'name',
       requireLeadingSpace: false,
 
       values: [
