@@ -1,8 +1,8 @@
-import './utils';
-import TributeEvents from './TributeEvents';
-import TributeMenuEvents from './TributeMenuEvents';
-import TributeRange from './TributeRange';
-import TributeSearch from './TributeSearch';
+import './utils.js';
+import TributeEvents from './TributeEvents.js';
+import TributeMenuEvents from './TributeMenuEvents.js';
+import TributeRange from './TributeRange.js';
+import TributeSearch from './TributeSearch.js';
 
 class Tribute {
   constructor({
@@ -234,9 +234,15 @@ class Tribute {
 
   ensureEditable(element) {
     if (Tribute.inputTypes().indexOf(element.nodeName) === -1) {
-      if (!element.contentEditable) {
-        throw new Error('[Tribute] Cannot bind to ' + element.nodeName + ', not contentEditable');
+      console.log(122,element.contentEditable)
+      if (element.contentEditable) {
+        element.contentEditable = true;
+      } else {
+        throw new Error("[Tribute] Cannot bind to " + element.nodeName);
       }
+      // if (!element.contentEditable) {
+      //   throw new Error('[Tribute] Cannot bind to ' + element.nodeName + ', not contentEditable');
+      // }
     }
   }
 

@@ -102,11 +102,14 @@ class TributeEvents {
   }
 
   keyup(instance, event) {
+    console.log(1,event)
+    console.log(2,instance)
+
+    // debugger;
     if (instance.inputEvent) {
       instance.inputEvent = false;
     }
     instance.updateSelection(this);
-
     if (!event.keyCode || event.keyCode === 27) return;
 
     if (!instance.tribute.allowSpaces && instance.tribute.hasTrailingSpace) {
@@ -115,7 +118,7 @@ class TributeEvents {
       instance.callbacks()['space'](event, this);
       return;
     }
-
+    // debugger;
     if (!instance.tribute.isActive) {
       if (instance.tribute.autocompleteMode) {
         instance.callbacks().triggerChar(event, this, '');
@@ -207,8 +210,8 @@ class TributeEvents {
         });
 
         tribute.current.collection = collectionItem;
-
-        if (tribute.current.mentionText.length >= tribute.current.collection.menuShowMinLength && tribute.inputEvent) {
+         if (tribute.current.mentionText.length >= tribute.current.collection.menuShowMinLength && tribute.inputEvent) {
+          console.log(111,true);
           tribute.showMenuFor(el, true);
         }
       },

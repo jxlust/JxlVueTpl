@@ -1,5 +1,5 @@
 // Thanks to https://github.com/jeff-collins/ment.io
-import './utils';
+import './utils.js';
 
 class TributeRange {
   constructor(tribute) {
