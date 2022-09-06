@@ -343,6 +343,7 @@ class TributeRange {
         this.tribute.hasTrailingSpace = regex.test(currentTriggerSnippet);
 
         if (!leadingSpace && (menuAlreadyActive || !regex.test(currentTriggerSnippet))) {
+          console.log('tttt:,',triggerChar);
           return {
             mentionPosition: mostRecentTriggerCharPos,
             mentionText: currentTriggerSnippet,

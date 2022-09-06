@@ -38,7 +38,7 @@
     name: 'x2'
   }]
   const tribute = new Tribute({
-    trigger: '{',
+    trigger: '{{',
     // menuContainer: dom
     selectClass: 'highlight',
     containerClass: 'trigger-container',
@@ -64,6 +64,7 @@
     // },
   });
   const dom = document.getElementById('dom');
+  dom.innerHTML = `<span contenteditable="false">1234</span>`;
   tribute.attach(dom);
 
 </script>
