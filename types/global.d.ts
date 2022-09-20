@@ -5,7 +5,7 @@ import type {
   ComponentPublicInstance,
   FunctionalComponent,
   PropType as VuePropType,
-} from 'vue';
+} from "vue";
 
 declare global {
   const __APP_INFO__: {
@@ -17,10 +17,18 @@ declare global {
     };
     lastBuildTime: string;
   };
-  // declare interface Window {
-  //   // Global vue app instance
-  //   __APP__: App<Element>;
-  // }
+
+  interface Window {
+    navigator: any;
+    cookies: any;
+    SFNativeApp: any;
+    ExpressPlugin: any;
+    SFNativeDevice: any;
+    SFNativeWebView: any;
+    SFNativeIM: any;
+    SFNativeSetting: any;
+  }
+
   declare const defineOptions: any;
   // vue
   declare type PropType<T> = VuePropType<T>;
@@ -76,6 +84,6 @@ declare global {
   }
 }
 
-declare module 'vue' {
+declare module "vue" {
   export type JSXComponent<Props = any> = { new (): ComponentPublicInstance<Props> } | FunctionalComponent<Props>;
 }

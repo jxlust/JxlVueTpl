@@ -7,93 +7,39 @@
  * @LastEditTime: 2022-06-07 16:53:15
  */
 // createWebHistory createWebHashHistory
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-const HelloWorld = () => import('@/package/helloworld/index.vue');
-const TestVue = () => import('@/views/tsx-vue/index');
-const Test = () => import('@/views/test/index.vue');
-const ApiTest = () => import('@/package/api-test/index.vue');
-const PagerOver = () => import('@/views/pager-over/index.vue');
-const VueUse = () => import('@/package/vue-use/index.vue');
-const MockTest = () => import('@/package/mock-test/index.vue');
-const NotFoundComponent = () => import('@/views/404/index.vue');
-const MyEditor = () => import('@/views/my-editor/index.vue');
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+
+const NotFoundComponent = () => import("@/views/404/index.vue");
+
+const Home = () => import("@/views/Home/index");
+const Test = () => import("@/views/Test/index");
+
 
 const routes: Array<RouteRecordRaw> = [
-  { path: '/:pathMatch(.*)', component: NotFoundComponent },
+  { path: "/:pathMatch(.*)", component: NotFoundComponent },
   {
-    path: '/',
-    name: 'Home',
-    meta: {
-      title: 'my home',
-      keepAlive: true,
-    },
-    component: HelloWorld,
-    // children: [
-    //   {
-    //     path: 'abs',
-    //     component: () => xxxx,
-    //   },
-    // ],
+    path: "/",
+    redirect: "/home",
   },
   {
-    path: '/textover',
-    name: 'textover',
+    path: "/home",
+    name: "home",
     meta: {
-      title: 'my textover',
+      title: "首页",
       keepAlive: true,
     },
-    component: TestVue,
+    component: Home,
   },
   {
-    path: '/test',
-    name: 'test',
+    path: "/test",
+    name: "test",
     meta: {
-      title: 'my test',
+      title: "首页",
       keepAlive: true,
     },
     component: Test,
   },
-  {
-    path: '/vueApi',
-    name: 'vueApi',
-    meta: {
-      title: 'vueApi study',
-      keepAlive: true,
-    },
-    component: ApiTest,
-  },
-  {
-    path: '/PagerOver',
-    name: 'PagerOver',
-    meta: {
-      title: 'PagerOver',
-      keepAlive: true,
-    },
-    component: PagerOver,
-  },
-  {
-    path: '/VueUse',
-    name: 'VueUse',
-    meta: {
-      title: 'VueUse',
-      keepAlive: true,
-    },
-    component: VueUse,
-  },
-  {
-    path: '/MockTest',
-    name: 'MockTest',
-    meta: {
-      title: 'MockTest',
-      keepAlive: true,
-    },
-    component: MockTest,
-  },
-  {
-    path: '/editor',
-    name: 'editor',
-    component: MyEditor,
-  },
+
 ];
 
 const router = createRouter({
@@ -101,6 +47,20 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   document.title = `${to.meta.title} | vue-manage-system`;
+//   const role = localStorage.getItem("ms_username");
+//   const permiss = usePermissStore();
+//   if (!role && to.path !== "/login") {
+//     next("/login");
+//   } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
+//     // 如果没有权限，则进入403
+//     next("/403");
+//   } else {
+//     next();
+//   }
+// });
 
 router.beforeEach((to) => {
   document.title = (to?.meta?.title as string) ?? document.title;

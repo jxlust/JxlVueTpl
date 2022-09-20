@@ -1,4 +1,4 @@
-const data = ref('99');
+const data = ref("99");
 const array: number[] = reactive([]);
 
 let rawData = 100;

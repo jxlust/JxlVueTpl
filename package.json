@@ -1,10 +1,10 @@
 {
-  "name": "jxlvuetpl",
+  "name": "h5 tpl",
   "private": true,
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:jxlust/JxlVueTpl.git"
+    "url": ""
   },
   "keywords": [
     "Vite",
@@ -14,9 +14,9 @@
   "author": "jxlust",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://xx"
   },
-  "homepage": "https://jxlust.github.io/JxlVueTpl",
+  "homepage": "",
   "engines": {
     "node": "^12 || >=14"
   },
@@ -24,7 +24,6 @@
     "bootstrap": "pnpm install",
     "serve": "npm run dev",
     "dev": "cross-env --max_old_space_size=4096 vite",
-    "dev:pc": "cross-env NODE_ENV=pc --max_old_space_size=4096 vite",
     "build": "cross-env vite build",
     "build:dev": "cross-env vite build --mode development",
     "sit": "cross-env vite build --mode sit",
@@ -52,29 +51,26 @@
     }
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.0-beta.0",
     "@vant/touch-emulator": "^1.3.2",
+    "@vueup/vue-quill": "1.0.0-beta.9",
     "@vueuse/core": "^8.5.0",
     "@vueuse/integrations": "^8.5.0",
-    "@wangeditor/editor": "^5.1.14",
-    "@wangeditor/editor-for-vue": "^5.1.12",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "dayjs": "^1.11.2",
     "dexie": "^3.2.2",
-    "element-plus": "^2.2.2",
     "lodash-es": "^4.17.21",
-    "monaco-editor": "^0.33.0",
+    "md5": "^2.3.0",
     "nanoid": "^3.3.4",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.14",
     "qrcode": "^1.5.0",
     "qs": "^6.10.3",
-    "tributejs": "^5.1.3",
+    "rollup-plugin-visualizer": "^5.7.1",
+    "sortablejs": "^1.15.0",
     "vant": "^3.4.9",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.15",
-    "vuedraggable": "^2.24.3"
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.1",
@@ -122,10 +118,8 @@
     "vconsole": "^3.14.6",
     "vite": "^2.9.9",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-windicss": "^1.8.4",
     "vue-eslint-parser": "^9.0.2",
-    "vue-tsc": "^0.34.7",
-    "windicss": "^3.5.4"
+    "vue-tsc": "^0.34.7"
   },
   "peerDependencies": {
     "postcss": "^8.4.14"
@@ -153,5 +147,6 @@
     "*.md": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "^pnpm@7.6.0"
 }

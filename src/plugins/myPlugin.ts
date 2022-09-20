@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import type { App } from "vue";
 interface OptionsInterface<T> {
   data: T;
 }
@@ -8,14 +8,14 @@ type MsgType = {
 
 const pluginOptions: OptionsInterface<MsgType> = {
   data: {
-    msg: 'hello!',
+    msg: "hello!",
   },
 };
 
 const myPlugin = {
   install(app: App, options: OptionsInterface<MsgType>) {
     app.config.globalProperties.$translate = (key: string) => {
-      const objKeyArray = key.split('.'); // a.b.c
+      const objKeyArray = key.split("."); // a.b.c
       //对options 对象解析 是否能访问到对应的值😌
       // return objKeyArray.reduce((origin, cur) => {
       //   if (origin) {
@@ -25,11 +25,11 @@ const myPlugin = {
       return objKeyArray.reduce((origin, cur) => origin && origin[cur], options);
     };
     app.config.globalProperties.$translateByOrgin = (key: string, orginObj: any) => {
-      const objKeyArray = key.split('.'); // a.b.c
+      const objKeyArray = key.split("."); // a.b.c
       return objKeyArray.reduce((origin, cur) => origin && origin[cur], orginObj);
     };
 
-    app.provide('pluginData', options);
+    app.provide("pluginData", options);
 
     // app.directive('my-directive', {
     //   mounted(el, binding, vnode, oldVnode) {

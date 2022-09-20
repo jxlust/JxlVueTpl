@@ -1,22 +1,22 @@
-import Mock from 'mockjs';
+import Mock from "mockjs";
 
 const mockData = Mock.mock({
-  'list|10': [
+  "list|10": [
     {
-      'id|+1': 1000, //id ++
-      name: '@cname', //随机中文名字
+      "id|+1": 1000, //id ++
+      name: "@cname", //随机中文名字
     },
   ],
 });
-console.log('mockData:', mockData);
+console.log("mockData:", mockData);
 const getTest = {
-  url: '/test/getData',
-  methods: 'get',
+  url: "/test/getData",
+  methods: "get",
   template: (config) => {
-    console.log('getData config:', config);
+    console.log("getData config:", config);
     return {
       code: 200,
-      msg: 'success',
+      msg: "success",
       data: mockData.list,
     };
   },

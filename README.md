@@ -1,17 +1,14 @@
-# 我的 Vue 3 + TypeScript + Vite 搭建之旅
+# 问卷管理后台
 
-## Why
+## 前言
 
 1. 提升开发效率
 2. 代码质量
 3. 统一规范和风格
 
-## 命名规范
-
-- 文件夹功能用-风格，比如：cell-group
-- tsx 或者 组件文件名 大驼峰
-
 ## 技术栈
+
+Vue 3 + TypeScript + Vite
 
 - 编程语言：[TypeScript 4.x](https://www.typescriptlang.org/zh/) + [JavaScript](https://www.javascript.com/)
 - 构建工具：[Vite 2.x](https://cn.vitejs.dev/)
@@ -19,7 +16,6 @@
 - 路由工具：[Vue Router 4.x](https://next.router.vuejs.org/zh/index.html)
 - 状态管理：[pinia 2.x](https://pinia.vuejs.org/)
 - PC 端 UI 框架：[Element Plus](https://element-plus.org/#/zh-CN)
-- PC 端 UI 库： [naiveui](https://www.naiveui.com/zh-CN/os-theme)
 - H5 端 UI 框架：[vant](https://vant-contrib.gitee.io/vant/v3/#/zh-CN/)
 - CSS 预编译：[Stylus](https://stylus-lang.com/) / [Sass](https://sass.bootcss.com/documentation) / [Less](http://lesscss.cn/)
 - HTTP 工具：[Axios](https://axios-http.com/)
@@ -34,28 +30,16 @@
 
 ## Vite 构建
 
-参考官网，一路复制粘贴回车，初始化项目
-
-## 相关插件
-
-1. 按需加载第三方组件插件：unplugin-vue-components
-2. 模块自动导入插件：unplugin-auto-import/vite，配置 auto-imports.d.ts 全局声明
-3. Jsx & Tsx 使用：@vitejs/plugin-vue-jsx
-4. gzip、br 压缩: vite-plugin-compression
-5. 打包文件管理：filemanager-plugin
-6. css 编译处理：postcss 相关插件
-
-## 好用的开发工具库推荐
-
-1. [vueuse](https://vueuse.org/guide/) [github](https://github.com/vueuse/vueuse)
-2. [lodash-es 工具库](https://lodash.com/docs/4.17.15)
+```shell
+pnpm install
+```
 
 ## git husky 配置
 
 1. 安装脚本 husky.sh
 
 ```shell
-npm install prepare
+npm run prepare
 ```
 
 2. 配置
@@ -92,6 +76,20 @@ git commit -m "feat(blog): add comment section"
 - `ci` 持续集成
 - `types` 类型定义文件更改
 - `wip` 开发中
+
+## 相关插件
+
+1. 按需加载第三方组件插件：unplugin-vue-components
+2. 模块自动导入插件：unplugin-auto-import/vite，配置 auto-imports.d.ts 全局声明
+3. Jsx & Tsx 使用：@vitejs/plugin-vue-jsx
+4. gzip、br 压缩: vite-plugin-compression
+5. 打包文件管理：filemanager-plugin
+6. css 编译处理：postcss 相关插件
+
+## 好用的开发工具库推荐
+
+1. [vueuse](https://vueuse.org/guide/) [github](https://github.com/vueuse/vueuse)
+2. [lodash-es 工具库](https://lodash.com/docs/4.17.15)
 
 ## gzip 压缩
 
@@ -145,80 +143,5 @@ server {
 
 1. filemanager-plugin
 
-```shell
-npm install filemanager-plugin --save-dev
-```
-
 2. [config](https://www.npmjs.com/package/filemanager-plugin)
 3. [编译 hooks 监听](https://rollupjs.org/guide/en/#output-generation-hooks)
-
-## setup 语法糖组件 name 问题
-
-无意看到 element-plus 源码里面使用
-
-1. unplugin-vue-define-options
-2. vite.config.ts 配置插件即可
-3. defineOptions 使用;
-
-## github workflow
-
-1. 新建.github 目录下创建 workflows 目录，新建一个 yml 文件，比如 build.yml
-2. 配置 yml,注意格式, 对于 workflow 事件流，在 GitHub action 查看
-3. 可以 GitHub 搜索一些 action 库
-4. 参考文档https://docs.github.com/cn/actions
-
-```shell
-name: Vue3 with Vite
-
-on:
-  push:
-    branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    steps:
-    #checkout拉取代吗
-    - uses: actions/checkout@v3
-    #node pnpm setup
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v2.2.2
-      with:
-        version: 7.2.1
-    #执行npm命令
-    - name: Install and Build
-      run: |
-        pnpm install
-        pnpm build
-    #利用第三方库发布GitHub page
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.JXLUST_TOKEN }} # 指定密钥
-        BRANCH: page # 指定推送到的远程分支
-        FOLDER: www # 指定构建之后的产物要推送哪个目录的代码
-```
-
-## 富文本编辑器
-
-1. [wangeditor](https://www.wangeditor.com/)
-
-```bash
-pnpm add @wangeditor/editor @wangeditor/editor-for-vue@next
-```
-
-> 提交出现错误的时候，文件被还原的问题，lint-staged 在后面添加 **--no-stash** 修复，issues: https://github.com/okonet/lint-staged/issues/795
-
-> 文章出自：jxlust https://github.com/jxlust/JxlVueTpl

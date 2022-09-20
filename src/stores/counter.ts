@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
 const ajaxGetData = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      Math.random() > 0.5 ? resolve(520) : reject('fail');
+      Math.random() > 0.5 ? resolve(520) : reject("fail");
     }, 1000);
   });
 };
@@ -12,7 +12,7 @@ interface StateInfo {
   count: number;
   testData?: any;
 }
-export const useCounterStore = defineStore('counter', {
+export const useCounterStore = defineStore("counter", {
   state: (): StateInfo => {
     return { count: 0, testData: null };
   },

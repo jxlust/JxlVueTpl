@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -29,7 +30,6 @@
     "types": [
       "vite/client",
       "node",
-      "element-plus/global"
     ],
     "typeRoots": [
       "./node_modules/@types/",
@@ -54,15 +54,15 @@
     "src/**/*.vue",
     "types/**/*.d.ts",
     "types/**/*.ts",
-    "preview/**/*.ts",
-    "preview/**/*.d.ts",
-    "preview/**/*.tsx",
-    "preview/**/*.vue",
     "components.d.ts",
     "auto-imports.d.ts",
     "auto-plugin.d.ts",
   ],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
   "exclude": [
     "node_modules",
     "dist"

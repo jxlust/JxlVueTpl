@@ -1,11 +1,11 @@
-import { type PermissionType } from '@/core/permission/modules/types';
+import { type PermissionType } from "@/core/permission/modules/types";
 
 interface Title18n {
   zh_CN: string;
   en_US: string;
 }
 
-declare module 'vue-router' {
+declare module "vue-router" {
   interface RouteMeta extends Record<string | number | symbol, unknown> {
     /** 标题 */
     title: string | Title18n;

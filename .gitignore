@@ -6,9 +6,11 @@
 /dist-ssr
 /tmp
 /www
+/static-questionnaire-mg
 /out-tsc
 *.zip
 static-test
+stats.html
 
 # dependencies
 /node_modules
@@ -31,6 +33,7 @@ pnpm-debug.log*
 .settings/
 *.sublime-workspace
 .eslintcache
+
 auto-imports.d.ts
 components.d.ts
 
@@ -59,3 +62,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
+auto-imports.d.ts
