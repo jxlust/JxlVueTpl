@@ -28,11 +28,11 @@
   <p>directive: </p>
   <DirectiveTest />
 
-  <p>my tsx slot1</p>
+  <p>my tsx slot1:</p>
   <TsxSlot1 />
-  <p>my tsx slot2</p>
+  <p>my tsx slot2:</p>
   <TsxSlot2 />
-  <p>my tsx slot3</p>
+  <p>my tsx slot3:</p>
   <TsxSlot3 />
 </template>
 
