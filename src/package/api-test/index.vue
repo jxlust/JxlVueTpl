@@ -28,12 +28,17 @@
   <p>directive: </p>
   <DirectiveTest />
 
-  <p>my tsx slot1:</p>
-  <TsxSlot1 />
-  <p>my tsx slot2:</p>
-  <TsxSlot2 />
-  <p>my tsx slot3:</p>
-  <TsxSlot3 />
+  <div class="tsx-slots">
+    <p>my tsx slot1:</p>
+    <TsxSlot1 />
+    <p>my tsx slot2:</p>
+    <TsxSlot2 />
+    <p>my tsx slot3:</p>
+    <TsxSlot3 />
+
+    <p>my tsx slot4:</p>
+    <TsxSlot4 />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -45,7 +50,7 @@
   import TsxSlot1 from '../tsx-test/TsxSlot1';
   import TsxSlot2 from '../tsx-test/TsxSlot2';
   import TsxSlot3 from '../tsx-test/TsxSlot3';
-
+  import TsxSlot4 from '../tsx-test/TsxSlot4';
   import DirectiveTest from './DirectiveTest.vue';
   import { MyRef } from './MyRef';
 
