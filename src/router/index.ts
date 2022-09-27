@@ -11,7 +11,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 const HelloWorld = () => import('@/package/helloworld/index.vue');
 const TestVue = () => import('@/views/tsx-vue/index');
 const Test = () => import('@/views/test/index.vue');
-const ApiTest = () => import('@/package/api-test/index.vue');
+const ApiTest = () => import('@/package/vue-study/index.vue');
 const PagerOver = () => import('@/views/pager-over/index.vue');
 const VueUse = () => import('@/package/vue-use/index.vue');
 const MockTest = () => import('@/package/mock-test/index.vue');

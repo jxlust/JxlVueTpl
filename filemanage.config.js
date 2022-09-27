@@ -1,6 +1,7 @@
 const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
 export const viteFilemanagerHandler = (mode) => {
-  mode !== 'development' &&
+  return (
+    mode !== 'development' &&
     ViteFilemanager({
       // events: {
       //   start: {
@@ -42,5 +43,6 @@ export const viteFilemanagerHandler = (mode) => {
         log: 'all',
         cache: false,
       },
-    });
+    })
+  );
 };
