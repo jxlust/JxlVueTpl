@@ -3,14 +3,13 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import { resolve } from 'path';
-import { ElementPlusResolver, VantResolver } from 'unplugin-vue-components/resolvers';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import WindiCSS from 'vite-plugin-windicss';
 import compressPlugin from 'vite-plugin-compression';
-// const ViteFilemanager = require('filemanager-plugin').ViteFilemanager;
 import DefineOptions from 'unplugin-vue-define-options/vite';
-
+import { viteFilemanagerHandler } from './filemanage.config.js';
 const CWD = process.cwd();
 
 // https://cn.vitejs.dev/config/
@@ -54,55 +53,14 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       //组件按需引入插件
       Components({
         dts: true,
-        resolvers: [ElementPlusResolver(), VantResolver()],
+        // VantResolver
+        resolvers: [ElementPlusResolver()],
       }),
       compressPlugin({
         ext: '.gz',
         deleteOriginFile: false, // 是否删除原始文件
       }),
-      // mode !== 'development' &&
-      //   ViteFilemanager({
-      //     // events: {
-      //     //   start: {
-      //     //     del: {
-      //     //       items: ['./dist'],
-      //     //     },
-      //     //   },
-      //     //   end: {
-      //     //     move: {
-      //     //       items: [{ source: './www', destination: './dist' }],
-      //     //     },
-      //     //     zip: {
-      //     //       items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-      //     //     },
-      //     //     del: {
-      //     //       // items: ['./dist','./www'],
-      //     //     },
-      //     //   },
-      //     // },
-      //     //https://rollupjs.org/guide/en/#output-generation-hooks
-      //     customHooks: [
-      //       {
-      //         hookName: 'closeBundle', //generateBundle
-      //         commands: {
-      //           move: {
-      //             items: [{ source: './www', destination: './dist/' }],
-      //           },
-      //           zip: {
-      //             items: [{ source: './dist', destination: './dist.zip', type: 'zip' }],
-      //           },
-      //           del: {
-      //             // items: ['./dist'],
-      //           },
-      //         },
-      //       },
-      //     ],
-      //     options: {
-      //       // parallel: 3,
-      //       log: 'all',
-      //       cache: false,
-      //     },
-      //   }),
+      viteFilemanagerHandler(mode),
     ],
     resolve: {
       alias: [

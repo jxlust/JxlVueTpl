@@ -9,7 +9,6 @@ import { setupStore } from './stores';
 
 // import store from './store'
 import './styles/css/base.css';
-// import './assets/css/main.styl';
 // import BaseComponents from './components/base'
 // import BaseDirective from './directive'
 
