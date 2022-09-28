@@ -38,7 +38,7 @@
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged --no-stash",
+    "lint:lint-staged": "lint-staged --concurrent false",
     "deploy": "npm run build && npx gh-pages -d dist",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",
     "test:br": "npx http-server dist --cors --brotli -c-1",
@@ -131,27 +131,24 @@
     "postcss": "^8.4.14"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "*": [
+      "prettier --write --cache --ignore-unknown"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,d.ts}": [
+      "eslint --cache --fix"
+    ],
+    "src/**/*.vue": [
+      "eslint --cache --fix",
+      "stylelint --fix --cache"
+    ],
+    "src/**/*.{scss,less,styl,html}": [
+      "stylelint --fix --cache"
     ],
     "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
       "prettier --write--parser json"
     ],
     "package.json": [
-      "prettier --write"
-    ],
-    "*.vue": [
-      "eslint --fix",
-      "prettier --write",
-      "stylelint --fix"
-    ],
-    "*.{scss,less,styl,html}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
+      "eslint --cache --fix"
     ]
   }
 }

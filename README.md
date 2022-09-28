@@ -219,6 +219,13 @@ jobs:
 pnpm add @wangeditor/editor @wangeditor/editor-for-vue@next
 ```
 
+## lint-staged 问题
+
 > 提交出现错误的时候，文件被还原的问题，lint-staged 在后面添加 **--no-stash** 修复，issues: https://github.com/okonet/lint-staged/issues/795
+
+```shell
+eslint --cache --fix
+#加上 --cache 检测
+```
 
 > 文章出自：jxlust https://github.com/jxlust/JxlVueTpl
