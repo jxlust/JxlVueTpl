@@ -1,21 +1,21 @@
-import { ConfigEnv, loadEnv, UserConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import legacy from '@vitejs/plugin-legacy';
-import { resolve } from 'path';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
-import WindiCSS from 'vite-plugin-windicss';
-import compressPlugin from 'vite-plugin-compression';
-import DefineOptions from 'unplugin-vue-define-options/vite';
-import { viteFilemanagerHandler } from './filemanage.config.js';
-const CWD = process.cwd();
+import { ConfigEnv, loadEnv, UserConfig, defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import legacy from '@vitejs/plugin-legacy'
+import { resolve } from 'path'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import WindiCSS from 'vite-plugin-windicss'
+import compressPlugin from 'vite-plugin-compression'
+import DefineOptions from 'unplugin-vue-define-options/vite'
+import { viteFilemanagerHandler } from './filemanage.config.js'
+const CWD = process.cwd()
 
 // https://cn.vitejs.dev/config/
-export default ({ mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 环境变量
-  const { VITE_BASE_URL } = loadEnv(mode, CWD);
+  const { VITE_BASE_URL } = loadEnv(mode, CWD)
   return {
     base: VITE_BASE_URL, // 设置打包路径
     css: {
@@ -120,5 +120,5 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       //   },
       // },
     },
-  };
-};
+  }
+})
