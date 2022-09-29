@@ -9,6 +9,7 @@
 /out-tsc
 *.zip
 static-test
+.stylelintcache
 
 # dependencies
 /node_modules
