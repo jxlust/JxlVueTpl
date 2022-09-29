@@ -17,7 +17,7 @@ const VueUse = () => import('@/package/vue-use/index.vue');
 const MockTest = () => import('@/package/mock-test/index.vue');
 const NotFoundComponent = () => import('@/views/404/index.vue');
 const MyEditor = () => import('@/views/my-editor/index.vue');
-
+const VueDemo = () => import('@/views/vue-demo/index.vue');
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -81,7 +81,7 @@ const routes: Array<RouteRecordRaw> = [
     component: VueUse,
   },
   {
-    path: '/MockTest',
+    path: '/mock-test',
     name: 'MockTest',
     meta: {
       title: 'MockTest',
@@ -93,6 +93,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/editor',
     name: 'editor',
     component: MyEditor,
+  },
+  {
+    path: '/vue-demo',
+    name: 'vue-demo',
+    component: VueDemo,
   },
 ];
 
