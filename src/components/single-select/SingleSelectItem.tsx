@@ -1,5 +1,5 @@
-import { useParent } from '@/my-use/useRelation'
-import { unknownProp } from '@/types'
+import { useParent } from '@/vant-lib/vant-use/useRelation'
+import { unknownProp } from '@/vant-lib/utils'
 import { ExtractPropTypes } from 'vue'
 import { ONE_LINE_KEY } from './SingleSelect'
 

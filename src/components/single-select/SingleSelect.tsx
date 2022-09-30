@@ -3,8 +3,8 @@ import { ArrowDown } from '@element-plus/icons-vue'
 import { ElIcon } from 'element-plus'
 import '@/assets/less/one-line-list.less'
 import { ClickOutside } from 'element-plus'
-import { useChildren } from '@/my-use/useRelation'
-import { unknownProp } from '@/types'
+import { useChildren } from '@/vant-lib/vant-use/useRelation'
+import { unknownProp } from '@/vant-lib/utils'
 
 export type ComponentInstance = ComponentPublicInstance<{}, any>
 
