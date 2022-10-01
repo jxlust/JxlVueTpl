@@ -1,26 +1,26 @@
 import { ExtractPropTypes, Transition, InjectionKey, ComponentPublicInstance } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
-import { ElIcon } from 'element-plus'
-import '@/assets/less/one-line-list.less'
-import { ClickOutside } from 'element-plus'
+import { ElIcon, ClickOutside } from 'element-plus'
 import { useChildren } from '@/vant-lib/vant-use/useRelation'
 import { unknownProp } from '@/vant-lib/utils'
 
+import './single-select.scss'
+
 export type ComponentInstance = ComponentPublicInstance<{}, any>
 
-const oneLineListProps = {
+const singleSelectProps = {
   modelValue: unknownProp,
   item: unknownProp,
   disabled: Boolean,
 }
-export type OneLineListType = ExtractPropTypes<typeof oneLineListProps>
+export type SingleSelectType = ExtractPropTypes<typeof singleSelectProps>
 
 export type OneLineProvide = {
-  props: OneLineListType
+  props: SingleSelectType
   updateValue: (value: unknown) => void
   // updateItem: (value: unknown) => void;
 }
-export const ONE_LINE_KEY: InjectionKey<OneLineProvide> = Symbol('one-line-list')
+export const ONE_LINE_KEY: InjectionKey<OneLineProvide> = Symbol('single-select')
 
 const getComponentsListHidenIndex = (components: ComponentPublicInstance[]) => {
   const index = components.findIndex((item: ComponentPublicInstance) => {
@@ -32,9 +32,9 @@ const getComponentsListHidenIndex = (components: ComponentPublicInstance[]) => {
 }
 
 export default defineComponent({
-  name: 'OneLineList',
+  name: 'SingleSelect',
   directives: { clickoutside: ClickOutside },
-  props: oneLineListProps,
+  props: singleSelectProps,
   emits: ['change', 'update:modelValue', 'update:item'],
 
   setup(props, { emit, slots }) {
@@ -56,10 +56,10 @@ export default defineComponent({
     // const updateItem = (item: unknown) => emit('update:item', item);
     const computedHideList = () => {
       const navDom: HTMLElement = navListRef.value
-      if (navDom.scrollHeight > navDom.clientHeight) {
+      if (!navDom) return
+      if (navDom?.scrollHeight > navDom?.clientHeight) {
         isOverflow.value = true
       }
-
       if (children?.length) {
         const index = getComponentsListHidenIndex(children)
         if (index > 0) {
@@ -77,7 +77,8 @@ export default defineComponent({
       },
     )
 
-    watch(children, () => {
+    watch(children, (v) => {
+      console.log('watch child:', v)
       computedHideList()
     })
 
@@ -124,7 +125,7 @@ export default defineComponent({
       if (isOverflow.value) {
         return (
           <Transition name={'fade'}>
-            <div class={'section-list-popover'} v-show={showMorePopview.value} vClickoutside={onClickOutside}>
+            <div class={'section-list-popover'} v-show={showMorePopview.value} v-clickoutside={onClickOutside}>
               {hideComponents.map(renderHideLists)}
             </div>
           </Transition>

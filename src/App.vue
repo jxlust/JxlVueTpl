@@ -1,30 +1,34 @@
 <script setup lang="ts">
-  onMounted(() => {});
+  onMounted(() => {})
 
-  const cachedViews = ['Test'];
+  const cachedViews = ['Test']
 </script>
 
 <template>
   <header class="header">
     <h1>Hello App!</h1>
   </header>
-  <p>
+  <nav class="nav-block">
     <router-link to="/">Go to Home</router-link>
-    <router-link to="/vueApi">Go to vueApi</router-link>
+    <router-link to="/vue-api">Go to vueApi</router-link>
+    <router-link to="/pager-over">pager-over</router-link>
+    <router-link to="/some-comp">some-component</router-link>
     <router-link to="/test">Go to test</router-link>
     <router-link to="/vue-demo">Vue-demo</router-link>
-  </p>
+  </nav>
 
-  <router-view v-slot="{ Component, route }">
-    <transition :name="route.meta?.transition || 'fade'">
-      <keep-alive :include="cachedViews" :max="5">
-        <component :is="Component" />
-      </keep-alive>
-    </transition>
-  </router-view>
+  <div class="view-container">
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta?.transition || 'fade'">
+        <keep-alive :include="cachedViews" :max="5">
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
+  </div>
 </template>
 
-<style>
+<style lang="scss">
   #testIframe {
     position: fixed;
     inset: 0;
@@ -36,17 +40,25 @@
     height: 60vh;
   }
 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-
   .header {
-    height: auto;
+    height: 44px;
     width: 100%;
-    padding: 10px 0 30px 0;
+  }
+  .nav-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 10px;
+
+    > a {
+      color: skyblue;
+    }
+  }
+  .view-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
   }
 </style>

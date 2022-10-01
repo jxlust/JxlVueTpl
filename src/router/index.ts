@@ -7,17 +7,19 @@
  * @LastEditTime: 2022-06-07 16:53:15
  */
 // createWebHistory createWebHashHistory
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-const HelloWorld = () => import('@/package/helloworld/index.vue');
-const TestVue = () => import('@/views/tsx-vue/index');
-const Test = () => import('@/views/test/index.vue');
-const ApiTest = () => import('@/package/vue-study/index.vue');
-const PagerOver = () => import('@/views/pager-over/index.vue');
-const VueUse = () => import('@/package/vue-use/index.vue');
-const MockTest = () => import('@/package/mock-test/index.vue');
-const NotFoundComponent = () => import('@/views/404/index.vue');
-const MyEditor = () => import('@/views/my-editor/index.vue');
-const VueDemo = () => import('@/views/vue-demo/index.vue');
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+const HelloWorld = () => import('@/package/helloworld/index.vue')
+const TestVue = () => import('@/views/tsx-vue/index')
+const Test = () => import('@/views/test/index.vue')
+const ApiTest = () => import('@/package/vue-study/index.vue')
+const PagerOver = () => import('@/views/pager-over/index.vue')
+const VueUse = () => import('@/package/vue-use/index.vue')
+const MockTest = () => import('@/package/mock-test/index.vue')
+const NotFoundComponent = () => import('@/views/404/index.vue')
+const MyEditor = () => import('@/views/my-editor/index.vue')
+const VueDemo = () => import('@/views/vue-demo/index.vue')
+const SomeComp = () => import('@/views/some-component/index.vue')
+
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -54,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Test,
   },
   {
-    path: '/vueApi',
+    path: '/vue-api',
     name: 'vueApi',
     meta: {
       title: 'vueApi study',
@@ -63,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ApiTest,
   },
   {
-    path: '/PagerOver',
+    path: '/pager-over',
     name: 'PagerOver',
     meta: {
       title: 'PagerOver',
@@ -72,7 +74,7 @@ const routes: Array<RouteRecordRaw> = [
     component: PagerOver,
   },
   {
-    path: '/VueUse',
+    path: '/vue-use',
     name: 'VueUse',
     meta: {
       title: 'VueUse',
@@ -99,17 +101,18 @@ const routes: Array<RouteRecordRaw> = [
     name: 'vue-demo',
     component: VueDemo,
   },
-];
+  { path: '/some-comp', name: 'some-comp', component: SomeComp },
+]
 
 const router = createRouter({
   // history: createWebHistory('/'),
   history: createWebHashHistory(),
   routes,
-});
+})
 
 router.beforeEach((to) => {
-  document.title = (to?.meta?.title as string) ?? document.title;
-  return true;
-});
+  document.title = (to?.meta?.title as string) ?? document.title
+  return true
+})
 
-export default router;
+export default router

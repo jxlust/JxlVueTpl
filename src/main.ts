@@ -15,12 +15,12 @@ setupMyPlugin(app)
 
 const envMode = import.meta.env.MODE
 //vconsole 动态导入控制
-if (['sit', 'development'].includes(envMode)) {
-  import('vconsole').then((module) => {
-    const vconsole = module.default
-    new vconsole()
-  })
-}
+// if (['sit', 'development'].includes(envMode)) {
+//   import('vconsole').then((module) => {
+//     const vconsole = module.default
+//     new vconsole()
+//   })
+// }
 
 // app.use(BaseComponens)
 // app.use(BaseDirective)
