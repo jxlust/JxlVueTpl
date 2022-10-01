@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="row single-test">
-      <SingleSelect>
+      <SingleSelect v-model="currentId">
         <SingleSelectItem v-for="n in lists" :key="n.id" :value="n.value" :text="n.name" />
       </SingleSelect>
     </div>
@@ -18,6 +18,7 @@
     value: string
   }
   const lists = reactive<ItemType[]>([])
+  const currentId = ref<string>('')
 
   for (let i = 0; i < 10; ++i) {
     lists.push({
@@ -26,6 +27,7 @@
       value: `v${i}`,
     })
   }
+  currentId.value = lists[0].value
 </script>
 
 <style lang="scss">
