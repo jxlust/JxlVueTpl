@@ -1,0 +1,23 @@
+.water-wall {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 1px;
+  grid-auto-flow: row dense;
+  gap: 10px;
+}
+
+.box-item {
+  grid-row: auto;
+  min-height: 0;
+}
+
+.span8 {
+  grid-row: auto / span 8;
+}
+
+.show-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
