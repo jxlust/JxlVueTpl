@@ -9,7 +9,7 @@
 <script setup lang="ts">
   import WaterBox from './components/WaterBox'
   import WaterItem from './components/WaterItem'
-  const imgHost = 'http://127.0.0.1:5501/html/img/'
+  const imgHost = 'https://fastly.jsdelivr.net/npm/@jxlust/assets/img/'
   // bg1.webp
   const lists = reactive<string[]>([])
 
