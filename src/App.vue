@@ -15,6 +15,7 @@
     <router-link to="/some-comp">some-component</router-link>
     <router-link to="/test">Go to test</router-link>
     <router-link to="/vue-demo">Vue-demo</router-link>
+    <router-link to="/water-wall">water wall</router-link>
   </nav>
 
   <div class="view-container">

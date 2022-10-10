@@ -26,4 +26,8 @@
   animation-duration: 1s;
   animation-fill-mode: both;
 }
-// fade-leave-active
+.fade-leave-active {
+  animation-name: fadeOutLeft;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}

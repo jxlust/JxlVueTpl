@@ -13,7 +13,7 @@
   // bg1.webp
   const lists = reactive<string[]>([])
 
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 11; i++) {
     lists.push(`${imgHost}bg${i}.webp`)
   }
 </script>
