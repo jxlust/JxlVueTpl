@@ -19,7 +19,7 @@ const NotFoundComponent = () => import('@/views/404/index.vue')
 const MyEditor = () => import('@/views/my-editor/index.vue')
 const VueDemo = () => import('@/views/vue-demo/index.vue')
 const SomeComp = () => import('@/views/some-component/index.vue')
-const WaterWall = () => import('@/views/water-wall/index.vue')
+const WaterWall = () => import('@/views/water-wall/flex-col.vue')
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
