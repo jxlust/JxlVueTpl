@@ -1,23 +1,33 @@
-.water-wall {
+ .water-wall {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: 1px;
+  grid-template-columns: repeat(auto-fill, minmax(150Px, 1fr));
+   grid-auto-rows: 1Px;
   grid-auto-flow: row dense;
-  gap: 10px;
+  gap: 10Px;
 }
 
 .box-item {
   grid-row: auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+.box-item__desc{
+  padding: 5px 0 0 0;
+  font-size: 14px;
+  color: #999;
+  text-align: left;
 }
 
 .span8 {
+ 
   grid-row: auto / span 8;
 }
 
 .show-img {
-  height: 100%;
+   height: 100%;
   width: 100%;
   object-fit: cover;
 }
