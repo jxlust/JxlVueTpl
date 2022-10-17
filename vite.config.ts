@@ -122,8 +122,5 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       //   },
       // },
     },
-    // alias: {
-    //   'vue': 'vue/dist/vue.esm-bundler.js',
-    // },
   }
 })
