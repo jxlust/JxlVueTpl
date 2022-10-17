@@ -68,7 +68,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           find: '@',
           replacement: resolve(__dirname, './src'),
         },
+        { find: 'vue', replacement: 'vue/dist/vue.esm-bundler.js' },
       ],
+      // 'vue': 'vue/dist/vue.esm-bundler.js' // 定义vue的别名，如果使用其他的插件，可能会用到别名
     },
     build: {
       cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
@@ -120,5 +122,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       //   },
       // },
     },
+    // alias: {
+    //   'vue': 'vue/dist/vue.esm-bundler.js',
+    // },
   }
 })
