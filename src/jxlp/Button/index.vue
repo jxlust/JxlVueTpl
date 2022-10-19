@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
   import { defineProps } from 'vue'
-  // import shoes from '../assets/shoes.png'
+  // import shoes from '@img/shoes.png'
   // const logo = new URL('../assets/shoes.png', import.meta.url).href
   const logo = 'https://img0.baidu.com/it/u=2262828731,2849199006&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
   type ButtonPropsType = {
