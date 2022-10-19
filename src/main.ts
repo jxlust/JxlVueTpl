@@ -4,11 +4,12 @@ import router from './router'
 import { setupElementPlus } from './plugins/elementPlus'
 import { setupMyPlugin } from './plugins/myPlugin'
 import { setupStore } from './stores'
-
 import './styles/scss/main.scss'
 
-const app = createApp(App)
+import JXLP from './jxlp/index'
 
+const app = createApp(App)
+app.use(JXLP)
 setupElementPlus(app)
 setupStore(app)
 setupMyPlugin(app)

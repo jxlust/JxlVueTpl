@@ -27,6 +27,7 @@
     "dev:pc": "cross-env NODE_ENV=pc --max_old_space_size=4096 vite",
     "build": "cross-env vite build",
     "build:dev": "cross-env vite build --mode development",
+    "build:lib": "node ./script/build.js",
     "sit": "cross-env vite build --mode sit",
     "build:no-cache": "pnpm clean:cache && npm run build",
     "build-tsc": "vue-tsc --noEmit && vite build",
