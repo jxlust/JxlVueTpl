@@ -12,5 +12,5 @@ const JXLP = {
     })
   },
 }
-
+export type { ButtonPropsType } from './Button'
 export default JXLP
