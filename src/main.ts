@@ -6,10 +6,7 @@ import { setupMyPlugin } from './plugins/myPlugin'
 import { setupStore } from './stores'
 import './styles/scss/main.scss'
 
-import JXLP from './jxlp/index'
-
 const app = createApp(App)
-app.use(JXLP)
 setupElementPlus(app)
 setupStore(app)
 setupMyPlugin(app)

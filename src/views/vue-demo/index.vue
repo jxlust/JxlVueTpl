@@ -26,9 +26,6 @@
     </Suspense> -->
 
     <!-- <MyButton :text="'s'"></MyButton> -->
-
-    <jxlp-button :text="'xx'" />
-    <JButton :text="2" />
   </div>
 </template>
 
@@ -38,9 +35,7 @@
   import AttrsRoot from './attrs-use/root.vue'
   import { openDialog3 } from './renderTools'
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
-  import { JButton } from '@/jxlp/lib/index.es.js'
-  import '@/jxlp/lib/style.css'
-  console.log('JButton:', JButton)
+
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(
     () =>
