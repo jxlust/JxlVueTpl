@@ -24,8 +24,9 @@
         <div class="loading">加载中...</div>
       </template>
     </Suspense> -->
-
     <!-- <MyButton :text="'s'"></MyButton> -->
+
+    <button @click="handleAddColorButton">add color button</button>
   </div>
 </template>
 
@@ -35,7 +36,7 @@
   import AttrsRoot from './attrs-use/root.vue'
   import { openDialog3 } from './renderTools'
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
-
+  import { renderColorButton } from './render-api/renderButton'
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(
     () =>
@@ -84,6 +85,12 @@
   }
 
   tryOnScopeDispose(effectFunction)
+
+  const handleAddColorButton = () => {
+    renderColorButton('jxl', (data: number) => {
+      console.log('color button click:', data)
+    })
+  }
 </script>
 
 <style></style>
