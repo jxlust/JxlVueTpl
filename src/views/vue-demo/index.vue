@@ -30,6 +30,7 @@
 
     <TimerNumber />
     <SlideNumber />
+    <CountDownSlider />
   </div>
 </template>
 
@@ -40,7 +41,8 @@
   import { openDialog3 } from './renderTools'
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
   import { renderColorButton } from './render-api/renderButton'
-  import { TimerNumber, SlideNumber } from './timer-number/Number'
+  import { TimerNumber, SlideNumber, CountDownSlider } from './timer-number/Number'
+
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(
     () =>
