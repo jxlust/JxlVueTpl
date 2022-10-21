@@ -27,6 +27,9 @@
     <!-- <MyButton :text="'s'"></MyButton> -->
 
     <button @click="handleAddColorButton">add color button</button>
+
+    <TimerNumber />
+    <SlideNumber />
   </div>
 </template>
 
@@ -37,6 +40,7 @@
   import { openDialog3 } from './renderTools'
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
   import { renderColorButton } from './render-api/renderButton'
+  import { TimerNumber, SlideNumber } from './timer-number/Number'
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(
     () =>
