@@ -59,11 +59,14 @@ export default defineComponent({
       if (!navDom) return
       if (navDom?.scrollHeight > navDom?.clientHeight) {
         isOverflow.value = true
+      } else {
+        isOverflow.value = false
       }
       if (children?.length) {
         const index = getComponentsListHidenIndex(children)
         if (index > 0) {
           //overflow one line
+          hideComponents.length = 0
           hideComponents.push(...children.slice(index))
         }
       }

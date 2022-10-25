@@ -59,3 +59,45 @@ export const CountDownSlider = (props: any) => {
   }
   return <div class={'clock-wrap'}>{diffTime.value >= 0 ? renderCountDown() : <span>The End</span>}</div>
 }
+
+//define vue3 component can get current scope
+export const CountComponent = defineComponent({
+  name: 'CountSlide',
+  directives: {
+    // 'v-once': vOnce,
+  },
+  setup(props) {
+    console.log('props:', props)
+    //清除副作用
+    const tryOnScopeDispose = (fn) => {
+      console.log('this current scope:', getCurrentScope())
+      if (getCurrentScope()) {
+        onScopeDispose(fn)
+        return true
+      }
+      return false
+    }
+    const effectFunction = () => {
+      console.log('i am a effectt function.')
+    }
+    tryOnScopeDispose(effectFunction)
+
+    const number = ref(100)
+    const handleNumberClick = () => {
+      number.value++
+    }
+
+    let vOnce = true
+    let cacheNumber = 0
+    const testRender = () => {
+      if (vOnce) {
+        vOnce = false
+        cacheNumber = unref(number)
+        return <i> {number.value}</i>
+      } else {
+        return <i>{cacheNumber}</i>
+      }
+    }
+    return () => <span onClick={handleNumberClick}>{testRender()}</span>
+  },
+})
