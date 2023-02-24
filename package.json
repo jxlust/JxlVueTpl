@@ -24,6 +24,7 @@
     "bootstrap": "pnpm install",
     "serve": "npm run dev",
     "dev": "cross-env --max_old_space_size=4096 vite",
+    "dev:pager2": "vite serve src/pager2/ --config ./vite.config.ts",
     "dev:pc": "cross-env NODE_ENV=pc --max_old_space_size=4096 vite",
     "build": "cross-env vite build",
     "build:dev": "cross-env vite build --mode development",

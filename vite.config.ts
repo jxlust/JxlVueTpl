@@ -90,7 +90,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),
-          // preview: resolve(__dirname, 'preview/index.html'),
+          pager2: resolve(__dirname, 'pager2/index.html'),
         },
         output: {
           manualChunks: {

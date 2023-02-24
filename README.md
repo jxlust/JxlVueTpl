@@ -98,21 +98,29 @@ git commit -m "feat(blog): add comment section"
 1. vite-plugin-compression
 2. 服务器配置 gzip
 
+#开启 gzip 功能 gzip on; #开启 gzip 静态压缩功能 gzip_static on; #gzip 缓存大小 gzip_buffers 4 16k; #gzip http 版本 gzip_http_version 1.1; #gzip 压缩级别 1-10 gzip_comp_level 5; #gzip 压缩类型 gzip_types text/plain application/javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+
+# 是否在 http header 中添加 Vary: Accept-Encoding，建议开启
+
+gzip_vary on;
+
 ```shell
-# http{}下配置：
+#开启gzip功能
 gzip on;
+#开启gzip静态压缩功能
+gzip_static on;
 #不压缩临界值，大于1K的才压缩，一般不用改
 gzip_min_length 1k;
-#buffer，就是，嗯，算了不解释了，不用改
+#buffer
 gzip_buffers 4 16k;
 #用了反向代理的话，末端通信是HTTP/1.0,默认是HTTP/1.1
 #gzip_http_version 1.0;
-#压缩级别，1-10，数字越大压缩的越好，时间也越长，看心情随便改吧
+#压缩级别，1-10，数字越大压缩的越好，时间也越长
 gzip_comp_level 2;
-#进行压缩的文件类型，缺啥补啥就行了，JavaScript有两种写法，最好都写上吧，总有人抱怨js文件没有压缩，其实多写一种格式application/javascript 就行了
+#进行压缩的文件类型
 gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
 #跟Squid等缓存服务有关，on的话会在Header里增加"Vary: Accept-Encoding"
-gzip_vary off;
+gzip_vary on;
 #IE6对Gzip不怎么友好，不给它Gzip了
 gzip_disable "MSIE [1-6]\.";
 
