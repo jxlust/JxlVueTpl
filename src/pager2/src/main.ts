@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.bat'
+import App from './App.vue'
 import router from './router/index'
 //  import './styles/scss/main.scss'
 const app = createApp(App)
