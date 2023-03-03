@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { ConfigEnv, loadEnv, UserConfig, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -62,6 +64,17 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       }),
       viteFilemanagerHandler(mode),
     ],
+    // 使用这个必须在上面加/// <reference types="vitest" /> 不然会有类型报错
+    test: {
+      // jest like test api
+      globals: true,
+      // 模拟dom环境
+      environment: 'happy-dom',
+      // 支持tsx,jsx
+      transformMode: {
+        web: [/.[tj]sx$/],
+      },
+    },
     resolve: {
       alias: [
         {
