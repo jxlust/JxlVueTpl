@@ -19,3 +19,12 @@ export const regExpSearchName = (query: any, name: any, replaceStr: string) => {
 export const randomInteger = (max: number) => {
   return (Math.random() * max) | 0
 }
+
+/**
+ * 动态获取资源url
+ * @param url
+ * @returns
+ */
+export const getAssetsFile = (url: string) => {
+  return new URL(`../assets/${url}`, import.meta.url).href
+}
