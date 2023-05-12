@@ -47,7 +47,8 @@
     "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
     "prepare": "husky install",
     "commit": "cz",
-    "test": "vitest"
+    "test": "vitest",
+    "create:version": "node ./script/createVersion.js"
   },
   "config": {
     "commitizen": {

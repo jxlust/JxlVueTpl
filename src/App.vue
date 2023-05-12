@@ -1,6 +1,7 @@
 <script setup lang="ts">
   onMounted(() => {})
 
+  // 注意一定要更name一致
   const cachedViews = ['Test']
   // const ab = ref(false);
 </script>

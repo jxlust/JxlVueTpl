@@ -22,7 +22,7 @@ const SomeComp = () => import('@/views/some-component/index.vue')
 const WaterWall = () => import('@/views/water-wall/flex-col.vue')
 
 const ScrollPager = () => import('@/views/pager-scroll/index.vue')
-
+const FullScreen = () => import('@/views/full-screen/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -107,6 +107,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/some-comp', name: 'some-comp', component: SomeComp },
   { path: '/water-wall', name: 'water-wall', component: WaterWall },
   { path: '/pager-scroll', name: 'scroll-pager', component: ScrollPager },
+  { path: '/screen', name: 'screen', component: FullScreen },
 ]
 
 const router = createRouter({

@@ -7,3 +7,29 @@
     -webkit-box-orient: vertical;
   }
 }
+
+.line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 1px;
+  background: #b3b4b8;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .line::after {
+    height: 1px;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3) {
+  .line::after {
+    height: 1px;
+    transform: scale(0.333);
+    transform-origin: 0 0;
+  }
+}
