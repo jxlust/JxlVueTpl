@@ -52,7 +52,7 @@ const ScrollFixed = defineComponent({
       const scrollTop = target?.scrollTop || 0
       // const sections =
       console.log(1, sectionArray.value)
-      console.log(2, scrollTop)
+      console.log(2, scrollTop, sectionArray.value[2])
       //scrollTop < array[1] -> A
       //scrollTop < array[2] -> B
       //else -> C
@@ -62,6 +62,7 @@ const ScrollFixed = defineComponent({
         } else if (scrollTop < sectionArray.value[2]) {
           curTab.value = 'B'
         } else {
+          console.log(1111, 3333)
           curTab.value = 'C'
         }
       }

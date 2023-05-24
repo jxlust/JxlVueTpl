@@ -1,9 +1,11 @@
 <template>
   <div class="msg">{{ data }} ---- {{ rawData }}</div>
+  <div class="my-text" @click="changeText">
+    <Ellipsistext :suffix="true" a="1" b="2" :start-ellipsis-line="1" :text="textValue" />
+  </div>
   <div class="content-wrapper">
     <div ref="htmlRef" :class="['content-html', { active: isExpand }]" v-html="htmlStr"></div>
     <iframe title="domChangeIframe" ref="myHackIframeRef" src="" frameborder="0"></iframe>
-
     <div :class="['content-mask', { none: isExpand }]" v-if="isOver">
       <div class="opt-area" @click="expandAll">{{ !isExpand ? '展开全部' : '收起部分' }}</div>
     </div>
@@ -12,66 +14,79 @@
 
 <script setup lang="ts">
   // import { startObserverTarget,testValue } from './useMutation';
-  import { data, updateData, rawData } from '@/hooks/useTest2';
-  const htmlStr = ref<string>('我的内容');
-  const htmlRef = ref();
-  const isOver = ref(false);
-  const isExpand = ref(false);
-  const myHackIframeRef = ref();
+  import Ellipsistext from '@/components/ellipsis-text/Ellipsistext2'
+  import { data, updateData, rawData } from '@/hooks/useTest2'
+
+  const textValue = ref('')
+  setTimeout(() => {
+    textValue.value = 'textValue三大发三大发撒的风景啊链接，是放假啊链接发了收到了放假啊逻辑啊'
+  }, 1000)
+
+  const changeText = () => {
+    textValue.value = Math.random() * 100 + 'textValue三大发三大发撒的风景啊链接，是放假啊链接发了收到了放假啊逻辑啊'
+  }
+  const htmlStr = ref<string>('我的内容')
+  const htmlRef = ref()
+  const isOver = ref(false)
+  const isExpand = ref(false)
+  const myHackIframeRef = ref()
 
   setTimeout(() => {
-    updateData('1000');
-    const arr: string[] = [];
+    updateData('1000')
+    const arr: string[] = []
     // for (let i = 0; i < 10; i++) {
     //   arr.push(`<p>内容啊的理解是否就是理解${i}</p>`);
     // }
     arr.push(
       `<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F4k%2Fs%2F02%2F2109242306111155-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1657375692&t=8e5e365f4ea9592f547f6c85934ebb56" alt="">`,
-    );
-    for (let i = 0; i < 10; i++) {
-      arr.push(`<p>内容啊的理解是否就是理解${i}</p>`);
+    )
+    for (let i = 0; i < 30; i++) {
+      arr.push(`<p>内容啊的理解是否就是理解${i}</p>`)
     }
-    htmlStr.value = arr.join('');
-  }, 2000);
+    htmlStr.value = arr.join('')
+  }, 2000)
 
   const computerHeight = () => {
-    let htmlDom: HTMLElement = htmlRef.value;
-    console.log('htmlDom cH:', htmlDom.clientHeight, ',htmlDom sH:', htmlDom.scrollHeight);
+    let htmlDom: HTMLElement = htmlRef.value
+    console.log('htmlDom cH:', htmlDom.clientHeight, ',htmlDom sH:', htmlDom.scrollHeight)
     if (htmlDom.clientHeight < htmlDom.scrollHeight) {
       //over height
-      isOver.value = true;
+      isOver.value = true
     } else {
-      isOver.value = false;
+      isOver.value = false
     }
-  };
+  }
   const expandAll = () => {
-    isExpand.value = !isExpand.value;
-  };
+    isExpand.value = !isExpand.value
+  }
   const iframeResizeChange = (e: any) => {
-    console.log('iframe resize:', e);
+    console.log('iframe resize:', e)
     if (!isOver.value) {
-      computerHeight();
+      computerHeight()
     }
-  };
+  }
 
   onMounted(() => {
     // computerHeight();
-    myHackIframeRef.value.contentWindow.onresize = iframeResizeChange;
+    myHackIframeRef.value.contentWindow.onresize = iframeResizeChange
     // startObserverTarget(htmlRef.value)
-  });
+  })
   watchEffect(
     () => {
       // if()
-      console.log('htmlStr effect:', htmlStr.value);
+      console.log('htmlStr effect:', htmlStr.value)
       // computerHeight();
     },
     {
       flush: 'post',
     },
-  );
+  )
 </script>
 
 <style lang="scss">
+  .my-text {
+    width: 30vw;
+  }
   .content-wrapper {
     width: 100vw;
     height: auto;

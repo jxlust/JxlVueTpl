@@ -14,22 +14,22 @@ const EllipsisTextProps = {
     type: Number,
     default: 0,
   },
+  text: [String],
 }
 export default defineComponent({
   name: 'EllipsisText',
   props: EllipsisTextProps,
-  setup(props, { slots }) {
+  setup(props) {
     const container = ref<HTMLDivElement>()
     const spanRef = ref<HTMLSpanElement>()
     const attrs = useAttrs()
 
-    let premitiveText = ''
     const cssEntirely = computed<boolean>(() => {
       return !props.suffix && props.startEllipsisLine === 1
     })
 
     function autoElipsis(container: HTMLElement, textNode: HTMLSpanElement) {
-      const str = premitiveText
+      const str = props.text || ''
       textNode.textContent = str
       container.style.whiteSpace = 'nowrap'
       container.style.width = 'fit-content'
@@ -61,20 +61,24 @@ export default defineComponent({
         container.style.whiteSpace = 'normal'
       }
     }
-    nextTick(() => {
-      premitiveText = spanRef.value?.innerText ?? ''
-      console.log('nnnextcc..', premitiveText)
-    })
+    watch(
+      () => props.text,
+      () => {
+        if (container.value && spanRef.value) {
+          autoElipsis(container.value, spanRef.value)
+        }
+      },
+    )
+
     onMounted(() => {
-      premitiveText = spanRef.value?.innerText ?? ''
-      console.log('mmmmmutt..', premitiveText)
       if (container.value && spanRef.value) {
         autoElipsis(container.value, spanRef.value)
       }
     })
+
     return () => (
       <div ref={container} {...attrs}>
-        <span ref={spanRef}>{slots.default?.()}</span>
+        <span ref={spanRef}>{props.text}</span>
       </div>
     )
   },
