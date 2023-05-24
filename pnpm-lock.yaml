@@ -28,6 +28,7 @@ specifiers:
   cz-conventional-changelog: ^3.3.0
   dayjs: ^1.11.2
   dexie: ^3.2.2
+  echarts: ^5.4.2
   element-plus: ^2.2.2
   eslint: ^8.16.0
   eslint-config-prettier: ^8.5.0
@@ -90,6 +91,7 @@ dependencies:
   axios: 0.27.2
   dayjs: 1.11.6
   dexie: 3.2.2
+  echarts: 5.4.2
   element-plus: 2.2.19_vue@3.2.41
   lodash-es: 4.17.21
   monaco-editor: 0.33.0
@@ -3273,6 +3275,14 @@ packages:
     resolution:
       { integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA== }
     dev: true
+
+  /echarts/5.4.2:
+    resolution:
+      { integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA== }
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.4.3
+    dev: false
 
   /editorconfig/0.15.3:
     resolution:
@@ -7473,6 +7483,11 @@ packages:
       { integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg== }
     dev: true
 
+  /tslib/2.3.0:
+    resolution:
+      { integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg== }
+    dev: false
+
   /tslib/2.4.0:
     resolution:
       { integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ== }
@@ -8334,3 +8349,10 @@ packages:
     optionalDependencies:
       commander: 2.20.3
     dev: true
+
+  /zrender/5.4.3:
+    resolution:
+      { integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ== }
+    dependencies:
+      tslib: 2.3.0
+    dev: false

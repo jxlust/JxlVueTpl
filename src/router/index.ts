@@ -23,6 +23,7 @@ const WaterWall = () => import('@/views/water-wall/flex-col.vue')
 
 const ScrollPager = () => import('@/views/pager-scroll/index.vue')
 const FullScreen = () => import('@/views/full-screen/index.vue')
+const ChartDemo = () => import('@/views/echar-demo/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -108,6 +109,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/water-wall', name: 'water-wall', component: WaterWall },
   { path: '/pager-scroll', name: 'scroll-pager', component: ScrollPager },
   { path: '/screen', name: 'screen', component: FullScreen },
+  { path: '/chart', name: 'chart', component: ChartDemo },
 ]
 
 const router = createRouter({

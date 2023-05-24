@@ -78,12 +78,12 @@
   }
 
   const effectFunction = () => {
-    console.log('我是副作用方法')
+    console.log('我是副作用方法11')
   }
 
   //清除副作用
   const tryOnScopeDispose = (fn) => {
-    console.log('current scope:', getCurrentScope())
+    console.log('current scope1111:', getCurrentScope())
     if (getCurrentScope()) {
       onScopeDispose(fn)
       return true

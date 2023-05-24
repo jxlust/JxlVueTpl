@@ -66,6 +66,7 @@
     "axios": "^0.27.2",
     "dayjs": "^1.11.2",
     "dexie": "^3.2.2",
+    "echarts": "^5.4.2",
     "element-plus": "^2.2.2",
     "lodash-es": "^4.17.21",
     "monaco-editor": "^0.33.0",
