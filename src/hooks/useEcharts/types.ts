@@ -8,3 +8,12 @@ export enum ThemeType {
   Dark = 'dark',
   Default = 'default',
 }
+
+export interface BarValueImp {
+  labels: string[]
+  values: number[] | string[]
+}
+export interface PieValueImp {
+  name: string
+  value: number
+}
