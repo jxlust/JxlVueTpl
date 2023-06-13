@@ -24,6 +24,9 @@ const WaterWall = () => import('@/views/water-wall/flex-col.vue')
 const ScrollPager = () => import('@/views/pager-scroll/index.vue')
 const FullScreen = () => import('@/views/full-screen/index.vue')
 const ChartDemo = () => import('@/views/echar-demo/index.vue')
+const VirtualScroll = () => import('@/views/virtual-scroll/index.vue')
+
+const DragCol = () => import('@/views/drag-col/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -110,6 +113,8 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/pager-scroll', name: 'scroll-pager', component: ScrollPager },
   { path: '/screen', name: 'screen', component: FullScreen },
   { path: '/chart', name: 'chart', component: ChartDemo },
+  { path: '/drag', name: 'drag', component: DragCol },
+  { path: '/virtual', name: 'virtual', component: VirtualScroll },
 ]
 
 const router = createRouter({

@@ -1,18 +1,52 @@
 export const extend = Object.assign
 
 export function escapeSpecialCharacter(str: string) {
-  const pattern = /[`~!@#_$%^&*()=|{}':;',\\\[\\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？\s]/g
+  /* eslint-disable */
+  const pattern = /[`~!@#_$%^&*()+=|{}':;',\\\[\\\].<>/?~！@#￥……&*（）——{}【】‘；：”“'。，、？\s]/g
   return str.replace(pattern, (match) => '\\' + match)
 }
 
-export const regExpSearchName = (query: any, name: any, replaceStr: string) => {
+export const SearchReplaceString = '<span style="color: #F63433;">$1</span>'
+export const regExpReplaceText = (query: any, name: any, replaceStr: string) => {
   if (query && query.trim().length && name) {
     //区分大小写，不区分就i匹配
-    query = escapeSpecialCharacter(query)
-    const replaceReg = new RegExp(`(${query})`, 'ig')
+    // console.log('q:', query);
+    let replaceReg = new RegExp(`(${query})`, 'ig')
+    // console.log('r:', replaceReg);
     return name.replace(replaceReg, replaceStr)
   } else {
     return name
+  }
+}
+/**
+ * 高亮匹配搜索关键字
+ * @param content
+ * @param keywords string
+ * @returns 替换后的结果
+ */
+export const regSearchHtmlContent = (content: any, keywords: string) => {
+  if (keywords) {
+    // 过滤字符
+    keywords = escapeSpecialCharacter(keywords)
+    return regExpReplaceText(keywords, content, SearchReplaceString)
+  } else {
+    return content
+  }
+}
+/**
+ * 通过分词集合高亮匹配搜索关键字
+ * @param content
+ * @param keywords string[]
+ * @returns 替换后的结果
+ */
+export const regSearchHtmlContentByList = (content: any, keywords?: string[]) => {
+  if (keywords && keywords.length > 0) {
+    // 过滤特殊字符
+    const eacapeKeywords = keywords.map((item) => escapeSpecialCharacter(item))
+    let regString = eacapeKeywords.join('|')
+    return regExpReplaceText(regString, content, SearchReplaceString)
+  } else {
+    return content
   }
 }
 
@@ -27,4 +61,10 @@ export const randomInteger = (max: number) => {
  */
 export const getAssetsFile = (url: string) => {
   return new URL(`../assets/${url}`, import.meta.url).href
+}
+
+export const IsMobileClient = () => {
+  return navigator.userAgent.match(
+    /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i,
+  )
 }
