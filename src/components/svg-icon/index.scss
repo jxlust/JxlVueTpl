@@ -1,0 +1,15 @@
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.svg-icon-online {
+  background-color: currentColor;
+  mask-image: var(--svg-icon-url);
+  -webkit-mask-image: var(--svg-icon-url);
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  display: inline-block;
+}

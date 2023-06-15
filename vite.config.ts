@@ -12,6 +12,8 @@ import WindiCSS from 'vite-plugin-windicss'
 import compressPlugin from 'vite-plugin-compression'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import { viteFilemanagerHandler } from './filemanage.config.js'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+
 const CWD = process.cwd()
 
 // https://cn.vitejs.dev/config/
@@ -43,6 +45,12 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       vueJsx(),
       DefineOptions(),
       WindiCSS(),
+      createSvgIconsPlugin({
+        // 要缓存的图标文件夹
+        iconDirs: [resolve(__dirname, 'src/assets/svg')],
+        // 执行 icon name 的格式
+        symbolId: 'icon-[name]',
+      }),
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),

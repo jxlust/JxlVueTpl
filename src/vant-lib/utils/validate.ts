@@ -21,3 +21,12 @@ export function isMobile(value: string): boolean {
 export const isNumeric = (val: Numeric): val is string => typeof val === 'number' || /^\d+(\.\d+)?$/.test(val)
 
 export const isIOS = (): boolean => (inBrowser ? /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase()) : false)
+
+/**
+ * 是否在线链接
+ * @param path
+ * @returns
+ */
+export const isExternal = (path: string): boolean => {
+  return /^(https?:|mailto:|tel:)/.test(path)
+}

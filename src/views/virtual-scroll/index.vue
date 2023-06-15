@@ -1,5 +1,9 @@
 <template>
   <div class="virtual-scroll">
+    <SvgIcon class-name="test1" icon="http://localhost:8080/src/assets/svg/eye-open.svg" />
+    <SvgIcon class-name="test2" icon="eye" />
+
+    <img :src="img" alt="" />
     <!-- <FixedSizeScroll :width="300" :height="300" :item-size="50" :item-count="100">
       <template #default="{ item, index }">
         <span class="item">{{ item }} --- {{ index }}</span>
@@ -12,6 +16,8 @@
 <script setup lang="ts">
   import FixedSizeScroll from './FixedSizeScroll2'
   import Item from './item'
+  import SvgIcon from '@/components/svg-icon/SvgIcon'
+  import img from '@/assets/svg/eye-open.svg'
 </script>
 
 <style lang="scss">

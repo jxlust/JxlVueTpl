@@ -6,6 +6,8 @@ import { setupMyPlugin } from './plugins/myPlugin'
 import { setupStore } from './stores'
 import './styles/scss/main.scss'
 
+import 'virtual:svg-icons-register'
+
 const app = createApp(App)
 setupElementPlus(app)
 setupStore(app)
