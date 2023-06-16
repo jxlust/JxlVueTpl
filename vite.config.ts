@@ -13,6 +13,7 @@ import compressPlugin from 'vite-plugin-compression'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import { viteFilemanagerHandler } from './filemanage.config.js'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import VitePluginPrint from './plugins/vite-print-demo'
 
 const CWD = process.cwd()
 
@@ -41,6 +42,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // },
     },
     plugins: [
+      VitePluginPrint(),
       vue(),
       vueJsx(),
       DefineOptions(),
@@ -70,7 +72,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         ext: '.gz',
         deleteOriginFile: false, // 是否删除原始文件
       }),
-      viteFilemanagerHandler(mode),
+      // viteFilemanagerHandler(mode),
     ],
     // 使用这个必须在上面加/// <reference types="vitest" /> 不然会有类型报错
     test: {
@@ -111,7 +113,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),
-          pager2: resolve(__dirname, 'pager2/index.html'),
+          // pager2: resolve(__dirname, 'pager2/index.html'),
         },
         output: {
           manualChunks: {

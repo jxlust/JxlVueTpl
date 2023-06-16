@@ -6,6 +6,9 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Dialog: typeof import('./src/components/dialog/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElTree: typeof import('element-plus/es')['ElTree']
     Error: typeof import('./src/components/base/Error.vue')['default']
     Loading: typeof import('./src/components/base/Loading.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
