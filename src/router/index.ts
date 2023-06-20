@@ -25,7 +25,7 @@ const ScrollPager = () => import('@/views/pager-scroll/index.vue')
 const FullScreen = () => import('@/views/full-screen/index.vue')
 const ChartDemo = () => import('@/views/echar-demo/index.vue')
 const VirtualScroll = () => import('@/views/virtual-scroll/index.vue')
-
+const ToastDemo = () => import('@/views/toast/index.vue')
 const DragCol = () => import('@/views/drag-col/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
@@ -115,6 +115,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/chart', name: 'chart', component: ChartDemo },
   { path: '/drag', name: 'drag', component: DragCol },
   { path: '/virtual', name: 'virtual', component: VirtualScroll },
+  { path: '/toast', name: 'toast', component: ToastDemo },
 ]
 
 const router = createRouter({

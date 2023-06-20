@@ -1,0 +1,14 @@
+.test-pop {
+  position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+
+  white-space: pre-wrap;
+  word-break: break-all;
+  text-align: center;
+}

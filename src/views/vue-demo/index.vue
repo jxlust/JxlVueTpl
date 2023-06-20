@@ -32,6 +32,8 @@
     <SlideNumber />
     <CountDownSlider />
     <CountComponent />
+
+    <Message4 :title="'msfour'" />
   </div>
 </template>
 
@@ -39,7 +41,7 @@
   import { RenderByType } from './JudgeType'
   import { useMoreEventTools } from './moreEventTools'
   import AttrsRoot from './attrs-use/root.vue'
-  import { openDialog3 } from './renderTools'
+  import { openDialog3, Message4 } from './renderTools'
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
   import { renderColorButton } from './render-api/renderButton'
   import { TimerNumber, SlideNumber, CountDownSlider, CountComponent } from './timer-number/Number'
