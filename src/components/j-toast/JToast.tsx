@@ -10,6 +10,7 @@ const toastProps = {
   type: makeStringProp<ToastType>('text'),
   duration: makeNumberProp(2000),
   teleport: String,
+  transitionAppear: Boolean,
 }
 
 export type ToastProps = ExtractPropType<typeof toastProps>
@@ -38,6 +39,7 @@ export default defineComponent({
 
     const updateShow = (show: boolean) => emit('update:show', show)
     const onClosed = () => emit('closed')
+
     const onOpened = () => {
       console.log('onOpened')
     }
@@ -67,7 +69,6 @@ export default defineComponent({
     // }
 
     const layzRender = useLazyRender(() => props.show)
-
     const renderPop = layzRender(() => (
       <div v-show={props.show} class={'test-pop'}>
         <span>{props.message}</span>
@@ -79,13 +80,17 @@ export default defineComponent({
         <Transition
           v-slots={{ default: renderPop }}
           name="van-fade"
-          appear
+          appear={props.transitionAppear}
           onAfterEnter={onOpened}
           onAfterLeave={onClosed}
         />
       )
     }
-    const renderTeleport = () => <Teleport to={props.teleport}>{renderTransition()}</Teleport>
+    const renderTeleport = () => (
+      <div class={'test'}>
+        <Teleport to={props.teleport}>{renderTransition()}</Teleport>
+      </div>
+    )
 
     return () => (props.teleport ? renderTeleport() : renderTransition())
   },

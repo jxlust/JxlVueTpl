@@ -70,7 +70,7 @@ function Toast(options: MyToastOptions = {}) {
   const parsedOptions = parseOptions(options)
   toast.open(
     extend({}, parsedOptions, {
-      // teleport: 'body',
+      teleport: 'body',
     }),
   )
   return toast
