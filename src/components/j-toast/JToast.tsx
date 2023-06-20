@@ -1,4 +1,5 @@
-import './index.scss'
+// import './index.scss'
+import styles from './index.module.scss'
 
 import { makeNumberProp, makeStringProp } from '@/utils'
 import { ExtractPropType } from 'element-plus/es/utils'
@@ -36,7 +37,7 @@ export default defineComponent({
   emits: ['update:show', 'closed'],
   setup(props, { emit }) {
     let timer: NodeJS.Timeout
-
+    console.log(111, styles)
     const updateShow = (show: boolean) => emit('update:show', show)
     const onClosed = () => emit('closed')
 
@@ -70,7 +71,7 @@ export default defineComponent({
 
     const layzRender = useLazyRender(() => props.show)
     const renderPop = layzRender(() => (
-      <div v-show={props.show} class={'test-pop'}>
+      <div v-show={props.show} class={styles['test-pop']}>
         <span>{props.message}</span>
       </div>
     ))
@@ -86,11 +87,7 @@ export default defineComponent({
         />
       )
     }
-    const renderTeleport = () => (
-      <div class={'test'}>
-        <Teleport to={props.teleport}>{renderTransition()}</Teleport>
-      </div>
-    )
+    const renderTeleport = () => <Teleport to={props.teleport}>{renderTransition()}</Teleport>
 
     return () => (props.teleport ? renderTeleport() : renderTransition())
   },

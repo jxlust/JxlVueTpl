@@ -34,7 +34,7 @@ export function usePopupState() {
 export function mountComponent(RootComponent: Component) {
   const app = createApp(RootComponent)
   const root = document.createElement('div')
-
+  console.log('app:', app)
   document.body.appendChild(root)
 
   return {

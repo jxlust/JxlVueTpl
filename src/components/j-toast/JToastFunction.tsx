@@ -44,6 +44,7 @@ function createInstance() {
     },
   })
 
+  console.log('instance:', instance)
   return instance as ToastWrapperInstance
 }
 
