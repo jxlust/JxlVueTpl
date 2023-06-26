@@ -14,6 +14,7 @@
   import 'vant/lib/index.css'
   import JToast from '@/components/j-toast/JToast'
   import { Toast } from '@/components/j-toast/JToastFunction'
+  // import { GlobalColor, TestType, addFunction, addFunctionCalc } from 'types/info'
   // import { Toast } from 'vant'
   const show1 = ref(false)
   const isMultiple = ref(false)
@@ -42,6 +43,13 @@
     isMultiple.value = !isMultiple.value
     Toast.allowMultiple(isMultiple.value)
   }
+
+  let a: TestType = 'add'
+  console.log('TestType:', a)
+  console.log('GlobalColor:', GlobalColor)
+  console.log('addFunction:', addFunction)
+
+  // console.log('addFunctionCalc:', addFunctionCalc(1, 2))
 </script>
 
 <style lang="scss"></style>
