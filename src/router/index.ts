@@ -29,6 +29,7 @@ const ToastDemo = () => import('@/views/toast/index.vue')
 const DragCol = () => import('@/views/drag-col/index.vue')
 const VfromDesign = () => import('@/views/vform/design.vue')
 const VfromRender = () => import('@/views/vform/render.vue')
+const AutoRender = () => import('@/views/auto-render/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -120,6 +121,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/toast', name: 'toast', component: ToastDemo },
   { path: '/vform', name: 'vform', component: VfromDesign },
   { path: '/vform-render', name: 'vform-render', component: VfromRender },
+  { path: '/auto-render', name: 'auto-render', component: AutoRender },
 ]
 
 const router = createRouter({
