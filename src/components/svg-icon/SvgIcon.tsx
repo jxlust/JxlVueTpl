@@ -4,6 +4,18 @@ import './index.scss'
 export default defineComponent({
   name: 'SvgIcon',
   props: {
+    prefix: {
+      type: String,
+      default: 'icon',
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      default: '#333',
+    },
     // SVG 图标名称或在线URL
     icon: {
       type: String,

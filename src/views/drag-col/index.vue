@@ -15,11 +15,15 @@
       <div class="left-text"> <p>leftColRefsfasfasdfa</p> </div>
     </div>
     <div class="drag-col" ref="resizeRef" @mousedown="handleMouseDown"></div>
+
+    <ResizeBar />
+
     <div class="right"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import ResizeBar from './resize-bar.vue'
   interface Tree {
     label: string
     children?: Tree[]

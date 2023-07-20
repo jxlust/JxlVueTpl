@@ -27,6 +27,8 @@ const ChartDemo = () => import('@/views/echar-demo/index.vue')
 const VirtualScroll = () => import('@/views/virtual-scroll/index.vue')
 const ToastDemo = () => import('@/views/toast/index.vue')
 const DragCol = () => import('@/views/drag-col/index.vue')
+const VfromDesign = () => import('@/views/vform/design.vue')
+const VfromRender = () => import('@/views/vform/render.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -116,6 +118,8 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/drag', name: 'drag', component: DragCol },
   { path: '/virtual', name: 'virtual', component: VirtualScroll },
   { path: '/toast', name: 'toast', component: ToastDemo },
+  { path: '/vform', name: 'vform', component: VfromDesign },
+  { path: '/vform-render', name: 'vform-render', component: VfromRender },
 ]
 
 const router = createRouter({

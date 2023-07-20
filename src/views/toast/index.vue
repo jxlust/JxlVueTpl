@@ -48,7 +48,6 @@
   console.log('TestType:', a)
   console.log('GlobalColor:', GlobalColor)
   console.log('addFunction:', addFunction)
-
   // console.log('addFunctionCalc:', addFunctionCalc(1, 2))
 </script>
 
