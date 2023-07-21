@@ -13,7 +13,7 @@
     </div>
 
     <div class="test-content">
-      <button @click="changeSlot">动态插槽</button>
+      <button @click="changeSlot">动态插槽1</button>
       <SlotTest>
         <template #footer="{ data }">
           <span>
@@ -22,6 +22,15 @@
         </template>
         <template #[slotKey]> 我是动态插入内容 </template>
       </SlotTest>
+    </div>
+
+    <div class="test-content">
+      <p>多层级传递slot</p>
+      <ChildSlot>
+        body body
+        <template #header="scope"> header header {{ scope }} </template>
+        <template #footer="scope">footer {{ scope }}....</template>
+      </ChildSlot>
     </div>
 
     <div class="test-content">
@@ -38,19 +47,20 @@
 </template>
 
 <script lang="ts" setup>
-  import Login from './Login.vue';
-  import Register from './Register.vue';
-  import ShowText from './ShowText.vue';
-  import SlotTest from './SlotTest.vue';
-  import ErrorComponent from '@/components/base/Error.vue';
-  import LoadingComponent from '@/components/base/Loading.vue';
+  import ChildSlot from './ChildSlot.vue'
+  import Login from './Login.vue'
+  import Register from './Register.vue'
+  import ShowText from './ShowText.vue'
+  import SlotTest from './SlotTest.vue'
+  import ErrorComponent from '@/components/base/Error.vue'
+  import LoadingComponent from '@/components/base/Loading.vue'
   interface MyComponent {
-    name: string;
-    comp: any;
-    id: number;
+    name: string
+    comp: any
+    id: number
   }
-  type Comp = Pick<MyComponent, 'comp'>;
-  const includeComp = ['MyLogin', 'Register'];
+  type Comp = Pick<MyComponent, 'comp'>
+  const includeComp = ['MyLogin', 'Register']
   const lists: MyComponent[] = [
     {
       id: 1,
@@ -67,23 +77,23 @@
       name: 'text',
       comp: markRaw(ShowText),
     },
-  ];
+  ]
 
-  const compLists = ref<MyComponent[]>(lists);
+  const compLists = ref<MyComponent[]>(lists)
 
-  const currentComponent = ref<Comp>(lists[0].comp);
+  const currentComponent = ref<Comp>(lists[0].comp)
 
   const tabClick = (item: MyComponent) => {
-    currentComponent.value = item.comp;
-  };
+    currentComponent.value = item.comp
+  }
 
-  const slotKey = ref<string>('');
-  const keyLists: string[] = ['default', 'header', 'footer'];
+  const slotKey = ref<string>('')
+  const keyLists: string[] = ['default', 'header', 'footer']
   const changeSlot = () => {
-    let index = (Math.random() * 3) | 0;
-    console.log(index);
-    slotKey.value = keyLists[index];
-  };
+    let index = (Math.random() * 3) | 0
+    console.log(index)
+    slotKey.value = keyLists[index]
+  }
 
   //异步组件
   // const AsyncComp = defineAsyncComponent(() => import('@/package/my-test/AsyncComponent.vue'));
@@ -112,18 +122,18 @@
     onError(error, retry, fail, attempts) {
       if (error.message.match(/fetch/) && attempts <= 3) {
         // 请求发生错误时重试，最多可尝试 3 次
-        retry();
+        retry()
       } else {
         // 注意，retry/fail 就像 promise 的 resolve/reject 一样：
         // 必须调用其中一个才能继续错误处理。
-        fail();
+        fail()
       }
     },
-  });
+  })
 
   const handleUpdate = (test) => {
-    console.log('handleUpdate:', test);
-  };
+    console.log('handleUpdate:', test)
+  }
 </script>
 
 <style lang="scss">

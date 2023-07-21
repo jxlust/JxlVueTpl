@@ -1,36 +1,45 @@
 <template>
   <div>
-    <div class="render-item" v-for="conf in myRenderConfig" :key="conf.name">
-      <component :is="getRenderComp(conf)" />
-    </div>
-
-    <div class="render-item2" v-for="conf in myRenderConfig" :key="conf.name">
-      <component :is="getRenderComp2(conf)" />
-    </div>
+    <slot></slot>
+    <slot name="slotA"></slot>
+    <p> 动态加载组件：</p>
+    <p></p>
+    <AsyncRenderView :config="myRenderConfig1" />
+    <p> 全量加载组件：</p>
+    <p></p>
+    <RenderView :config="myRenderConfig2" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { defineAsyncComponent } from 'vue'
-  import AsyncWidget, { AllModules } from './widget'
-  console.log('AsyncWidget:', AsyncWidget)
-  console.log('AllModules:', AllModules)
-  const myRenderConfig = [
+  import AsyncRenderView from './async-render-view.vue'
+  import RenderView from './render-view.vue'
+
+  const myRenderConfig1 = [
     {
       name: 'text1',
-      options: [],
+      options: {
+        text: '异步导入',
+      },
     },
     {
       name: 'text2',
-      options: [],
+      options: { color: 'red' },
     },
   ]
-  const getRenderComp = (conf) => {
-    return defineAsyncComponent(AsyncWidget[conf.name])
-  }
-  const getRenderComp2 = (conf) => {
-    return AllModules[conf.name]
-  }
+
+  const myRenderConfig2 = [
+    {
+      name: 'text1',
+      options: {
+        text: '我是全量导出的组件哦',
+      },
+    },
+    {
+      name: 'text2',
+      options: { color: 'blue' },
+    },
+  ]
 </script>
 
 <style></style>
