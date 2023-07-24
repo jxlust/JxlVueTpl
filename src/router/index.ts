@@ -30,6 +30,8 @@ const DragCol = () => import('@/views/drag-col/index.vue')
 const VfromDesign = () => import('@/views/vform/design.vue')
 const VfromRender = () => import('@/views/vform/render.vue')
 const AutoRender = () => import('@/views/auto-render/index.vue')
+const AutoRender2 = () => import('@/views/auto-render2/index.vue')
+
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -122,6 +124,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/vform', name: 'vform', component: VfromDesign },
   { path: '/vform-render', name: 'vform-render', component: VfromRender },
   { path: '/auto-render', name: 'auto-render', component: AutoRender },
+  { path: '/auto-render2', name: 'auto-render2', component: AutoRender2 },
 ]
 
 const router = createRouter({
