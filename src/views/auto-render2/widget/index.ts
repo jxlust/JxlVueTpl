@@ -6,8 +6,9 @@ const AsyncComponent = {
     //vite glob 动态加载
     const asyncModulesFiles: any = import.meta.glob('./widget/**/*.tsx')
     // 采用动态加载的方式导出
-    for (const [key, value] of Object.entries(asyncModulesFiles)) {
-      console.error('loader glob :', key, value)
+    for (const key of Object.keys(asyncModulesFiles)) {
+      console.error('loader glob :', key)
+      const value = asyncModulesFiles[key]
       //名称 正则匹配出来
       const fileName = key.replace(/(.*\/)*([^.]+).*/gi, '$2')
       console.error('moduleName:', fileName)
