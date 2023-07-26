@@ -22,6 +22,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 环境变量
   const { VITE_BASE_URL } = loadEnv(mode, CWD)
   return {
+    root: '.',
     base: VITE_BASE_URL, // 设置打包路径
     css: {
       modules: {
@@ -93,6 +94,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           find: '@',
           replacement: resolve(__dirname, './src'),
         },
+        {
+          find: 'rootsrc',
+          replacement: resolve(__dirname, './src'),
+        },
+        { find: '~', replacement: resolve(__dirname, './') },
         { find: 'vue', replacement: 'vue/dist/vue.esm-bundler.js' },
       ],
       // 'vue': 'vue/dist/vue.esm-bundler.js' // 定义vue的别名，如果使用其他的插件，可能会用到别名
@@ -115,7 +121,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),
-          // pager2: resolve(__dirname, 'pager2/index.html'),
+          login: resolve(__dirname, '/login/index.html'),
+          pager2: resolve(__dirname, 'src/pager2/index.html'),
         },
         output: {
           manualChunks: {
