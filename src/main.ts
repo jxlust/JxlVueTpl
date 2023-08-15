@@ -11,12 +11,13 @@ import 'element-plus/dist/index.css' //引入element-plus样式
 import './styles/scss/main.scss'
 import 'vform3-builds/dist/designer.style.css' //引入VForm3样式
 import 'virtual:svg-icons-register'
-
+import { i18n } from './i18n'
 import { AsyncComponent } from '@/views/auto-render2/loader'
 const app = createApp(App)
 // setupElementPlus(app)
 setupStore(app)
 setupMyPlugin(app)
+app.use(i18n)
 app.use(ElementPlus)
 app.use(AsyncComponent)
 app.use(VForm3) //全局注册VForm3(同时注册了v-form-designe、v-form-render等组件)

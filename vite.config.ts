@@ -14,6 +14,7 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 import { viteFilemanagerHandler } from './filemanage.config.js'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VitePluginPrint from './plugins/vite-print-demo'
+import vueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 const CWD = process.cwd()
 
@@ -46,6 +47,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       VitePluginPrint(),
+      vueI18nPlugin({
+        include: resolve(__dirname, './src/i18n/locales/**'),
+      }),
       vue(),
       vueJsx(),
       DefineOptions(),
