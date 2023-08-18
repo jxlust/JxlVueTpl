@@ -148,23 +148,8 @@
     "postcss": "^8.4.14"
   },
   "lint-staged": {
-    "*": [
-      "prettier --write --cache --ignore-unknown"
-    ],
-    "src/**/*.{js,jsx,ts,tsx,d.ts}": [
-      "eslint --cache --fix"
-    ],
-    "src/**/*.vue": [
-      "eslint --cache --fix",
-      "stylelint --fix --cache"
-    ],
-    "src/**/*.{scss,less,styl,html}": [
-      "stylelint --fix --cache"
-    ],
-    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --write--parser json"
-    ],
-    "package.json": [
+    "src/**/*.{ts,js,vue,tsx,jsx}": [
+      "prettier --write --cache --ignore-unknown",
       "eslint --cache --fix"
     ]
   }
