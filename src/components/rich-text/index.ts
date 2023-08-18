@@ -1,5 +1,12 @@
-// import { VNode, h } from 'vue'
-import { Boot, IButtonMenu, DomEditor, IDomEditor, IModuleConf, SlateElement } from '@wangeditor/editor'
+import {
+  Boot,
+  IButtonMenu,
+  DomEditor,
+  IDomEditor,
+  IModuleConf,
+  SlateElement,
+  SlateDescendant,
+} from '@wangeditor/editor'
 import { h, VNode } from 'snabbdom'
 
 class MyLinkMenu implements IButtonMenu {
@@ -52,14 +59,14 @@ const myLinkMenuConf = {
  * @returns
  */
 export function withVoidMyLinkCheck<T extends IDomEditor>(editor: T) {
-  const { isVoid } = editor
+  const { isVoid, isInline } = editor
   const newEditor = editor
 
-  // newEditor.isInline = (elem) => {
-  //   const type = DomEditor.getNodeType(elem)
-  //   if (type === 'mylinktype') return true // 针对 type: attachment ，设置为 inline
-  //   return isInline(elem)
-  // }
+  newEditor.isInline = (elem) => {
+    const type = DomEditor.getNodeType(elem)
+    if (type === 'mylinktype') return true // 针对 type: attachment ，设置为 inline
+    return isInline(elem)
+  }
 
   newEditor.isVoid = (elem) => {
     const type = DomEditor.getNodeType(elem)
@@ -113,17 +120,79 @@ export function renderMyLinkDom(elem: SlateElement, children: VNode[] | null, ed
   return attachVnode
 }
 
+/**
+ * 渲染了自定义类型到编辑器，但是获取getHtml还是获取不到，需要定义 elemToHtml 函数
+ * 生成链接元素的 HTML
+ * @param elem 元素，即上文的 myResume
+ * @param childrenHtml 子节点的 HTML 代码，void 元素可忽略
+ * @returns 元素的 HTML 字符串
+ */
+function myLinkTypeToHtml(elem: SlateElement, childrenHtml: string): string {
+  // dataId: 111,
+  // href: 'http://www',
+  // content: '我是插入的链接',
+  // 获取元素的数据
+  const { dataId = '', href = '', content = '' }: any = elem
+
+  // 生成 HTML 代码
+  const html = `<a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="${dataId}" ${
+    href && `href="${href}"`
+  } target="_blank" >${content}</a>`
+
+  return html
+}
+
+/**
+ * 解析 HTML 字符串，生成元素
+ * @param domElem HTML 对应的 DOM Element
+ * @param children 子节点
+ * @param editor editor 实例
+ * @returns 元素，如上文的 myResume
+ */
+function parseMylinkTypeHtml(
+  domElem: HTMLAnchorElement,
+  children: SlateDescendant[],
+  editor: IDomEditor,
+): SlateElement {
+  // 从 DOM element 中获取自定义链接的信息
+  const dataId = domElem.getAttribute('data-id') || ''
+  const href = domElem.getAttribute('href') || ''
+  const content = domElem?.innerText || ''
+  // 生成链接元素（按照此前约定的数据结构）
+  const myResume = {
+    type: 'mylinktype',
+    href,
+    dataId,
+    content,
+    children: [{ text: '' }], // void node 必须有 children ，其中有一个空字符串，重要！！！
+  }
+
+  return myResume
+}
+
+// 自定义元素类型配置
 const renderElemConf: any = {
   // 新元素type
   type: 'mylinktype',
   renderElem: renderMyLinkDom,
 }
-
+// 元素转成html 提供给getHtml方法获取
+const elemToHtmlConf = {
+  type: 'mylinktype', // 新元素的 type ，重要！！！
+  elemToHtml: myLinkTypeToHtml,
+}
+// 解析自定义元素配置 解析到编辑器
+const parseHtmlConf = {
+  selector: 'a[data-w-e-type="mylinktype"]', // CSS 选择器，匹配特定的 HTML 标签
+  parseElemHtml: parseMylinkTypeHtml,
+}
+// 所有自定义模块
 const allModules: Partial<IModuleConf> = {
   menus: [myLinkMenuConf],
   editorPlugin: withVoidMyLinkCheck,
   renderElems: [renderElemConf],
-  // elemsToHtml: []
+  elemsToHtml: [elemToHtmlConf],
+  parseElemsHtml: [parseHtmlConf],
 }
 
 // 注册模块

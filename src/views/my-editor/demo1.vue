@@ -3,6 +3,10 @@
     <div class="btns">
       <ElButton>插入文本</ElButton>
       <ElButton>插入节点</ElButton>
+      <ElButton @click="setHtml">设置html</ElButton>
+      <ElButton @click="getRichContent">获取内容</ElButton>
+
+      <span>{{ showMessage }}</span>
     </div>
     <RichText
       ref="richTextRef"
@@ -27,10 +31,14 @@
   import { ElButton } from 'element-plus'
   import RichText from '@/components/rich-text/index.vue'
   const htmlContent = ref<string>('默认值。。。')
+  const testInserText = `<p><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a>默认值。。。</p>'`
 
   const dialogVisible = ref(false)
   const richTextRef = ref()
 
+  const setHtml = () => {
+    richTextRef.value.setRichHtml(testInserText)
+  }
   const insertNode = () => {
     const node = {
       type: 'mylinktype',
@@ -53,7 +61,12 @@
   const showMessage = ref('')
   const handleLinkClick = (data) => {
     console.log(data)
+    dialogVisible.value = true
     showMessage.value = JSON.stringify(data)
+  }
+  const getRichContent = () => {
+    console.log(1, htmlContent.value)
+    console.log(2, richTextRef.value.editorRef.getHtml())
   }
 </script>
 
