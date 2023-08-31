@@ -1,29 +1,29 @@
 <script setup lang="ts">
-  import { useRoute } from 'vue-router';
-  import { storeToRefs } from 'pinia';
-  import { v4 as uuidv4 } from 'uuid';
-  import { useCounterStore } from '@/stores/counter';
+  import { useRoute } from 'vue-router'
+  import { storeToRefs } from 'pinia'
+  import { v4 as uuidv4 } from 'uuid'
+  import { useCounterStore } from '@/stores/counter'
 
-  const uuid = uuidv4();
-  const route = useRoute();
-  console.log(route);
+  const uuid = uuidv4()
+  const route = useRoute()
+  console.log(route)
   withDefaults(defineProps<{ msg?: string }>(), {
     msg: 'default',
-  });
+  })
 
-  const counterStore = useCounterStore();
+  const counterStore = useCounterStore()
 
-  const { count, doubleCount, testData } = storeToRefs(counterStore);
+  const { count, doubleCount, testData } = storeToRefs(counterStore)
   // const { count, doubleCount } = counterStore;
-  const { increment, getTestData } = counterStore;
+  const { increment, getTestData } = counterStore
   // with autocompletion ✨
   // counter.$patch({ count: counter.count + 1 });
   // or using an action instead
   setTimeout(() => {
     getTestData().then((data) => {
-      console.log('data:', data);
-    });
-  }, 1000);
+      console.log('data:', data)
+    })
+  }, 1000)
 
   const unsubscribe = counterStore.$onAction(
     ({
@@ -34,20 +34,49 @@
       onError, // hook if the action throws or rejects
     }) => {
       // a shared variable for this specific action call
-      const startTime = Date.now();
+      const startTime = Date.now()
       // this will trigger before an action on `store` is executed
-      console.log(`Start "${name}" with params [${args.join(', ')}].store:${store}`);
+      console.log(`Start "${name}" with params [${args.join(', ')}].store:${store}`)
       // this will trigger if the action succeeds and after it has fully run.
       // it waits for any returned promised
       after((result) => {
-        console.log(`Finished "${name}" after ${Date.now() - startTime}ms.\nResult: ${result}.`);
-      });
+        console.log(`Finished "${name}" after ${Date.now() - startTime}ms.\nResult: ${result}.`)
+      })
       // this will trigger if the action throws or returns a promise that rejects
       onError((error) => {
-        console.warn(`Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`);
-      });
+        console.warn(`Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`)
+      })
     },
-  );
+  )
+
+  const myIsValue = ref('vv')
+
+  const clear = () => {
+    console.error('clear')
+  }
+
+  watchEffect((onCleanup) => {
+    console.error('watch1:', 1)
+    console.error('watch2:', myIsValue.value)
+    onCleanup(clear)
+  })
+  setTimeout(() => {
+    myIsValue.value = '222'
+  }, 1000)
+
+  const dd = ref('abc')
+  watch(
+    () => unref(dd),
+    (newV) => {
+      console.error('nnn:', newV)
+    },
+    {
+      immediate: true,
+    },
+  )
+  setTimeout(() => {
+    dd.value = 'xxxxx'
+  }, 1000)
 </script>
 
 <template>

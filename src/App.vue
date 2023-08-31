@@ -23,7 +23,7 @@
 
   <div class="view-container">
     <router-view v-slot="{ Component, route }">
-      <transition :name="route.meta?.transition || 'fade'">
+      <transition :name="route.meta?.transition as string || 'fade'" mode="default">
         <keep-alive :include="cachedViews" :max="5">
           <component :is="Component" />
         </keep-alive>

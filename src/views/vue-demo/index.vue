@@ -45,6 +45,7 @@
   import { vOnClickOutside } from '@/hooks/core/onClickDirective'
   import { renderColorButton } from './render-api/renderButton'
   import { TimerNumber, SlideNumber, CountDownSlider, CountComponent } from './timer-number/Number'
+  import { useEventListener } from '@/hooks/core/useEventListener'
 
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(
@@ -100,6 +101,14 @@
       console.log('color button click:', data)
     })
   }
+
+  useEventListener('click', (e) => {
+    console.error('点击事件1')
+  })
+
+  useEventListener('click', (e) => {
+    console.error('点击事件2')
+  })
 </script>
 
 <style></style>
