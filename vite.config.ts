@@ -15,6 +15,7 @@ import { viteFilemanagerHandler } from './filemanage.config.js'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VitePluginPrint from './plugins/vite-print-demo'
 import vueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import viteRemoveEs from './plugins/vite-remove-es'
 
 const CWD = process.cwd()
 
@@ -46,20 +47,20 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // },
     },
     plugins: [
-      VitePluginPrint(),
-      vueI18nPlugin({
-        include: resolve(__dirname, './src/i18n/locales/**'),
-      }),
+      // VitePluginPrint(),
+      // vueI18nPlugin({
+      //   include: resolve(__dirname, './src/i18n/locales/**'),
+      // }),
       vue(),
       vueJsx(),
       DefineOptions(),
-      WindiCSS(),
-      createSvgIconsPlugin({
-        // 要缓存的图标文件夹
-        iconDirs: [resolve(__dirname, 'src/assets/svg')],
-        // 执行 icon name 的格式
-        symbolId: 'icon-[name]',
-      }),
+      // WindiCSS(),
+      // createSvgIconsPlugin({
+      //   // 要缓存的图标文件夹
+      //   iconDirs: [resolve(__dirname, 'src/assets/svg')],
+      //   // 执行 icon name 的格式
+      //   symbolId: 'icon-[name]',
+      // }),
       legacy({
         targets: ['defaults', 'not IE 11'],
       }),
@@ -75,11 +76,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         // VantResolver
         resolvers: [ElementPlusResolver()],
       }),
-      compressPlugin({
-        ext: '.gz',
-        deleteOriginFile: false, // 是否删除原始文件
-      }),
+      // compressPlugin({
+      //   ext: '.gz',
+      //   deleteOriginFile: false, // 是否删除原始文件
+      // }),
       // viteFilemanagerHandler(mode),
+      viteRemoveEs({
+        isRemove: true,
+      }),
     ],
     // 使用这个必须在上面加/// <reference types="vitest" /> 不然会有类型报错
     test: {
@@ -124,20 +128,47 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       },
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
-          login: resolve(__dirname, '/login/index.html'),
-          pager2: resolve(__dirname, 'src/pager2/index.html'),
+          main: resolve(__dirname, 'index-test.html'),
         },
         output: {
-          manualChunks: {
-            // jsonWorker: [`${prefix}/language/json/json.worker`],
-            // cssWorker: [`${prefix}/language/css/css.worker`],
-            // htmlWorker: [`${prefix}/language/html/html.worker`],
-            // tsWorker: [`${prefix}/language/typescript/ts.worker`],
-            // editorWorker: [`${prefix}/editor/editor.worker`],
+          // manualChunks: {
+          //   'vue-vendor': ['vue', 'vue-router', 'pinia'],
+          // },
+          // 最小化拆分包
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString()
+            }
           },
+          entryFileNames: 'js/[name].[hash].js',
+          // 用于命名代码拆分时创建的共享块的输出命名
+          chunkFileNames: 'js/[name].[hash].js',
+          assetFileNames: '[ext]/[name].[hash].[ext]',
+          // 拆分js到模块文件夹
+          // chunkFileNames: (chunkInfo) => {
+          //   const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/') : []
+          //   const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]'
+          //   return `js/${fileName}/[name].[hash].js`
+          // },
         },
       },
+
+      // rollupOptions: {
+      //   input: {
+      //     main: resolve(__dirname, 'index.html'),
+      //     login: resolve(__dirname, '/login/index.html'),
+      //     pager2: resolve(__dirname, 'src/pager2/index.html'),
+      //   },
+      //   output: {
+      //     manualChunks: {
+      //       // jsonWorker: [`${prefix}/language/json/json.worker`],
+      //       // cssWorker: [`${prefix}/language/css/css.worker`],
+      //       // htmlWorker: [`${prefix}/language/html/html.worker`],
+      //       // tsWorker: [`${prefix}/language/typescript/ts.worker`],
+      //       // editorWorker: [`${prefix}/editor/editor.worker`],
+      //     },
+      //   },
+      // },
     },
     optimizeDeps: {
       include: ['@vueuse/core', 'element-plus', 'vant', 'lodash-es', 'vuedraggable'],
