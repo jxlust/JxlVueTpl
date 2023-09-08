@@ -31,7 +31,7 @@ const VfromDesign = () => import('@/views/vform/design.vue')
 const VfromRender = () => import('@/views/vform/render.vue')
 const AutoRender = () => import('@/views/auto-render/index.vue')
 const AutoRender2 = () => import('@/views/auto-render2/index.vue')
-
+const Xlsx = () => import('@/views/xlsx/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -49,6 +49,7 @@ const routes: Array<RouteRecordRaw> = [
     //   },
     // ],
   },
+
   {
     path: '/textover',
     name: 'textover',
@@ -57,6 +58,15 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true,
     },
     component: TestVue,
+  },
+  {
+    path: '/xlsx',
+    name: 'xlsx',
+    meta: {
+      title: 'my xlsx',
+      keepAlive: true,
+    },
+    component: Xlsx,
   },
   {
     path: '/test',

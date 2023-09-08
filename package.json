@@ -84,7 +84,9 @@
     "vue-i18n": "^9.2.2",
     "vue-request": "^2.0.3",
     "vue-router": "^4.0.15",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^2.24.3",
+    "xlsx": "^0.18.5",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.1",
