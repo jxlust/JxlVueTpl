@@ -17,7 +17,7 @@
     const aoa = [
       ['姓名', '性别', '年龄', '注册时间'],
       ['张三', '男', 18, new Date()],
-      ['李四', '女', 22, new Date()],
+      ['李四', `<a href="http://www.baidu.com">sdf女</a>`, 22, new Date()],
     ]
     // 导出的表格名称
     const filename = '导出表格.xlsx'
@@ -25,6 +25,8 @@
     const ws_name = 'Sheet1'
     const wb = utils.book_new()
     const ws = utils.aoa_to_sheet(aoa)
+    // ws['A2'].l = { Target: 'http://www.baidu.com', ToolTip: 'hhhhhh' }
+    ws['A2'].r = '<a href="http://www.baidu.com">hhhh</a>'
     utils.book_append_sheet(wb, ws, ws_name) // 将数据添加到工作薄
     writeFile(wb, filename) // 导出Excel
   }
