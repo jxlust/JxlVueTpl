@@ -1,4 +1,4 @@
-let env = process.env;
+let env = process.env
 // console.log('my en:',env.NODE_ENV)
 // vssnano 插件 压缩，提高代码运行速度
 // let cssnano = require("cssnano");
@@ -37,13 +37,13 @@ module.exports = {
       AtRule: {
         charset: (atRule) => {
           if (atRule.name === 'charset') {
-            atRule.remove();
+            atRule.remove()
           }
         },
       },
     },
     // require('postcss-flexbugs-fixes'),
   ],
-};
+}
 
 // module.exports.postcss = true;

@@ -16,6 +16,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VitePluginPrint from './plugins/vite-print-demo'
 import vueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import viteRemoveEs from './plugins/vite-remove-es'
+import viteDeleteFile from './plugins/vite-delete-file.js'
 
 const CWD = process.cwd()
 
@@ -83,6 +84,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // viteFilemanagerHandler(mode),
       viteRemoveEs({
         isRemove: true,
+      }),
+      viteDeleteFile({
+        target: ['./www/assets/main-[^legacy]*.js'],
       }),
     ],
     // 使用这个必须在上面加/// <reference types="vitest" /> 不然会有类型报错
@@ -155,9 +159,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html'),
-          login: resolve(__dirname, '/login/index.html'),
-          pager2: resolve(__dirname, 'src/pager2/index.html'),
+          main: resolve(__dirname, 'index-test.html'),
+          // login: resolve(__dirname, '/login/index.html'),
+          // pager2: resolve(__dirname, 'src/pager2/index.html'),
         },
         output: {
           manualChunks: {

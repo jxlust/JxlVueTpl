@@ -16,9 +16,10 @@
   import '@wangeditor/editor/dist/css/style.css' // 引入 css
   import { onBeforeUnmount, ref, shallowRef } from 'vue'
   import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-  import { DomEditor, IToolbarConfig } from '@wangeditor/editor'
+  import { DomEditor, IToolbarConfig, SlateTransforms } from '@wangeditor/editor'
+  // import { Editor, Range, Transforms } from 'slate'
+
   import './index'
-  import { resolve } from 'path'
 
   type InsertFnType = (url: string, alt: string, href: string) => void
 
@@ -33,6 +34,12 @@
   // 编辑器实例，必须用 shallowRef
   const editorRef = shallowRef()
   const valueHtml = ref(props.content)
+  watch(
+    () => props.content,
+    (newV) => {
+      valueHtml.value = newV
+    },
+  )
   const uploadImageConfig = {
     // server: '/api/upload',
     // 小于该值就插入 base64 格式（而不上传），默认为 0
@@ -130,16 +137,34 @@
   }
   const handleChange = (editor) => {
     emit('update:content', valueHtml.value)
-
     const toolbar = DomEditor.getToolbar(editor)
-    console.log(toolbar, toolbar?.getConfig().toolbarKeys)
+    // console.log(toolbar, toolbar?.getConfig().toolbarKeys)
   }
   const setRichHtml = (html: string) => {
     editorRef.value.setHtml(html)
   }
+
+  const insertMyLinkNode = (node: any) => {
+    // 链接前后插入空格，方便操作
+    // editorRef.value.insertNode(node)
+    // editorRef.value.insertText(' ')
+
+    // 还原选区
+    // 还原选区
+    editorRef.value.restoreSelection()
+    editorRef.value.insertNode(node)
+    editorRef.value.insertText('hh')
+    // editorRef.value.insertFragment([{ text: ' ' }])
+    editorRef.value.move(1)
+
+    // SlateTransforms.insertNodes(editorRef.value, node)
+    // https://github.com/wangeditor-team/wangEditor/issues/332
+    // 不能直接使用 insertText, 会造成添加的空格被添加到链接文本中，参考上面 issue，替换为 insertFragment 方式添加空格
+  }
   defineExpose({
     editorRef,
     setRichHtml,
+    insertMyLinkNode,
   })
 </script>
 

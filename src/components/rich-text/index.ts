@@ -6,6 +6,7 @@ import {
   IModuleConf,
   SlateElement,
   SlateDescendant,
+  SlateTransforms,
 } from '@wangeditor/editor'
 import { h, VNode } from 'snabbdom'
 
@@ -59,7 +60,7 @@ const myLinkMenuConf = {
  * @returns
  */
 export function withVoidMyLinkCheck<T extends IDomEditor>(editor: T) {
-  const { isVoid, isInline } = editor
+  const { isVoid, isInline, normalizeNode } = editor
   const newEditor = editor
 
   newEditor.isInline = (elem) => {
@@ -70,9 +71,43 @@ export function withVoidMyLinkCheck<T extends IDomEditor>(editor: T) {
 
   newEditor.isVoid = (elem) => {
     const type = DomEditor.getNodeType(elem)
-    if (type === 'mylinktype') return true // 针对 type: attachment ，设置为 void
+    if (type === 'mylinktype') return true // 针对 type: mylinktype ，设置为 void
     return isVoid(elem)
   }
+
+  // newEditor.insertData = (data: DataTransfer) => {
+  //   console.log(1, data)
+  // }
+  // 重新 normalize
+  // newEditor.normalizeNode = ([node, path]) => {
+  //   const type = DomEditor.getNodeType(node)
+  //   if (type !== 'mylinktype') {
+  //     // 未命中 link-card ，执行默认的 normalizeNode
+  //     return normalizeNode([node, path])
+  //   }
+
+  //   // editor 顶级 node
+  //   const topLevelNodes = newEditor.children || []
+
+  //   // --------------------- link-card 后面必须跟一个 p header blockquote（否则后面无法继续输入文字） ---------------------
+  //   const nextNode = topLevelNodes[path[0] + 1] || {}
+  //   console.log('topLevelNodes:', topLevelNodes)
+  //   console.log('nextNode:', nextNode)
+  //   const nextNodeType = DomEditor.getNodeType(nextNode)
+  //   if (nextNodeType !== 'paragraph' && nextNodeType !== 'blockquote' && !nextNodeType.startsWith('header')) {
+  //     // link-card node 后面不是 p 或 header ，则插入一个空 p
+  //     const insertPath = [path[0] + 1]
+  //     console.log('path:', insertPath)
+  //     console.log('xx:', path)
+  //     console.log('node:', node)
+  //     // SlateTransforms.move(newEditor, { edge: 'end' })
+  //     // SlateTransforms.insertNodes(newEditor, p, {
+  //     //   at: insertPath, // 在 link-card 后面插入
+  //     // })
+  //     SlateTransforms.insertText(newEditor, 'HH')
+  //   }
+  // }
+
   return newEditor // 返回 newEditor
 }
 
@@ -107,7 +142,7 @@ export function renderMyLinkDom(elem: SlateElement, children: VNode[] | null, ed
       on: {
         click(e) {
           e.preventDefault()
-          e.stopPropagation()
+          // e.stopPropagation()
           editor.emit('mylink-click', elem)
           console.log('clicked', content)
         },
@@ -137,7 +172,7 @@ function myLinkTypeToHtml(elem: SlateElement, childrenHtml: string): string {
   // 生成 HTML 代码
   const html = `<a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="${dataId}" ${
     href && `href="${href}"`
-  } target="_blank" >${content}</a>`
+  } target="_blank" >${content}</a> `
 
   return html
 }

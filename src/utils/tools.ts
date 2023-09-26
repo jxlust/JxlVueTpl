@@ -68,3 +68,7 @@ export const IsMobileClient = () => {
     /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i,
   )
 }
+
+export function replaceSymbols(str: string) {
+  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}

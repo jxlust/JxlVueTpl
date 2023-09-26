@@ -31,25 +31,29 @@
   import { ElButton } from 'element-plus'
   import RichText from '@/components/rich-text/index.vue'
   const htmlContent = ref<string>('默认值。。。')
-  const testInserText = `<p><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a>默认值。。。</p>'`
+  const testInserText = `<p><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a><a data-w-e-type="mylinktype" data-w-e-is-void data-w-e-is-inline data-id="111" href="http://www" target="_blank" >我是插入的链接</a></p>'`
 
   const dialogVisible = ref(false)
   const richTextRef = ref()
 
   const setHtml = () => {
-    richTextRef.value.setRichHtml(testInserText)
+    // richTextRef.value.setRichHtml(testInserText)
+    htmlContent.value = testInserText
   }
+
   const insertNode = () => {
     const node = {
       type: 'mylinktype',
       dataId: 111,
       href: 'http://www',
-      content: '我是插入的链接',
+      content: '我是内容啊啥的发',
       // 这个必须要一个children
+      // children: [{ text: '' }],
       children: [{ text: '' }],
     }
-    richTextRef.value.editorRef.insertNode(node)
+    richTextRef.value.insertMyLinkNode(node)
   }
+
   const sureClick = () => {
     dialogVisible.value = false
     insertNode()
