@@ -159,6 +159,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 
       rollupOptions: {
         input: {
+          // main: resolve(__dirname, 'index-test.html'),
           main: resolve(__dirname, 'index.html'),
           login: resolve(__dirname, '/login/index.html'),
           pager2: resolve(__dirname, 'src/pager2/index.html'),

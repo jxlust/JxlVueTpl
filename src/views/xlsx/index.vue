@@ -108,20 +108,24 @@
       },
     }
 
-    ws['A2'].s = {
-      font: {
-        sz: 13,
-        bold: true,
-        color: {
-          rgb: 'FFFFAA00',
+    for (let v of ['A2', 'B2', 'C2', 'D2']) {
+      ws[v].s = {
+        font: {
+          sz: 13,
+          bold: true,
+          color: {
+            rgb: 'FFFFAA00',
+          },
         },
-      },
-      alignment: {
-        horizontal: 'center',
-        vertical: 'center',
-        wrap_text: true,
-      },
+        fill: { fgColor: { rgb: '999999' } },
+        alignment: {
+          horizontal: 'center',
+          vertical: 'center',
+          wrap_text: true,
+        },
+      }
     }
+
     //控制单元格宽度
     ws['!cols'] = [
       {
