@@ -16,6 +16,7 @@
   "bugs": {
     "url": ""
   },
+  "type": "module",
   "homepage": "https://jxlust.github.io/JxlVueTpl",
   "engines": {
     "node": "^12 || >=14"

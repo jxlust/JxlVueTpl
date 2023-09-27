@@ -11,7 +11,7 @@ import Components from 'unplugin-vue-components/vite'
 import WindiCSS from 'vite-plugin-windicss'
 import compressPlugin from 'vite-plugin-compression'
 import DefineOptions from 'unplugin-vue-define-options/vite'
-import { viteFilemanagerHandler } from './filemanage.config.js'
+import { viteFilemanagerHandler } from './filemanage.config.cjs'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VitePluginPrint from './plugins/vite-print-demo'
 import vueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
@@ -159,9 +159,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index-test.html'),
-          // login: resolve(__dirname, '/login/index.html'),
-          // pager2: resolve(__dirname, 'src/pager2/index.html'),
+          main: resolve(__dirname, 'index.html'),
+          login: resolve(__dirname, '/login/index.html'),
+          pager2: resolve(__dirname, 'src/pager2/index.html'),
         },
         output: {
           manualChunks: {
