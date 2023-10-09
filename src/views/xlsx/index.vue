@@ -1,15 +1,27 @@
 <template>
   <div>
-    1
-    <el-button @click="exportClick1">导出1</el-button>
-    <el-button @click="exportClick2">导出2</el-button>
-    <el-button @click="exportClick3">导出3</el-button>
+    <div class="flex">
+      <el-button @click="exportClick1">导出1</el-button>
+      <el-button @click="exportClick2">导出2</el-button>
+      <el-button @click="exportClick3">导出3</el-button>
+    </div>
+
+    <div class="flex">
+      <div class="upload-btn">
+        <input @change="handleFileChange" accept=".docx" type="file" autocomplete="off" tabindex="-1" />
+      </div>
+    </div>
+
+    <div class="flex">
+      <div ref="docxShowRef" class="docx-preview"></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   // import { writeFile, utils } from 'xlsx'
   import { utils, writeFile } from 'xlsx-js-style'
+  import { renderAsync, defaultOptions } from 'docx-preview'
 
   // XLSX.writeFile()
   const exportClick1 = () => {
@@ -155,6 +167,31 @@
     utils.book_append_sheet(wb, ws, ws_name) // 将数据添加到工作薄
     writeFile(wb, filename) // 导出Exce
   }
+
+  const docxShowRef = ref()
+  const docxOptions = Object.assign(defaultOptions, {
+    debug: true,
+    experimental: true,
+  })
+  const renderDocxPreview = async (file) => {
+    // const blob = URL.createObjectURL(file)
+    console.log(2, file)
+    // console.log(1, blob)
+    console.log(1, docxShowRef.value)
+    let ret = await renderAsync(file, docxShowRef.value, undefined, docxOptions)
+    console.log('ret:', ret)
+  }
+  const handleFileChange = (e) => {
+    const files = (e.target as HTMLInputElement).files
+    if (!files) return
+    console.log('files:', files)
+    renderDocxPreview(files[0])
+  }
 </script>
 
-<style></style>
+<style lang="scss">
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+</style>

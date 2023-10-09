@@ -32,6 +32,7 @@ const VfromRender = () => import('@/views/vform/render.vue')
 const AutoRender = () => import('@/views/auto-render/index.vue')
 const AutoRender2 = () => import('@/views/auto-render2/index.vue')
 const Xlsx = () => import('@/views/xlsx/index.vue')
+const amisTest = () => import('@/views/amis-test/index.vue')
 const routes: Array<RouteRecordRaw> = [
   { path: '/:pathMatch(.*)', component: NotFoundComponent },
   {
@@ -135,6 +136,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/vform-render', name: 'vform-render', component: VfromRender },
   { path: '/auto-render', name: 'auto-render', component: AutoRender },
   { path: '/auto-render2', name: 'auto-render2', component: AutoRender2 },
+  { path: '/amisTest', name: 'amisTest', component: amisTest },
 ]
 
 const router = createRouter({
