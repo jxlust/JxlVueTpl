@@ -86,6 +86,9 @@ dependencies:
   vant:
     specifier: ^3.4.9
     version: 3.6.4(vue@3.2.41)
+  veaury:
+    specifier: ^2.3.12
+    version: 2.3.12(react-dom@17.0.2)(react@16.14.0)
   vform3-builds:
     specifier: ^3.0.10
     version: 3.0.10
@@ -104,9 +107,6 @@ dependencies:
   vuedraggable:
     specifier: ^2.24.3
     version: 2.24.3
-  vuera:
-    specifier: ^0.2.7
-    version: 0.2.7(react-dom@17.0.2)(react@16.14.0)(vue@3.2.41)
   xlsx:
     specifier: ^0.18.5
     version: 0.18.5
@@ -11015,6 +11015,16 @@ packages:
       mutation-observer: 1.0.3
     dev: true
 
+  /veaury@2.3.12(react-dom@17.0.2)(react@16.14.0):
+    resolution: {integrity: sha512-RC1WwpVMDrXgEDTU4p3FGVtlmzob0EBBGejJYmBVyYm+yGFkjMWLjn9i8q9ep2i2W15G1az6pvjCTEBBiwgUgw==}
+    peerDependencies:
+      react: '>= 16.4.0'
+      react-dom: '>= 16.4.0'
+    dependencies:
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
+    dev: false
+
   /vform3-builds@3.0.10:
     resolution: {integrity: sha512-sULNk72Z6NG94X9MMgpBwinaIOYjtl7Bn5jZbV9iZaglSYr2SHm/wpXPAjl8F8OW6SzOOJgIpRek+NvOvN7wsg==}
     dev: false
@@ -11323,18 +11333,6 @@ packages:
     resolution: {integrity: sha512-6/HDXi92GzB+Hcs9fC6PAAozK1RLt1ewPTLjK0anTYguXLAeySDmcnqE8IC0xa7shvSzRjQXq3/+dsZ7ETGF3g==}
     dependencies:
       sortablejs: 1.10.2
-    dev: false
-
-  /vuera@0.2.7(react-dom@17.0.2)(react@16.14.0)(vue@3.2.41):
-    resolution: {integrity: sha512-MZErNEK+xXjxBzIDFL9cdEtX3TDZk4pMJGB+WLrlFOVro9okS/FeOSpdPFkpdyZUImZN/or4CrmztA932ChGEQ==}
-    peerDependencies:
-      react: '>= 15.2.0'
-      react-dom: '>= 15.2.0'
-      vue: '>= 2.2'
-    dependencies:
-      react: 16.14.0
-      react-dom: 17.0.2(react@16.14.0)
-      vue: 3.2.41
     dev: false
 
   /warning@4.0.3:

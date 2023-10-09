@@ -5,11 +5,11 @@
 // import 'amis/lib/helper.css'
 // import 'amis/sdk/sdk.css'
 // import 'amis-editor/dist/style.css'
-// import 'amis/sdk/sdk.js'
+import 'amis/sdk/sdk.js'
 
 import { BasePlugin } from 'amis-editor'
 import { Editor } from 'amis-editor'
-import { ReactInVue } from 'vuera'
+import { applyPureReactInVue, applyReactInVue } from 'veaury'
 
 class MyRendererPlugin extends BasePlugin {
   rendererName = 'my-renderer'
@@ -72,7 +72,7 @@ const myPlugins = [MyRendererPlugin]
 export default defineComponent({
   name: 'MyEditor',
   setup() {
-    const MyVueEditor = ReactInVue(Editor)
+    const MyVueEditor = applyPureReactInVue(Editor)
     return () => <MyVueEditor />
   },
 })

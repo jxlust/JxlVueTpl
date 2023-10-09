@@ -1,4 +1,4 @@
-import { defineComponent, createApp, Component, render, VNode } from 'vue'
+import { defineComponent, createApp, Component, render, VNode, h } from 'vue'
 import './index.scss'
 const ColorButton = defineComponent({
   props: {

@@ -17,6 +17,8 @@ import VitePluginPrint from './plugins/vite-print-demo'
 import vueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import viteRemoveEs from './plugins/vite-remove-es'
 import viteDeleteFile from './plugins/vite-delete-file.js'
+// >= veaury@2.1.1
+import veauryVitePlugins from 'veaury/vite/index.js'
 
 const CWD = process.cwd()
 
@@ -54,6 +56,18 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       }),
       vue(),
       vueJsx(),
+      // When the type of veauryVitePlugins is set to vue,
+      // only jsx in files in the directory named 'react_app' will be parsed with react jsx,
+      // and jsx in other files will be parsed with vue jsx
+      // veauryVitePlugins({
+      //   type: 'vue',
+      //   // Configuration of @vitejs/plugin-vue
+      //   // vueOptions: {...},
+      //   // Configuration of @vitejs/plugin-react
+      //   // reactOptions: {...},
+      //   // Configuration of @vitejs/plugin-vue-jsx
+      //   // vueJsxOptions: {...}
+      // }),
       DefineOptions(),
       // WindiCSS(),
       createSvgIconsPlugin({
