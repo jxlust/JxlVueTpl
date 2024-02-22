@@ -72,3 +72,19 @@ export const IsMobileClient = () => {
 export function replaceSymbols(str: string) {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
+
+export const filterHashSelfUrl = (url: string) => {
+  // const HostMap = ['ido.sit.sf-express.com', 'ido.sf-express.com', 'ask.sit.sf-express.com', 'ask.sf-express.com'];
+  const currentHost = true
+  try {
+    const urlObj = new URL(url)
+    if (currentHost && urlObj.hash) {
+      // 自己域名下且有hash值,去掉hash
+      return url.replace('/#/', '/')
+    } else {
+      return url
+    }
+  } catch (_) {
+    return url
+  }
+}

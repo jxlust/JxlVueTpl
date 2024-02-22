@@ -7,6 +7,7 @@
 /tmp
 /www
 /out-tsc
+lib
 *.zip
 static-test
 .stylelintcache

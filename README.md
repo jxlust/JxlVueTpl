@@ -4,7 +4,7 @@
 
 1. 提升开发效率
 2. 代码质量
-3. 统一规范和风格xxxx
+3. 统一规范和风格 xxxx
 
 ## 命名规范
 
@@ -234,6 +234,13 @@ pnpm add @wangeditor/editor @wangeditor/editor-for-vue@next
 ```shell
 eslint --cache --fix
 #加上 --cache 检测
+```
+
+## amis
+
+```json
+"amis": "^3.4.2",
+"amis-editor": "^5.6.1",
 ```
 
 > 文章出自：jxlust https://github.com/jxlust/JxlVueTpl

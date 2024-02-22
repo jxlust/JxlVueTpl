@@ -110,8 +110,19 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 模拟dom环境
       environment: 'happy-dom',
       // 支持tsx,jsx
-      transformMode: {
-        web: [/.[tj]sx$/],
+      // transformMode: {
+      //   web: [/.[tj]sx$/],
+      // },
+      browser: {
+        enabled: true,
+        name: 'chrome', // browser name is required
+      },
+      reporters: ['default', 'html'],
+      coverage: {
+        enabled: true,
+        provider: 'v8',
+        cleanOnRerun: true,
+        reporter: ['text', 'json', 'html'],
       },
     },
     resolve: {
