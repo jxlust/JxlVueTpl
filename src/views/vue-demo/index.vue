@@ -34,6 +34,9 @@
     <CountComponent />
 
     <Message4 :title="'msfour'" />
+
+    <!--  联动 调试-->
+    <SelectInput />
   </div>
 </template>
 
@@ -46,6 +49,7 @@
   import { renderColorButton } from './render-api/renderButton'
   import { TimerNumber, SlideNumber, CountDownSlider, CountComponent } from './timer-number/Number'
   import { useEventListener } from '@/hooks/core/useEventListener'
+  import SelectInput from './SelectInput.vue'
 
   const number = ref(100)
   const StringComp = defineAsyncComponent<any>(

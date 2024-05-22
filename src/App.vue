@@ -1,5 +1,15 @@
 <script setup lang="ts">
-  onMounted(() => {})
+  // import '../lib/my-packages.umd.cjs'
+  import { Button, reactCommonRender, Text } from '../lib/my-packages.js'
+  import '../lib/style.css'
+
+  const demoRef = ref<any>(null)
+  onMounted(() => {
+    console.log('ref:', demoRef.value)
+    const child = Text({ text: '我是个花里胡哨的字' })
+    const demoNode = Button({ level: '第一条：', children: child })
+    reactCommonRender(demoRef.value, demoNode)
+  })
 
   // 注意一定要更name一致
   const cachedViews = ['Test']
@@ -7,6 +17,7 @@
 </script>
 
 <template>
+  <div ref="demoRef"></div>
   <header class="header">
     <h1>Hello App!</h1>
   </header>
