@@ -15,15 +15,15 @@
   const options = [
     {
       value: '1',
-      label: 'Option1',
+      label: 'A',
     },
     {
       value: '2',
-      label: 'Option2',
+      label: 'B',
     },
     {
       value: '3',
-      label: 'Option3',
+      label: '清空',
     },
   ]
 
