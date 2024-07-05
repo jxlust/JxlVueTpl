@@ -6,8 +6,11 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Dialog: typeof import('./src/components/dialog/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElOption: typeof import('element-plus/es')['ElOption']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     Error: typeof import('./src/components/base/Error.vue')['default']
     Loading: typeof import('./src/components/base/Loading.vue')['default']

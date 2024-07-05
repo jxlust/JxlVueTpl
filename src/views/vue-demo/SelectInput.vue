@@ -53,12 +53,4 @@
     inputValue.value = ''
   }
   const handleInput = (v) => {}
-  // const handleInput = (v) => {
-  //   console.log(v)
-  //   const preStr = selectValue.value + '_'
-  //   const index = v.indexOf(preStr)
-  //   if (index >= 0) {
-  //     inputValue.value = v.slice(index + preStr.length)
-  //   }
-  // }
 </script>
