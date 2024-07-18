@@ -1,5 +1,6 @@
-import { KeepAlive, Transition } from 'vue'
 import { RouterView } from 'vue-router'
+import { KeepAlive, Transition } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Test',

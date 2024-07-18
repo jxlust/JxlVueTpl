@@ -1,0 +1,191 @@
+@keyframes ant-line {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+.ioh-drag-class {
+}
+.ioh-ghost-class {
+  background-color: #c1d0f1 !important;
+  border: 1px dashed #3371ff;
+  opacity: 0.8;
+}
+.drawing-board {
+  height: 100%;
+  position: relative;
+
+  .sortable-ghost {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    &::before {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: rgb(89, 89, 223);
+      z-index: 2;
+    }
+  }
+}
+
+.scheduler-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 99;
+  .top-toolbar {
+    height: 46px;
+    line-height: 46px;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .back-btn {
+      cursor: pointer;
+    }
+    .right-btn-groups {
+      display: flex;
+      align-items: center;
+    }
+    .tips-btn {
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+      line-height: 16px;
+      margin-right: 15px;
+
+      > i {
+        margin-right: 2px;
+      }
+    }
+    .btn-icon {
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 15px;
+      &:hover {
+        color: #ff4d4f;
+      }
+    }
+  }
+  .drawerContent {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 46px);
+    .drawerContent-left {
+      width: 120px;
+    }
+    .drawerContent-right {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+/* 样式调整 */
+#toolbarContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #dfe3e8;
+  text-align: center;
+  font-size: 12px;
+}
+.group-search-block {
+  height: 40px;
+  width: 100%;
+  padding: 10px 5px;
+}
+.group-list-container {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  scroll-behavior: auto;
+  padding: 15px 10px 10px 10px;
+  box-sizing: border-box;
+  .group-list-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .empty-tips {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+  }
+  .group-name {
+    line-height: 22px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+  }
+  .dnd-rect {
+    width: 50px;
+    height: 30px;
+    line-height: 40px;
+    text-align: center;
+    border: 2px solid #000000;
+    border-radius: 6px;
+    cursor: move;
+    font-size: 12px;
+  }
+}
+
+.dnd-polygon {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #000000;
+  transform: rotate(45deg);
+  cursor: move;
+  font-size: 12px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.dnd-circle {
+  width: 35px;
+  height: 35px;
+  line-height: 45px;
+  text-align: center;
+  border: 5px solid #000000;
+  border-radius: 100%;
+  cursor: move;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+.dnd-start {
+  border: 2px solid #000000;
+}
+
+.flex-grid {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  &-left {
+    position: relative;
+    width: 300px;
+    height: 100%;
+  }
+  &-right {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+  }
+}

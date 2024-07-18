@@ -1,29 +1,31 @@
 <template>
   <div class="scheduler-page performance-home">
     <div class="top-toolbar">
-      <span class="back-btn" @click="blackBtn"><i class="el-icon-arrow-left"></i>返回</span>
+      <span class="back-btn"><i class="el-icon-arrow-left"></i>返回</span>
       <div class="task-info-block">
-        <span>{{ taskInfo && taskInfo.taskName }}</span>
+        <span>我是测试名称名称</span>
       </div>
 
       <div class="right-btn-groups">
-        <div class="tips-btn" @click="getExecLogClick">
-          <i class="el-icon-s-data"></i>
-          执行日志
-        </div>
+        <div class="tips-btn"> 执行日志 </div>
 
-        <div class="tips-btn"><i class="el-icon-question"></i>操作提示</div>
+        <div class="tips-btn">操作提示</div>
 
         <div class="btn-icon" @click="zoomOutClick">
-          <i class="el-icon-zoom-out"></i>
+          <el-icon>
+            <ZoomOut />
+          </el-icon>
         </div>
         <div class="btn-icon" @click="zoomInClick">
+          <el-icon>
+            <ZoomIn />
+          </el-icon>
           <i class="el-icon-zoom-in"></i>
         </div>
         <el-button size="mini" plain :disabled="!canUndo" @click="handleUndo">撤销</el-button>
         <el-button size="mini" plain :disabled="!canRedo" @click="handleRedo">重做</el-button>
-        <el-button size="mini" type="primary" @click="startExcuteTask">执行</el-button>
-        <el-button size="mini" type="primary" @click="saveGraphData">保存</el-button>
+        <el-button size="mini" type="primary">执行</el-button>
+        <el-button size="mini" type="primary">保存</el-button>
       </div>
     </div>
     <div class="drawerContent">
@@ -53,7 +55,8 @@
 </template>
 
 <script setup>
-  // import { debounce } from 'lodash-es'
+  import './index.scss'
+  import { ZoomOut, ZoomIn } from '@element-plus/icons-vue'
   import { useDebounceFn } from '@vueuse/core'
   import CustomVueNode from './custom-vue-node.vue'
   import { Graph, Path, Platform } from '@antv/x6'
@@ -850,6 +853,13 @@
     graphOut.select('node-2')
   }
 
+  /**
+   * 输入框去抖
+   */
+  const debouncedQueryChange = useDebounceFn((e) => {
+    console.log('query:', e)
+  }, 300)
+
   onMounted(() => {
     initGraph()
   })
@@ -858,181 +868,3 @@
     graphOut = null
   })
 </script>
-
-<style lang="scss">
-  @keyframes ant-line {
-    to {
-      stroke-dashoffset: -1000;
-    }
-  }
-  .ioh-drag-class {
-  }
-  .ioh-ghost-class {
-    background-color: #c1d0f1 !important;
-    border: 1px dashed #3371ff;
-    opacity: 0.8;
-  }
-  .drawing-board {
-    height: 100%;
-    position: relative;
-
-    .sortable-ghost {
-      position: relative;
-      display: block;
-      overflow: hidden;
-      &::before {
-        content: ' ';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 3px;
-        background: rgb(89, 89, 223);
-        z-index: 2;
-      }
-    }
-  }
-
-  .scheduler-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    z-index: 99;
-    .top-toolbar {
-      height: 46px;
-      line-height: 46px;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .back-btn {
-        cursor: pointer;
-      }
-      .right-btn-groups {
-        display: flex;
-        align-items: center;
-      }
-      .tips-btn {
-        font-size: 14px;
-        color: #666;
-        cursor: pointer;
-        line-height: 16px;
-        margin-right: 15px;
-
-        > i {
-          margin-right: 2px;
-        }
-      }
-      .btn-icon {
-        font-size: 20px;
-        cursor: pointer;
-        margin-right: 15px;
-        &:hover {
-          color: #ff4d4f;
-        }
-      }
-    }
-    .drawerContent {
-      display: flex;
-      width: 100%;
-      height: calc(100% - 46px);
-      .drawerContent-left {
-        width: 120px;
-      }
-      .drawerContent-right {
-        flex: 1;
-        min-width: 0;
-      }
-    }
-  }
-  /* 样式调整 */
-  #toolbarContainer {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 1px solid #dfe3e8;
-    text-align: center;
-    font-size: 12px;
-  }
-  .group-search-block {
-    height: 40px;
-    width: 100%;
-    padding: 10px 5px;
-  }
-  .group-list-container {
-    flex: 1;
-    width: 100%;
-    min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior: none;
-    scroll-behavior: auto;
-    padding: 15px 10px 10px 10px;
-    box-sizing: border-box;
-    .group-list-item {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .empty-tips {
-      min-height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-    }
-    .group-name {
-      line-height: 22px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: block;
-      white-space: nowrap;
-      width: 100%;
-    }
-    .dnd-rect {
-      width: 50px;
-      height: 30px;
-      line-height: 40px;
-      text-align: center;
-      border: 2px solid #000000;
-      border-radius: 6px;
-      cursor: move;
-      font-size: 12px;
-    }
-  }
-
-  .dnd-polygon {
-    width: 35px;
-    height: 35px;
-    border: 2px solid #000000;
-    transform: rotate(45deg);
-    cursor: move;
-    font-size: 12px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-
-  .dnd-circle {
-    width: 35px;
-    height: 35px;
-    line-height: 45px;
-    text-align: center;
-    border: 5px solid #000000;
-    border-radius: 100%;
-    cursor: move;
-    font-size: 12px;
-    margin-top: 30px;
-  }
-
-  .dnd-start {
-    border: 2px solid #000000;
-  }
-</style>

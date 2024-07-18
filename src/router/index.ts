@@ -139,6 +139,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/auto-render2', name: 'auto-render2', component: AutoRender2 },
   { path: '/amisTest', name: 'amisTest', component: amisTest },
   { path: '/graph', name: 'GraphPage', component: GraphPage },
+  { path: '/graph-work', name: 'GraphWork', component: () => import('@/views/graph-page/work.vue') },
 ]
 
 const router = createRouter({

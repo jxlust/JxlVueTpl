@@ -1,8 +1,8 @@
 <script setup lang="ts">
   // import '../lib/my-packages.umd.cjs'
+
   import { Button, reactCommonRender, Text } from '../lib/my-packages.js'
   import '../lib/style.css'
-
   const demoRef = ref<any>(null)
   onMounted(() => {
     console.log('ref:', demoRef.value)
