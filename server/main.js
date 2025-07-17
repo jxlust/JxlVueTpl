@@ -4,8 +4,7 @@ http://localhost:3000/www/list.html
 http://localhost:3000/www/data.xml
 http://localhost:3000/www/about.html
 http://localhost:3000/www/login.html
-http://localhost:3000/www/logo.png
-*/
+ */
 const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
